@@ -21,15 +21,31 @@ class HorizontalTimeView extends Ui.WatchFace {
 
 	// Ensure all minutes are between 00-59 
 	function checkMinute(num, modifier) {
-		// If the computed amount is less than zero then start at 60
-		if (num+modifier < 0) {
-			num = 60;
-		}
-
-		// If the computed amount is greater than 59 then start at -1
-		if (num+modifier > 59) {
-			num = -1;
-		}
+		// Check computed amount for weird edge cases when dealing with values out of range
+		if (num == 0 && num+modifier < 0) {
+        	num = 60;
+	    } 
+	    
+	    if ((num == 1 && num+modifier == 0) || (num == 57 && num+modifier == 60)) {
+	        num = 0;
+	        modifier = 0;
+	    }
+	    
+	    if (num == 1 && num+modifier < 0) {
+	        num = 61;
+	    }
+	    
+	    if (num == 2 && num+modifier == -1) {
+	        num = 62;
+	    }
+	
+	    if (num == 58 && num+modifier >= 60) {
+	        num = -2;
+	    }
+	    
+	    if (num == 59 && num+modifier >= 60) {
+	        num = -1;
+	    }
 		
 		// Return a 2-digit number string
 		return Lang.format("$1$",[(num+modifier).format("%02d")]);
@@ -37,15 +53,23 @@ class HorizontalTimeView extends Ui.WatchFace {
 	
 	// Ensure all hours are between 0-23
 	function checkHour(num, modifier) {
-		// If the computed amount is less than zero then start at 24
-		if (num+modifier < 0) {
-			num = 24;
-		}
+		// Check computed amount for weird edge cases when dealing with values out of range
+		if ((num+modifier == -1||-2) && num == 0) {
+	        num = 24;
+	    } 
 
-		// If the computed amount is greater than 23 then start at -1
-		if (num+modifier > 23) {
-			num = -1;
-		}
+		if (num+modifier == -1 && num == 1) {
+	        num = 25;
+	    }
+	    
+		if (num+modifier == 24) {
+	        num = 0;
+	        modifier = 0;
+	    } 
+		
+		if (num+modifier >= 25) {
+	        num = -1;
+	    }
 
 		// Return a 2-digit number string
 		return Lang.format("$1$",[(num+modifier).format("%02d")]);
