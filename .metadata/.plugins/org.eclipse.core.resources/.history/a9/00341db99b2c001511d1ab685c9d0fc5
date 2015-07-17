@@ -8,8 +8,8 @@
     <label id="MinuteLabelL3" x="24" y="121" font="Gfx.FONT_NUMBER_MILD" justification="Gfx.TEXT_JUSTIFY_CENTER" color="Gfx.COLOR_DK_GRAY" />
     <label id="MinuteLabelL2" x="48" y="121" font="Gfx.FONT_NUMBER_MILD" justification="Gfx.TEXT_JUSTIFY_CENTER" color="Gfx.COLOR_DK_GRAY" />
     <label id="MinuteLabelL1" x="72" y="121" font="Gfx.FONT_NUMBER_MILD" justification="Gfx.TEXT_JUSTIFY_CENTER" color="Gfx.COLOR_LT_GRAY" />
-    <label id="MinuteLabel" x="center" y="93" font="Gfx.FONT_NUMBER_HOT" justification="Gfx.TEXT_JUSTIFY_CENTER" color="Gfx.COLOR_RED" />
-    <label id="MinuteLabelAlt" x="107" y="93" font="Gfx.FONT_NUMBER_HOT" justification="Gfx.TEXT_JUSTIFY_CENTER" color="Gfx.COLOR_RED" />
+    <label id="MinuteLabel" x="center" y="93" font="Gfx.FONT_NUMBER_HOT" justification="Gfx.TEXT_JUSTIFY_CENTER" color="Gfx.COLOR_DK_RED" />
+    <label id="MinuteLabelAlt" x="107" y="93" font="Gfx.FONT_NUMBER_HOT" justification="Gfx.TEXT_JUSTIFY_CENTER" color="Gfx.COLOR_DK_RED" />
     <label id="MinuteLabelP1" x="145" y="121" font="Gfx.FONT_NUMBER_MILD" justification="Gfx.TEXT_JUSTIFY_CENTER" color="Gfx.COLOR_LT_GRAY" />
     <label id="MinuteLabelP2" x="169" y="121" font="Gfx.FONT_NUMBER_MILD" justification="Gfx.TEXT_JUSTIFY_CENTER" color="Gfx.COLOR_DK_GRAY" />
     <label id="MinuteLabelP3" x="194" y="121" font="Gfx.FONT_NUMBER_MILD" justification="Gfx.TEXT_JUSTIFY_CENTER" color="Gfx.COLOR_DK_GRAY" />

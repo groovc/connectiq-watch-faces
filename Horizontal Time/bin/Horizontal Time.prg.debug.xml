@@ -1,183 +1,182 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
 <debugInfo>
 <pcToLineNum>
-<entry filename="/Users/vchen/Documents/workspace-garmin/Horizontal Time/source/HorizontalTimeView.mc" lineNum="13" pc="268435458" symbol="onLayout"/>
-<entry filename="/Users/vchen/Documents/workspace-garmin/Horizontal Time/source/HorizontalTimeView.mc" lineNum="25" pc="268435501" symbol="checkMinute"/>
-<entry filename="/Users/vchen/Documents/workspace-garmin/Horizontal Time/source/HorizontalTimeView.mc" lineNum="26" pc="268435515" symbol="checkMinute"/>
-<entry filename="/Users/vchen/Documents/workspace-garmin/Horizontal Time/source/HorizontalTimeView.mc" lineNum="30" pc="268435525" symbol="checkMinute"/>
-<entry filename="/Users/vchen/Documents/workspace-garmin/Horizontal Time/source/HorizontalTimeView.mc" lineNum="31" pc="268435539" symbol="checkMinute"/>
-<entry filename="/Users/vchen/Documents/workspace-garmin/Horizontal Time/source/HorizontalTimeView.mc" lineNum="35" pc="268435555" symbol="checkMinute"/>
-<entry filename="/Users/vchen/Documents/workspace-garmin/Horizontal Time/source/HorizontalTimeView.mc" lineNum="41" pc="268435612" symbol="checkHour"/>
-<entry filename="/Users/vchen/Documents/workspace-garmin/Horizontal Time/source/HorizontalTimeView.mc" lineNum="42" pc="268435626" symbol="checkHour"/>
-<entry filename="/Users/vchen/Documents/workspace-garmin/Horizontal Time/source/HorizontalTimeView.mc" lineNum="46" pc="268435636" symbol="checkHour"/>
-<entry filename="/Users/vchen/Documents/workspace-garmin/Horizontal Time/source/HorizontalTimeView.mc" lineNum="47" pc="268435650" symbol="checkHour"/>
-<entry filename="/Users/vchen/Documents/workspace-garmin/Horizontal Time/source/HorizontalTimeView.mc" lineNum="51" pc="268435666" symbol="checkHour"/>
-<entry filename="/Users/vchen/Documents/workspace-garmin/Horizontal Time/source/HorizontalTimeView.mc" lineNum="55" pc="268435723" symbol="renderHour"/>
-<entry filename="/Users/vchen/Documents/workspace-garmin/Horizontal Time/source/HorizontalTimeView.mc" lineNum="57" pc="268435733" symbol="renderHour"/>
-<entry filename="/Users/vchen/Documents/workspace-garmin/Horizontal Time/source/HorizontalTimeView.mc" lineNum="58" pc="268435753" symbol="renderHour"/>
-<entry filename="/Users/vchen/Documents/workspace-garmin/Horizontal Time/source/HorizontalTimeView.mc" lineNum="59" pc="268435779" symbol="renderHour"/>
-<entry filename="/Users/vchen/Documents/workspace-garmin/Horizontal Time/source/HorizontalTimeView.mc" lineNum="60" pc="268435805" symbol="renderHour"/>
-<entry filename="/Users/vchen/Documents/workspace-garmin/Horizontal Time/source/HorizontalTimeView.mc" lineNum="61" pc="268435825" symbol="renderHour"/>
-<entry filename="/Users/vchen/Documents/workspace-garmin/Horizontal Time/source/HorizontalTimeView.mc" lineNum="64" pc="268435845" symbol="renderHour"/>
-<entry filename="/Users/vchen/Documents/workspace-garmin/Horizontal Time/source/HorizontalTimeView.mc" lineNum="65" pc="268435845" symbol="renderHour"/>
-<entry filename="/Users/vchen/Documents/workspace-garmin/Horizontal Time/source/HorizontalTimeView.mc" lineNum="66" pc="268435869" symbol="renderHour"/>
-<entry filename="/Users/vchen/Documents/workspace-garmin/Horizontal Time/source/HorizontalTimeView.mc" lineNum="67" pc="268435893" symbol="renderHour"/>
-<entry filename="/Users/vchen/Documents/workspace-garmin/Horizontal Time/source/HorizontalTimeView.mc" lineNum="68" pc="268435917" symbol="renderHour"/>
-<entry filename="/Users/vchen/Documents/workspace-garmin/Horizontal Time/source/HorizontalTimeView.mc" lineNum="71" pc="268435941" symbol="renderHour"/>
-<entry filename="/Users/vchen/Documents/workspace-garmin/Horizontal Time/source/HorizontalTimeView.mc" lineNum="72" pc="268435955" symbol="renderHour"/>
-<entry filename="/Users/vchen/Documents/workspace-garmin/Horizontal Time/source/HorizontalTimeView.mc" lineNum="73" pc="268435969" symbol="renderHour"/>
-<entry filename="/Users/vchen/Documents/workspace-garmin/Horizontal Time/source/HorizontalTimeView.mc" lineNum="74" pc="268435983" symbol="renderHour"/>
-<entry filename="/Users/vchen/Documents/workspace-garmin/Horizontal Time/source/HorizontalTimeView.mc" lineNum="77" pc="268435997" symbol="renderHour"/>
-<entry filename="/Users/vchen/Documents/workspace-garmin/Horizontal Time/source/HorizontalTimeView.mc" lineNum="78" pc="268436022" symbol="renderHour"/>
-<entry filename="/Users/vchen/Documents/workspace-garmin/Horizontal Time/source/HorizontalTimeView.mc" lineNum="79" pc="268436046" symbol="renderHour"/>
-<entry filename="/Users/vchen/Documents/workspace-garmin/Horizontal Time/source/HorizontalTimeView.mc" lineNum="80" pc="268436063" symbol="renderHour"/>
-<entry filename="/Users/vchen/Documents/workspace-garmin/Horizontal Time/source/HorizontalTimeView.mc" lineNum="81" pc="268436087" symbol="renderHour"/>
-<entry filename="/Users/vchen/Documents/workspace-garmin/Horizontal Time/source/HorizontalTimeView.mc" lineNum="83" pc="268436104" symbol="renderHour"/>
-<entry filename="/Users/vchen/Documents/workspace-garmin/Horizontal Time/source/HorizontalTimeView.mc" lineNum="84" pc="268436128" symbol="renderHour"/>
-<entry filename="/Users/vchen/Documents/workspace-garmin/Horizontal Time/source/HorizontalTimeView.mc" lineNum="85" pc="268436145" symbol="renderHour"/>
-<entry filename="/Users/vchen/Documents/workspace-garmin/Horizontal Time/source/HorizontalTimeView.mc" lineNum="86" pc="268436169" symbol="renderHour"/>
-<entry filename="/Users/vchen/Documents/workspace-garmin/Horizontal Time/source/HorizontalTimeView.mc" lineNum="91" pc="268436186" symbol="renderMinutes"/>
-<entry filename="/Users/vchen/Documents/workspace-garmin/Horizontal Time/source/HorizontalTimeView.mc" lineNum="93" pc="268436219" symbol="renderMinutes"/>
-<entry filename="/Users/vchen/Documents/workspace-garmin/Horizontal Time/source/HorizontalTimeView.mc" lineNum="94" pc="268436239" symbol="renderMinutes"/>
-<entry filename="/Users/vchen/Documents/workspace-garmin/Horizontal Time/source/HorizontalTimeView.mc" lineNum="95" pc="268436265" symbol="renderMinutes"/>
-<entry filename="/Users/vchen/Documents/workspace-garmin/Horizontal Time/source/HorizontalTimeView.mc" lineNum="96" pc="268436291" symbol="renderMinutes"/>
-<entry filename="/Users/vchen/Documents/workspace-garmin/Horizontal Time/source/HorizontalTimeView.mc" lineNum="97" pc="268436317" symbol="renderMinutes"/>
-<entry filename="/Users/vchen/Documents/workspace-garmin/Horizontal Time/source/HorizontalTimeView.mc" lineNum="98" pc="268436337" symbol="renderMinutes"/>
-<entry filename="/Users/vchen/Documents/workspace-garmin/Horizontal Time/source/HorizontalTimeView.mc" lineNum="99" pc="268436357" symbol="renderMinutes"/>
-<entry filename="/Users/vchen/Documents/workspace-garmin/Horizontal Time/source/HorizontalTimeView.mc" lineNum="102" pc="268436377" symbol="renderMinutes"/>
-<entry filename="/Users/vchen/Documents/workspace-garmin/Horizontal Time/source/HorizontalTimeView.mc" lineNum="103" pc="268436401" symbol="renderMinutes"/>
-<entry filename="/Users/vchen/Documents/workspace-garmin/Horizontal Time/source/HorizontalTimeView.mc" lineNum="104" pc="268436425" symbol="renderMinutes"/>
-<entry filename="/Users/vchen/Documents/workspace-garmin/Horizontal Time/source/HorizontalTimeView.mc" lineNum="105" pc="268436449" symbol="renderMinutes"/>
-<entry filename="/Users/vchen/Documents/workspace-garmin/Horizontal Time/source/HorizontalTimeView.mc" lineNum="106" pc="268436473" symbol="renderMinutes"/>
-<entry filename="/Users/vchen/Documents/workspace-garmin/Horizontal Time/source/HorizontalTimeView.mc" lineNum="107" pc="268436497" symbol="renderMinutes"/>
-<entry filename="/Users/vchen/Documents/workspace-garmin/Horizontal Time/source/HorizontalTimeView.mc" lineNum="108" pc="268436521" symbol="renderMinutes"/>
-<entry filename="/Users/vchen/Documents/workspace-garmin/Horizontal Time/source/HorizontalTimeView.mc" lineNum="111" pc="268436545" symbol="renderMinutes"/>
-<entry filename="/Users/vchen/Documents/workspace-garmin/Horizontal Time/source/HorizontalTimeView.mc" lineNum="112" pc="268436559" symbol="renderMinutes"/>
-<entry filename="/Users/vchen/Documents/workspace-garmin/Horizontal Time/source/HorizontalTimeView.mc" lineNum="113" pc="268436573" symbol="renderMinutes"/>
-<entry filename="/Users/vchen/Documents/workspace-garmin/Horizontal Time/source/HorizontalTimeView.mc" lineNum="114" pc="268436587" symbol="renderMinutes"/>
-<entry filename="/Users/vchen/Documents/workspace-garmin/Horizontal Time/source/HorizontalTimeView.mc" lineNum="115" pc="268436601" symbol="renderMinutes"/>
-<entry filename="/Users/vchen/Documents/workspace-garmin/Horizontal Time/source/HorizontalTimeView.mc" lineNum="116" pc="268436615" symbol="renderMinutes"/>
-<entry filename="/Users/vchen/Documents/workspace-garmin/Horizontal Time/source/HorizontalTimeView.mc" lineNum="119" pc="268436629" symbol="renderMinutes"/>
-<entry filename="/Users/vchen/Documents/workspace-garmin/Horizontal Time/source/HorizontalTimeView.mc" lineNum="120" pc="268436654" symbol="renderMinutes"/>
-<entry filename="/Users/vchen/Documents/workspace-garmin/Horizontal Time/source/HorizontalTimeView.mc" lineNum="121" pc="268436678" symbol="renderMinutes"/>
-<entry filename="/Users/vchen/Documents/workspace-garmin/Horizontal Time/source/HorizontalTimeView.mc" lineNum="122" pc="268436695" symbol="renderMinutes"/>
-<entry filename="/Users/vchen/Documents/workspace-garmin/Horizontal Time/source/HorizontalTimeView.mc" lineNum="123" pc="268436719" symbol="renderMinutes"/>
-<entry filename="/Users/vchen/Documents/workspace-garmin/Horizontal Time/source/HorizontalTimeView.mc" lineNum="125" pc="268436736" symbol="renderMinutes"/>
-<entry filename="/Users/vchen/Documents/workspace-garmin/Horizontal Time/source/HorizontalTimeView.mc" lineNum="126" pc="268436760" symbol="renderMinutes"/>
-<entry filename="/Users/vchen/Documents/workspace-garmin/Horizontal Time/source/HorizontalTimeView.mc" lineNum="127" pc="268436777" symbol="renderMinutes"/>
-<entry filename="/Users/vchen/Documents/workspace-garmin/Horizontal Time/source/HorizontalTimeView.mc" lineNum="128" pc="268436801" symbol="renderMinutes"/>
-<entry filename="/Users/vchen/Documents/workspace-garmin/Horizontal Time/source/HorizontalTimeView.mc" lineNum="134" pc="268436818" symbol="renderDate"/>
-<entry filename="/Users/vchen/Documents/workspace-garmin/Horizontal Time/source/HorizontalTimeView.mc" lineNum="135" pc="268436835" symbol="renderDate"/>
-<entry filename="/Users/vchen/Documents/workspace-garmin/Horizontal Time/source/HorizontalTimeView.mc" lineNum="136" pc="268436866" symbol="renderDate"/>
-<entry filename="/Users/vchen/Documents/workspace-garmin/Horizontal Time/source/HorizontalTimeView.mc" lineNum="137" pc="268436979" symbol="renderDate"/>
-<entry filename="/Users/vchen/Documents/workspace-garmin/Horizontal Time/source/HorizontalTimeView.mc" lineNum="138" pc="268437003" symbol="renderDate"/>
-<entry filename="/Users/vchen/Documents/workspace-garmin/Horizontal Time/source/HorizontalTimeView.mc" lineNum="143" pc="268437020" symbol="renderStats"/>
-<entry filename="/Users/vchen/Documents/workspace-garmin/Horizontal Time/source/HorizontalTimeView.mc" lineNum="144" pc="268437037" symbol="renderStats"/>
-<entry filename="/Users/vchen/Documents/workspace-garmin/Horizontal Time/source/HorizontalTimeView.mc" lineNum="145" pc="268437047" symbol="renderStats"/>
-<entry filename="/Users/vchen/Documents/workspace-garmin/Horizontal Time/source/HorizontalTimeView.mc" lineNum="146" pc="268437071" symbol="renderStats"/>
-<entry filename="/Users/vchen/Documents/workspace-garmin/Horizontal Time/source/HorizontalTimeView.mc" lineNum="147" pc="268437088" symbol="renderStats"/>
-<entry filename="/Users/vchen/Documents/workspace-garmin/Horizontal Time/source/HorizontalTimeView.mc" lineNum="148" pc="268437098" symbol="renderStats"/>
-<entry filename="/Users/vchen/Documents/workspace-garmin/Horizontal Time/source/HorizontalTimeView.mc" lineNum="150" pc="268437117" symbol="renderStats"/>
-<entry filename="/Users/vchen/Documents/workspace-garmin/Horizontal Time/source/HorizontalTimeView.mc" lineNum="154" pc="268437158" symbol="renderConnected"/>
-<entry filename="/Users/vchen/Documents/workspace-garmin/Horizontal Time/source/HorizontalTimeView.mc" lineNum="156" pc="268437181" symbol="renderConnected"/>
-<entry filename="/Users/vchen/Documents/workspace-garmin/Horizontal Time/source/HorizontalTimeView.mc" lineNum="158" pc="268437186" symbol="renderConnected"/>
-<entry filename="/Users/vchen/Documents/workspace-garmin/Horizontal Time/source/HorizontalTimeView.mc" lineNum="159" pc="268437222" symbol="renderConnected"/>
-<entry filename="/Users/vchen/Documents/workspace-garmin/Horizontal Time/source/HorizontalTimeView.mc" lineNum="160" pc="268437254" symbol="renderConnected"/>
-<entry filename="/Users/vchen/Documents/workspace-garmin/Horizontal Time/source/HorizontalTimeView.mc" lineNum="161" pc="268437276" symbol="renderConnected"/>
-<entry filename="/Users/vchen/Documents/workspace-garmin/Horizontal Time/source/HorizontalTimeView.mc" lineNum="162" pc="268437298" symbol="renderConnected"/>
-<entry filename="/Users/vchen/Documents/workspace-garmin/Horizontal Time/source/HorizontalTimeView.mc" lineNum="163" pc="268437320" symbol="renderConnected"/>
-<entry filename="/Users/vchen/Documents/workspace-garmin/Horizontal Time/source/HorizontalTimeView.mc" lineNum="164" pc="268437342" symbol="renderConnected"/>
-<entry filename="/Users/vchen/Documents/workspace-garmin/Horizontal Time/source/HorizontalTimeView.mc" lineNum="165" pc="268437364" symbol="renderConnected"/>
-<entry filename="/Users/vchen/Documents/workspace-garmin/Horizontal Time/source/HorizontalTimeView.mc" lineNum="166" pc="268437386" symbol="renderConnected"/>
-<entry filename="/Users/vchen/Documents/workspace-garmin/Horizontal Time/source/HorizontalTimeView.mc" lineNum="167" pc="268437408" symbol="renderConnected"/>
-<entry filename="/Users/vchen/Documents/workspace-garmin/Horizontal Time/source/HorizontalTimeView.mc" lineNum="168" pc="268437430" symbol="renderConnected"/>
-<entry filename="/Users/vchen/Documents/workspace-garmin/Horizontal Time/source/HorizontalTimeView.mc" lineNum="169" pc="268437452" symbol="renderConnected"/>
-<entry filename="/Users/vchen/Documents/workspace-garmin/Horizontal Time/source/HorizontalTimeView.mc" lineNum="171" pc="268437474" symbol="renderConnected"/>
-<entry filename="/Users/vchen/Documents/workspace-garmin/Horizontal Time/source/HorizontalTimeView.mc" lineNum="172" pc="268437496" symbol="renderConnected"/>
-<entry filename="/Users/vchen/Documents/workspace-garmin/Horizontal Time/source/HorizontalTimeView.mc" lineNum="173" pc="268437518" symbol="renderConnected"/>
-<entry filename="/Users/vchen/Documents/workspace-garmin/Horizontal Time/source/HorizontalTimeView.mc" lineNum="174" pc="268437540" symbol="renderConnected"/>
-<entry filename="/Users/vchen/Documents/workspace-garmin/Horizontal Time/source/HorizontalTimeView.mc" lineNum="181" pc="268437568" symbol="onUpdate"/>
-<entry filename="/Users/vchen/Documents/workspace-garmin/Horizontal Time/source/HorizontalTimeView.mc" lineNum="182" pc="268437585" symbol="onUpdate"/>
-<entry filename="/Users/vchen/Documents/workspace-garmin/Horizontal Time/source/HorizontalTimeView.mc" lineNum="184" pc="268437595" symbol="onUpdate"/>
-<entry filename="/Users/vchen/Documents/workspace-garmin/Horizontal Time/source/HorizontalTimeView.mc" lineNum="185" pc="268437609" symbol="onUpdate"/>
-<entry filename="/Users/vchen/Documents/workspace-garmin/Horizontal Time/source/HorizontalTimeView.mc" lineNum="186" pc="268437623" symbol="onUpdate"/>
-<entry filename="/Users/vchen/Documents/workspace-garmin/Horizontal Time/source/HorizontalTimeView.mc" lineNum="187" pc="268437635" symbol="onUpdate"/>
-<entry filename="/Users/vchen/Documents/workspace-garmin/Horizontal Time/source/HorizontalTimeView.mc" lineNum="190" pc="268437647" symbol="onUpdate"/>
-<entry filename="/Users/vchen/Documents/workspace-garmin/Horizontal Time/source/HorizontalTimeView.mc" lineNum="191" pc="268437667" symbol="onUpdate"/>
-<entry filename="/Users/vchen/Documents/workspace-garmin/Horizontal Time/source/HorizontalTimeApp.mc" lineNum="15" pc="268437700" symbol="getInitialView"/>
-<entry filename="Rez" lineNum="5" pc="268442023" symbol="&lt;init&gt;"/>
-<entry filename="Rez" lineNum="20" pc="268437744" symbol="draw"/>
-<entry filename="Rez" lineNum="21" pc="268437751" symbol="draw"/>
-<entry filename="Rez" lineNum="22" pc="268437758" symbol="draw"/>
-<entry filename="Rez" lineNum="23" pc="268437771" symbol="draw"/>
-<entry filename="Rez" lineNum="24" pc="268437784" symbol="draw"/>
-<entry filename="Rez" lineNum="29" pc="268437809" symbol="drawComplex"/>
-<entry filename="Rez" lineNum="30" pc="268437845" symbol="drawComplex"/>
-<entry filename="Rez" lineNum="45" pc="268437958" symbol="draw"/>
-<entry filename="Rez" lineNum="46" pc="268437965" symbol="draw"/>
-<entry filename="Rez" lineNum="47" pc="268437972" symbol="draw"/>
-<entry filename="Rez" lineNum="48" pc="268437985" symbol="draw"/>
-<entry filename="Rez" lineNum="49" pc="268437998" symbol="draw"/>
-<entry filename="Rez" lineNum="54" pc="268438023" symbol="drawComplex"/>
-<entry filename="Rez" lineNum="55" pc="268438059" symbol="drawComplex"/>
-<entry filename="Rez" lineNum="57" pc="268438187" symbol="drawComplex"/>
-<entry filename="Rez" lineNum="58" pc="268438223" symbol="drawComplex"/>
-<entry filename="Rez" lineNum="60" pc="268438330" symbol="drawComplex"/>
-<entry filename="Rez" lineNum="61" pc="268438366" symbol="drawComplex"/>
-<entry filename="Rez" lineNum="63" pc="268438473" symbol="drawComplex"/>
-<entry filename="Rez" lineNum="64" pc="268438509" symbol="drawComplex"/>
-<entry filename="Rez" lineNum="66" pc="268438616" symbol="drawComplex"/>
-<entry filename="Rez" lineNum="67" pc="268438652" symbol="drawComplex"/>
-<entry filename="Rez" lineNum="69" pc="268438759" symbol="drawComplex"/>
-<entry filename="Rez" lineNum="70" pc="268438795" symbol="drawComplex"/>
-<entry filename="Rez" lineNum="72" pc="268438902" symbol="drawComplex"/>
-<entry filename="Rez" lineNum="73" pc="268438938" symbol="drawComplex"/>
-<entry filename="Rez" lineNum="75" pc="268439045" symbol="drawComplex"/>
-<entry filename="Rez" lineNum="76" pc="268439081" symbol="drawComplex"/>
-<entry filename="Rez" lineNum="78" pc="268439188" symbol="drawComplex"/>
-<entry filename="Rez" lineNum="79" pc="268439224" symbol="drawComplex"/>
-<entry filename="Rez" lineNum="10" pc="268441972" symbol="&lt;init&gt;"/>
-<entry filename="Rez" lineNum="93" pc="268439334" symbol="WatchFace"/>
-<entry filename="Rez" lineNum="94" pc="268439348" symbol="WatchFace"/>
-<entry filename="Rez" lineNum="95" pc="268439471" symbol="WatchFace"/>
-<entry filename="Rez" lineNum="96" pc="268439485" symbol="WatchFace"/>
-<entry filename="Rez" lineNum="97" pc="268439608" symbol="WatchFace"/>
-<entry filename="Rez" lineNum="98" pc="268439622" symbol="WatchFace"/>
-<entry filename="Rez" lineNum="99" pc="268439732" symbol="WatchFace"/>
-<entry filename="Rez" lineNum="100" pc="268439747" symbol="WatchFace"/>
-<entry filename="Rez" lineNum="101" pc="268439799" symbol="WatchFace"/>
-<entry filename="Rez" lineNum="102" pc="268439813" symbol="WatchFace"/>
-<entry filename="Rez" lineNum="103" pc="268439936" symbol="WatchFace"/>
-<entry filename="Rez" lineNum="104" pc="268439950" symbol="WatchFace"/>
-<entry filename="Rez" lineNum="105" pc="268440073" symbol="WatchFace"/>
-<entry filename="Rez" lineNum="106" pc="268440087" symbol="WatchFace"/>
-<entry filename="Rez" lineNum="107" pc="268440210" symbol="WatchFace"/>
-<entry filename="Rez" lineNum="108" pc="268440224" symbol="WatchFace"/>
-<entry filename="Rez" lineNum="109" pc="268440347" symbol="WatchFace"/>
-<entry filename="Rez" lineNum="110" pc="268440361" symbol="WatchFace"/>
-<entry filename="Rez" lineNum="111" pc="268440484" symbol="WatchFace"/>
-<entry filename="Rez" lineNum="112" pc="268440498" symbol="WatchFace"/>
-<entry filename="Rez" lineNum="113" pc="268440621" symbol="WatchFace"/>
-<entry filename="Rez" lineNum="114" pc="268440635" symbol="WatchFace"/>
-<entry filename="Rez" lineNum="115" pc="268440745" symbol="WatchFace"/>
-<entry filename="Rez" lineNum="116" pc="268440760" symbol="WatchFace"/>
-<entry filename="Rez" lineNum="117" pc="268440812" symbol="WatchFace"/>
-<entry filename="Rez" lineNum="118" pc="268440826" symbol="WatchFace"/>
-<entry filename="Rez" lineNum="119" pc="268440949" symbol="WatchFace"/>
-<entry filename="Rez" lineNum="120" pc="268440963" symbol="WatchFace"/>
-<entry filename="Rez" lineNum="121" pc="268441086" symbol="WatchFace"/>
-<entry filename="Rez" lineNum="122" pc="268441100" symbol="WatchFace"/>
-<entry filename="Rez" lineNum="123" pc="268441223" symbol="WatchFace"/>
-<entry filename="Rez" lineNum="124" pc="268441237" symbol="WatchFace"/>
-<entry filename="Rez" lineNum="125" pc="268441360" symbol="WatchFace"/>
-<entry filename="Rez" lineNum="126" pc="268441374" symbol="WatchFace"/>
-<entry filename="Rez" lineNum="127" pc="268441484" symbol="WatchFace"/>
-<entry filename="Rez" lineNum="128" pc="268441499" symbol="WatchFace"/>
-<entry filename="Rez" lineNum="129" pc="268441551" symbol="WatchFace"/>
-<entry filename="Rez" lineNum="130" pc="268441565" symbol="WatchFace"/>
-<entry filename="Rez" lineNum="131" pc="268441675" symbol="WatchFace"/>
-<entry filename="Rez" lineNum="132" pc="268441690" symbol="WatchFace"/>
-<entry filename="Rez" lineNum="133" pc="268441742" symbol="WatchFace"/>
+<entry filename="/Users/vchen/git/connectiq-watch-faces/Horizontal Time/source/HorizontalTimeView.mc" lineNum="13" pc="268435458" symbol="onLayout"/>
+<entry filename="/Users/vchen/git/connectiq-watch-faces/Horizontal Time/source/HorizontalTimeView.mc" lineNum="25" pc="268435501" symbol="checkMinute"/>
+<entry filename="/Users/vchen/git/connectiq-watch-faces/Horizontal Time/source/HorizontalTimeView.mc" lineNum="26" pc="268435515" symbol="checkMinute"/>
+<entry filename="/Users/vchen/git/connectiq-watch-faces/Horizontal Time/source/HorizontalTimeView.mc" lineNum="30" pc="268435525" symbol="checkMinute"/>
+<entry filename="/Users/vchen/git/connectiq-watch-faces/Horizontal Time/source/HorizontalTimeView.mc" lineNum="31" pc="268435539" symbol="checkMinute"/>
+<entry filename="/Users/vchen/git/connectiq-watch-faces/Horizontal Time/source/HorizontalTimeView.mc" lineNum="35" pc="268435555" symbol="checkMinute"/>
+<entry filename="/Users/vchen/git/connectiq-watch-faces/Horizontal Time/source/HorizontalTimeView.mc" lineNum="41" pc="268435612" symbol="checkHour"/>
+<entry filename="/Users/vchen/git/connectiq-watch-faces/Horizontal Time/source/HorizontalTimeView.mc" lineNum="42" pc="268435626" symbol="checkHour"/>
+<entry filename="/Users/vchen/git/connectiq-watch-faces/Horizontal Time/source/HorizontalTimeView.mc" lineNum="46" pc="268435636" symbol="checkHour"/>
+<entry filename="/Users/vchen/git/connectiq-watch-faces/Horizontal Time/source/HorizontalTimeView.mc" lineNum="47" pc="268435650" symbol="checkHour"/>
+<entry filename="/Users/vchen/git/connectiq-watch-faces/Horizontal Time/source/HorizontalTimeView.mc" lineNum="51" pc="268435666" symbol="checkHour"/>
+<entry filename="/Users/vchen/git/connectiq-watch-faces/Horizontal Time/source/HorizontalTimeView.mc" lineNum="55" pc="268435723" symbol="renderHour"/>
+<entry filename="/Users/vchen/git/connectiq-watch-faces/Horizontal Time/source/HorizontalTimeView.mc" lineNum="57" pc="268435733" symbol="renderHour"/>
+<entry filename="/Users/vchen/git/connectiq-watch-faces/Horizontal Time/source/HorizontalTimeView.mc" lineNum="58" pc="268435753" symbol="renderHour"/>
+<entry filename="/Users/vchen/git/connectiq-watch-faces/Horizontal Time/source/HorizontalTimeView.mc" lineNum="59" pc="268435779" symbol="renderHour"/>
+<entry filename="/Users/vchen/git/connectiq-watch-faces/Horizontal Time/source/HorizontalTimeView.mc" lineNum="60" pc="268435805" symbol="renderHour"/>
+<entry filename="/Users/vchen/git/connectiq-watch-faces/Horizontal Time/source/HorizontalTimeView.mc" lineNum="61" pc="268435825" symbol="renderHour"/>
+<entry filename="/Users/vchen/git/connectiq-watch-faces/Horizontal Time/source/HorizontalTimeView.mc" lineNum="64" pc="268435845" symbol="renderHour"/>
+<entry filename="/Users/vchen/git/connectiq-watch-faces/Horizontal Time/source/HorizontalTimeView.mc" lineNum="65" pc="268435845" symbol="renderHour"/>
+<entry filename="/Users/vchen/git/connectiq-watch-faces/Horizontal Time/source/HorizontalTimeView.mc" lineNum="66" pc="268435869" symbol="renderHour"/>
+<entry filename="/Users/vchen/git/connectiq-watch-faces/Horizontal Time/source/HorizontalTimeView.mc" lineNum="67" pc="268435893" symbol="renderHour"/>
+<entry filename="/Users/vchen/git/connectiq-watch-faces/Horizontal Time/source/HorizontalTimeView.mc" lineNum="68" pc="268435917" symbol="renderHour"/>
+<entry filename="/Users/vchen/git/connectiq-watch-faces/Horizontal Time/source/HorizontalTimeView.mc" lineNum="71" pc="268435941" symbol="renderHour"/>
+<entry filename="/Users/vchen/git/connectiq-watch-faces/Horizontal Time/source/HorizontalTimeView.mc" lineNum="72" pc="268435955" symbol="renderHour"/>
+<entry filename="/Users/vchen/git/connectiq-watch-faces/Horizontal Time/source/HorizontalTimeView.mc" lineNum="73" pc="268435969" symbol="renderHour"/>
+<entry filename="/Users/vchen/git/connectiq-watch-faces/Horizontal Time/source/HorizontalTimeView.mc" lineNum="74" pc="268435983" symbol="renderHour"/>
+<entry filename="/Users/vchen/git/connectiq-watch-faces/Horizontal Time/source/HorizontalTimeView.mc" lineNum="77" pc="268435997" symbol="renderHour"/>
+<entry filename="/Users/vchen/git/connectiq-watch-faces/Horizontal Time/source/HorizontalTimeView.mc" lineNum="78" pc="268436022" symbol="renderHour"/>
+<entry filename="/Users/vchen/git/connectiq-watch-faces/Horizontal Time/source/HorizontalTimeView.mc" lineNum="79" pc="268436046" symbol="renderHour"/>
+<entry filename="/Users/vchen/git/connectiq-watch-faces/Horizontal Time/source/HorizontalTimeView.mc" lineNum="80" pc="268436063" symbol="renderHour"/>
+<entry filename="/Users/vchen/git/connectiq-watch-faces/Horizontal Time/source/HorizontalTimeView.mc" lineNum="81" pc="268436087" symbol="renderHour"/>
+<entry filename="/Users/vchen/git/connectiq-watch-faces/Horizontal Time/source/HorizontalTimeView.mc" lineNum="83" pc="268436104" symbol="renderHour"/>
+<entry filename="/Users/vchen/git/connectiq-watch-faces/Horizontal Time/source/HorizontalTimeView.mc" lineNum="84" pc="268436128" symbol="renderHour"/>
+<entry filename="/Users/vchen/git/connectiq-watch-faces/Horizontal Time/source/HorizontalTimeView.mc" lineNum="85" pc="268436145" symbol="renderHour"/>
+<entry filename="/Users/vchen/git/connectiq-watch-faces/Horizontal Time/source/HorizontalTimeView.mc" lineNum="86" pc="268436169" symbol="renderHour"/>
+<entry filename="/Users/vchen/git/connectiq-watch-faces/Horizontal Time/source/HorizontalTimeView.mc" lineNum="91" pc="268436186" symbol="renderMinutes"/>
+<entry filename="/Users/vchen/git/connectiq-watch-faces/Horizontal Time/source/HorizontalTimeView.mc" lineNum="93" pc="268436219" symbol="renderMinutes"/>
+<entry filename="/Users/vchen/git/connectiq-watch-faces/Horizontal Time/source/HorizontalTimeView.mc" lineNum="94" pc="268436239" symbol="renderMinutes"/>
+<entry filename="/Users/vchen/git/connectiq-watch-faces/Horizontal Time/source/HorizontalTimeView.mc" lineNum="95" pc="268436265" symbol="renderMinutes"/>
+<entry filename="/Users/vchen/git/connectiq-watch-faces/Horizontal Time/source/HorizontalTimeView.mc" lineNum="96" pc="268436291" symbol="renderMinutes"/>
+<entry filename="/Users/vchen/git/connectiq-watch-faces/Horizontal Time/source/HorizontalTimeView.mc" lineNum="97" pc="268436317" symbol="renderMinutes"/>
+<entry filename="/Users/vchen/git/connectiq-watch-faces/Horizontal Time/source/HorizontalTimeView.mc" lineNum="98" pc="268436337" symbol="renderMinutes"/>
+<entry filename="/Users/vchen/git/connectiq-watch-faces/Horizontal Time/source/HorizontalTimeView.mc" lineNum="99" pc="268436357" symbol="renderMinutes"/>
+<entry filename="/Users/vchen/git/connectiq-watch-faces/Horizontal Time/source/HorizontalTimeView.mc" lineNum="102" pc="268436377" symbol="renderMinutes"/>
+<entry filename="/Users/vchen/git/connectiq-watch-faces/Horizontal Time/source/HorizontalTimeView.mc" lineNum="103" pc="268436401" symbol="renderMinutes"/>
+<entry filename="/Users/vchen/git/connectiq-watch-faces/Horizontal Time/source/HorizontalTimeView.mc" lineNum="104" pc="268436425" symbol="renderMinutes"/>
+<entry filename="/Users/vchen/git/connectiq-watch-faces/Horizontal Time/source/HorizontalTimeView.mc" lineNum="105" pc="268436449" symbol="renderMinutes"/>
+<entry filename="/Users/vchen/git/connectiq-watch-faces/Horizontal Time/source/HorizontalTimeView.mc" lineNum="106" pc="268436473" symbol="renderMinutes"/>
+<entry filename="/Users/vchen/git/connectiq-watch-faces/Horizontal Time/source/HorizontalTimeView.mc" lineNum="107" pc="268436497" symbol="renderMinutes"/>
+<entry filename="/Users/vchen/git/connectiq-watch-faces/Horizontal Time/source/HorizontalTimeView.mc" lineNum="108" pc="268436521" symbol="renderMinutes"/>
+<entry filename="/Users/vchen/git/connectiq-watch-faces/Horizontal Time/source/HorizontalTimeView.mc" lineNum="111" pc="268436545" symbol="renderMinutes"/>
+<entry filename="/Users/vchen/git/connectiq-watch-faces/Horizontal Time/source/HorizontalTimeView.mc" lineNum="112" pc="268436559" symbol="renderMinutes"/>
+<entry filename="/Users/vchen/git/connectiq-watch-faces/Horizontal Time/source/HorizontalTimeView.mc" lineNum="113" pc="268436573" symbol="renderMinutes"/>
+<entry filename="/Users/vchen/git/connectiq-watch-faces/Horizontal Time/source/HorizontalTimeView.mc" lineNum="114" pc="268436587" symbol="renderMinutes"/>
+<entry filename="/Users/vchen/git/connectiq-watch-faces/Horizontal Time/source/HorizontalTimeView.mc" lineNum="115" pc="268436601" symbol="renderMinutes"/>
+<entry filename="/Users/vchen/git/connectiq-watch-faces/Horizontal Time/source/HorizontalTimeView.mc" lineNum="116" pc="268436615" symbol="renderMinutes"/>
+<entry filename="/Users/vchen/git/connectiq-watch-faces/Horizontal Time/source/HorizontalTimeView.mc" lineNum="119" pc="268436629" symbol="renderMinutes"/>
+<entry filename="/Users/vchen/git/connectiq-watch-faces/Horizontal Time/source/HorizontalTimeView.mc" lineNum="120" pc="268436654" symbol="renderMinutes"/>
+<entry filename="/Users/vchen/git/connectiq-watch-faces/Horizontal Time/source/HorizontalTimeView.mc" lineNum="121" pc="268436678" symbol="renderMinutes"/>
+<entry filename="/Users/vchen/git/connectiq-watch-faces/Horizontal Time/source/HorizontalTimeView.mc" lineNum="122" pc="268436695" symbol="renderMinutes"/>
+<entry filename="/Users/vchen/git/connectiq-watch-faces/Horizontal Time/source/HorizontalTimeView.mc" lineNum="123" pc="268436719" symbol="renderMinutes"/>
+<entry filename="/Users/vchen/git/connectiq-watch-faces/Horizontal Time/source/HorizontalTimeView.mc" lineNum="125" pc="268436736" symbol="renderMinutes"/>
+<entry filename="/Users/vchen/git/connectiq-watch-faces/Horizontal Time/source/HorizontalTimeView.mc" lineNum="126" pc="268436760" symbol="renderMinutes"/>
+<entry filename="/Users/vchen/git/connectiq-watch-faces/Horizontal Time/source/HorizontalTimeView.mc" lineNum="127" pc="268436777" symbol="renderMinutes"/>
+<entry filename="/Users/vchen/git/connectiq-watch-faces/Horizontal Time/source/HorizontalTimeView.mc" lineNum="128" pc="268436801" symbol="renderMinutes"/>
+<entry filename="/Users/vchen/git/connectiq-watch-faces/Horizontal Time/source/HorizontalTimeView.mc" lineNum="134" pc="268436818" symbol="renderDate"/>
+<entry filename="/Users/vchen/git/connectiq-watch-faces/Horizontal Time/source/HorizontalTimeView.mc" lineNum="135" pc="268436835" symbol="renderDate"/>
+<entry filename="/Users/vchen/git/connectiq-watch-faces/Horizontal Time/source/HorizontalTimeView.mc" lineNum="136" pc="268436866" symbol="renderDate"/>
+<entry filename="/Users/vchen/git/connectiq-watch-faces/Horizontal Time/source/HorizontalTimeView.mc" lineNum="137" pc="268436979" symbol="renderDate"/>
+<entry filename="/Users/vchen/git/connectiq-watch-faces/Horizontal Time/source/HorizontalTimeView.mc" lineNum="138" pc="268437003" symbol="renderDate"/>
+<entry filename="/Users/vchen/git/connectiq-watch-faces/Horizontal Time/source/HorizontalTimeView.mc" lineNum="143" pc="268437020" symbol="renderStats"/>
+<entry filename="/Users/vchen/git/connectiq-watch-faces/Horizontal Time/source/HorizontalTimeView.mc" lineNum="144" pc="268437037" symbol="renderStats"/>
+<entry filename="/Users/vchen/git/connectiq-watch-faces/Horizontal Time/source/HorizontalTimeView.mc" lineNum="145" pc="268437047" symbol="renderStats"/>
+<entry filename="/Users/vchen/git/connectiq-watch-faces/Horizontal Time/source/HorizontalTimeView.mc" lineNum="146" pc="268437071" symbol="renderStats"/>
+<entry filename="/Users/vchen/git/connectiq-watch-faces/Horizontal Time/source/HorizontalTimeView.mc" lineNum="147" pc="268437088" symbol="renderStats"/>
+<entry filename="/Users/vchen/git/connectiq-watch-faces/Horizontal Time/source/HorizontalTimeView.mc" lineNum="148" pc="268437098" symbol="renderStats"/>
+<entry filename="/Users/vchen/git/connectiq-watch-faces/Horizontal Time/source/HorizontalTimeView.mc" lineNum="150" pc="268437117" symbol="renderStats"/>
+<entry filename="/Users/vchen/git/connectiq-watch-faces/Horizontal Time/source/HorizontalTimeView.mc" lineNum="154" pc="268437158" symbol="renderConnected"/>
+<entry filename="/Users/vchen/git/connectiq-watch-faces/Horizontal Time/source/HorizontalTimeView.mc" lineNum="156" pc="268437181" symbol="renderConnected"/>
+<entry filename="/Users/vchen/git/connectiq-watch-faces/Horizontal Time/source/HorizontalTimeView.mc" lineNum="158" pc="268437186" symbol="renderConnected"/>
+<entry filename="/Users/vchen/git/connectiq-watch-faces/Horizontal Time/source/HorizontalTimeView.mc" lineNum="159" pc="268437222" symbol="renderConnected"/>
+<entry filename="/Users/vchen/git/connectiq-watch-faces/Horizontal Time/source/HorizontalTimeView.mc" lineNum="160" pc="268437254" symbol="renderConnected"/>
+<entry filename="/Users/vchen/git/connectiq-watch-faces/Horizontal Time/source/HorizontalTimeView.mc" lineNum="161" pc="268437276" symbol="renderConnected"/>
+<entry filename="/Users/vchen/git/connectiq-watch-faces/Horizontal Time/source/HorizontalTimeView.mc" lineNum="162" pc="268437298" symbol="renderConnected"/>
+<entry filename="/Users/vchen/git/connectiq-watch-faces/Horizontal Time/source/HorizontalTimeView.mc" lineNum="163" pc="268437320" symbol="renderConnected"/>
+<entry filename="/Users/vchen/git/connectiq-watch-faces/Horizontal Time/source/HorizontalTimeView.mc" lineNum="164" pc="268437342" symbol="renderConnected"/>
+<entry filename="/Users/vchen/git/connectiq-watch-faces/Horizontal Time/source/HorizontalTimeView.mc" lineNum="165" pc="268437364" symbol="renderConnected"/>
+<entry filename="/Users/vchen/git/connectiq-watch-faces/Horizontal Time/source/HorizontalTimeView.mc" lineNum="166" pc="268437386" symbol="renderConnected"/>
+<entry filename="/Users/vchen/git/connectiq-watch-faces/Horizontal Time/source/HorizontalTimeView.mc" lineNum="167" pc="268437408" symbol="renderConnected"/>
+<entry filename="/Users/vchen/git/connectiq-watch-faces/Horizontal Time/source/HorizontalTimeView.mc" lineNum="168" pc="268437430" symbol="renderConnected"/>
+<entry filename="/Users/vchen/git/connectiq-watch-faces/Horizontal Time/source/HorizontalTimeView.mc" lineNum="169" pc="268437452" symbol="renderConnected"/>
+<entry filename="/Users/vchen/git/connectiq-watch-faces/Horizontal Time/source/HorizontalTimeView.mc" lineNum="171" pc="268437474" symbol="renderConnected"/>
+<entry filename="/Users/vchen/git/connectiq-watch-faces/Horizontal Time/source/HorizontalTimeView.mc" lineNum="172" pc="268437496" symbol="renderConnected"/>
+<entry filename="/Users/vchen/git/connectiq-watch-faces/Horizontal Time/source/HorizontalTimeView.mc" lineNum="173" pc="268437518" symbol="renderConnected"/>
+<entry filename="/Users/vchen/git/connectiq-watch-faces/Horizontal Time/source/HorizontalTimeView.mc" lineNum="174" pc="268437540" symbol="renderConnected"/>
+<entry filename="/Users/vchen/git/connectiq-watch-faces/Horizontal Time/source/HorizontalTimeView.mc" lineNum="181" pc="268437568" symbol="onUpdate"/>
+<entry filename="/Users/vchen/git/connectiq-watch-faces/Horizontal Time/source/HorizontalTimeView.mc" lineNum="183" pc="268437585" symbol="onUpdate"/>
+<entry filename="/Users/vchen/git/connectiq-watch-faces/Horizontal Time/source/HorizontalTimeView.mc" lineNum="184" pc="268437599" symbol="onUpdate"/>
+<entry filename="/Users/vchen/git/connectiq-watch-faces/Horizontal Time/source/HorizontalTimeView.mc" lineNum="185" pc="268437613" symbol="onUpdate"/>
+<entry filename="/Users/vchen/git/connectiq-watch-faces/Horizontal Time/source/HorizontalTimeView.mc" lineNum="186" pc="268437625" symbol="onUpdate"/>
+<entry filename="/Users/vchen/git/connectiq-watch-faces/Horizontal Time/source/HorizontalTimeView.mc" lineNum="189" pc="268437637" symbol="onUpdate"/>
+<entry filename="/Users/vchen/git/connectiq-watch-faces/Horizontal Time/source/HorizontalTimeView.mc" lineNum="190" pc="268437657" symbol="onUpdate"/>
+<entry filename="/Users/vchen/git/connectiq-watch-faces/Horizontal Time/source/HorizontalTimeApp.mc" lineNum="15" pc="268437690" symbol="getInitialView"/>
+<entry filename="Rez" lineNum="5" pc="268442013" symbol="&lt;init&gt;"/>
+<entry filename="Rez" lineNum="20" pc="268437734" symbol="draw"/>
+<entry filename="Rez" lineNum="21" pc="268437741" symbol="draw"/>
+<entry filename="Rez" lineNum="22" pc="268437748" symbol="draw"/>
+<entry filename="Rez" lineNum="23" pc="268437761" symbol="draw"/>
+<entry filename="Rez" lineNum="24" pc="268437774" symbol="draw"/>
+<entry filename="Rez" lineNum="29" pc="268437799" symbol="drawComplex"/>
+<entry filename="Rez" lineNum="30" pc="268437835" symbol="drawComplex"/>
+<entry filename="Rez" lineNum="45" pc="268437948" symbol="draw"/>
+<entry filename="Rez" lineNum="46" pc="268437955" symbol="draw"/>
+<entry filename="Rez" lineNum="47" pc="268437962" symbol="draw"/>
+<entry filename="Rez" lineNum="48" pc="268437975" symbol="draw"/>
+<entry filename="Rez" lineNum="49" pc="268437988" symbol="draw"/>
+<entry filename="Rez" lineNum="54" pc="268438013" symbol="drawComplex"/>
+<entry filename="Rez" lineNum="55" pc="268438049" symbol="drawComplex"/>
+<entry filename="Rez" lineNum="57" pc="268438177" symbol="drawComplex"/>
+<entry filename="Rez" lineNum="58" pc="268438213" symbol="drawComplex"/>
+<entry filename="Rez" lineNum="60" pc="268438320" symbol="drawComplex"/>
+<entry filename="Rez" lineNum="61" pc="268438356" symbol="drawComplex"/>
+<entry filename="Rez" lineNum="63" pc="268438463" symbol="drawComplex"/>
+<entry filename="Rez" lineNum="64" pc="268438499" symbol="drawComplex"/>
+<entry filename="Rez" lineNum="66" pc="268438606" symbol="drawComplex"/>
+<entry filename="Rez" lineNum="67" pc="268438642" symbol="drawComplex"/>
+<entry filename="Rez" lineNum="69" pc="268438749" symbol="drawComplex"/>
+<entry filename="Rez" lineNum="70" pc="268438785" symbol="drawComplex"/>
+<entry filename="Rez" lineNum="72" pc="268438892" symbol="drawComplex"/>
+<entry filename="Rez" lineNum="73" pc="268438928" symbol="drawComplex"/>
+<entry filename="Rez" lineNum="75" pc="268439035" symbol="drawComplex"/>
+<entry filename="Rez" lineNum="76" pc="268439071" symbol="drawComplex"/>
+<entry filename="Rez" lineNum="78" pc="268439178" symbol="drawComplex"/>
+<entry filename="Rez" lineNum="79" pc="268439214" symbol="drawComplex"/>
+<entry filename="Rez" lineNum="10" pc="268441962" symbol="&lt;init&gt;"/>
+<entry filename="Rez" lineNum="93" pc="268439324" symbol="WatchFace"/>
+<entry filename="Rez" lineNum="94" pc="268439338" symbol="WatchFace"/>
+<entry filename="Rez" lineNum="95" pc="268439461" symbol="WatchFace"/>
+<entry filename="Rez" lineNum="96" pc="268439475" symbol="WatchFace"/>
+<entry filename="Rez" lineNum="97" pc="268439598" symbol="WatchFace"/>
+<entry filename="Rez" lineNum="98" pc="268439612" symbol="WatchFace"/>
+<entry filename="Rez" lineNum="99" pc="268439722" symbol="WatchFace"/>
+<entry filename="Rez" lineNum="100" pc="268439737" symbol="WatchFace"/>
+<entry filename="Rez" lineNum="101" pc="268439789" symbol="WatchFace"/>
+<entry filename="Rez" lineNum="102" pc="268439803" symbol="WatchFace"/>
+<entry filename="Rez" lineNum="103" pc="268439926" symbol="WatchFace"/>
+<entry filename="Rez" lineNum="104" pc="268439940" symbol="WatchFace"/>
+<entry filename="Rez" lineNum="105" pc="268440063" symbol="WatchFace"/>
+<entry filename="Rez" lineNum="106" pc="268440077" symbol="WatchFace"/>
+<entry filename="Rez" lineNum="107" pc="268440200" symbol="WatchFace"/>
+<entry filename="Rez" lineNum="108" pc="268440214" symbol="WatchFace"/>
+<entry filename="Rez" lineNum="109" pc="268440337" symbol="WatchFace"/>
+<entry filename="Rez" lineNum="110" pc="268440351" symbol="WatchFace"/>
+<entry filename="Rez" lineNum="111" pc="268440474" symbol="WatchFace"/>
+<entry filename="Rez" lineNum="112" pc="268440488" symbol="WatchFace"/>
+<entry filename="Rez" lineNum="113" pc="268440611" symbol="WatchFace"/>
+<entry filename="Rez" lineNum="114" pc="268440625" symbol="WatchFace"/>
+<entry filename="Rez" lineNum="115" pc="268440735" symbol="WatchFace"/>
+<entry filename="Rez" lineNum="116" pc="268440750" symbol="WatchFace"/>
+<entry filename="Rez" lineNum="117" pc="268440802" symbol="WatchFace"/>
+<entry filename="Rez" lineNum="118" pc="268440816" symbol="WatchFace"/>
+<entry filename="Rez" lineNum="119" pc="268440939" symbol="WatchFace"/>
+<entry filename="Rez" lineNum="120" pc="268440953" symbol="WatchFace"/>
+<entry filename="Rez" lineNum="121" pc="268441076" symbol="WatchFace"/>
+<entry filename="Rez" lineNum="122" pc="268441090" symbol="WatchFace"/>
+<entry filename="Rez" lineNum="123" pc="268441213" symbol="WatchFace"/>
+<entry filename="Rez" lineNum="124" pc="268441227" symbol="WatchFace"/>
+<entry filename="Rez" lineNum="125" pc="268441350" symbol="WatchFace"/>
+<entry filename="Rez" lineNum="126" pc="268441364" symbol="WatchFace"/>
+<entry filename="Rez" lineNum="127" pc="268441474" symbol="WatchFace"/>
+<entry filename="Rez" lineNum="128" pc="268441489" symbol="WatchFace"/>
+<entry filename="Rez" lineNum="129" pc="268441541" symbol="WatchFace"/>
+<entry filename="Rez" lineNum="130" pc="268441555" symbol="WatchFace"/>
+<entry filename="Rez" lineNum="131" pc="268441665" symbol="WatchFace"/>
+<entry filename="Rez" lineNum="132" pc="268441680" symbol="WatchFace"/>
+<entry filename="Rez" lineNum="133" pc="268441732" symbol="WatchFace"/>
 </pcToLineNum>
 <symbolTable>
 <entry id="8389359" symbol="&lt;gre&gt;"/>
@@ -425,7 +424,7 @@
 <entry field="true" id="8388802" symbol="BLE_HOST_TIMEOUT"/>
 <entry id="5" module="true" symbol="globals_Rez_Fonts"/>
 <entry field="true" id="8388912" symbol="steps"/>
-<entry id="19" method="true" symbol="checkHour"/>
+<entry id="18" method="true" symbol="checkHour"/>
 <entry id="8389191" method="true" symbol="getTextDimensions"/>
 <entry field="true" id="8389037" symbol="NUMBER_PICKER_WEIGHT"/>
 <entry field="true" id="8389406" symbol="heightUnits"/>
@@ -497,7 +496,7 @@
 <entry field="true" id="8388893" symbol="PI"/>
 <entry id="8389344" symbol="seconds"/>
 <entry field="true" id="8388854" symbol="SUB_SPORT_TRACK"/>
-<entry id="18" method="true" symbol="checkMinute"/>
+<entry id="17" method="true" symbol="checkMinute"/>
 <entry id="8389432" object="true" symbol="CalculatedCrankCadence"/>
 <entry field="true" id="8388651" symbol="session"/>
 <entry field="true" id="8388868" symbol="SUB_SPORT_OPEN_WATER"/>
@@ -516,7 +515,7 @@
 <entry id="8389241" symbol="dataLow"/>
 <entry id="8389366" symbol="&lt;rus&gt;"/>
 <entry field="true" id="8388939" symbol="day"/>
-<entry id="22" method="true" symbol="renderDate"/>
+<entry id="21" method="true" symbol="renderDate"/>
 <entry id="9" object="true" symbol="HorizontalTimeApp"/>
 <entry field="true" id="8389204" symbol="MSG_ID_TRANSMIT_POWER"/>
 <entry field="true" id="8389154" symbol="FONT_SMALL"/>
@@ -589,7 +588,6 @@
 <entry id="8389398" method="true" symbol="getDeviceSettings"/>
 <entry field="true" id="8389238" symbol="network"/>
 <entry id="8388639" module="true" symbol="Graphics"/>
-<entry field="true" id="17" symbol="theDC"/>
 <entry field="true" id="8389502" symbol="rightPedalIndicator"/>
 <entry field="true" id="8388816" symbol="NETWORK_RESPONSE_TOO_LARGE"/>
 <entry field="true" id="8389395" symbol="UNIT_METRIC"/>
@@ -723,7 +721,7 @@
 <entry id="8389533" module="true" symbol="Toybox_PersistedLocations"/>
 <entry id="8389515" method="true" symbol="getCalculatedWheelSpeed"/>
 <entry id="8388684" object="true" symbol="Object"/>
-<entry id="21" method="true" symbol="renderMinutes"/>
+<entry id="20" method="true" symbol="renderMinutes"/>
 <entry field="true" id="8389556" symbol="EXTENDED_KEYS"/>
 <entry id="8388900" method="true" symbol="pow"/>
 <entry id="8389176" object="true" symbol="Dc"/>
@@ -902,7 +900,7 @@
 <entry field="true" id="8389009" symbol="ANIM_TYPE_EASE_IN_OUT"/>
 <entry id="8389110" symbol="mX"/>
 <entry field="true" id="8388812" symbol="INVALID_HTTP_METHOD_IN_REQUEST"/>
-<entry id="23" method="true" symbol="renderStats"/>
+<entry id="22" method="true" symbol="renderStats"/>
 <entry id="8389182" method="true" symbol="drawRoundedRectangle"/>
 <entry field="true" id="8389297" symbol="QUALITY_GOOD"/>
 <entry field="true" id="8389472" symbol="rightTorqueEffectiveness"/>
@@ -1066,7 +1064,7 @@
 <entry field="true" id="8388862" symbol="SUB_SPORT_HAND_CYCLING"/>
 <entry id="8389436" object="true" symbol="CalculatedWheelSpeed"/>
 <entry id="8388685" method="true" symbol="testLocationRadians"/>
-<entry id="24" method="true" symbol="renderConnected"/>
+<entry id="23" method="true" symbol="renderConnected"/>
 <entry field="true" id="8388990" symbol="KEY_POWER"/>
 <entry field="true" id="8388809" symbol="BLE_CONNECTION_UNAVAILABLE"/>
 <entry id="8389438" object="true" symbol="TorqueEfficiency"/>
@@ -1087,7 +1085,7 @@
 <entry field="true" id="8388954" symbol="SENSOR_HEARTRATE"/>
 <entry field="true" id="8389207" symbol="MSG_ID_LIB_CONFIG"/>
 <entry id="8389010" object="true" symbol="KeyEvent"/>
-<entry id="20" method="true" symbol="renderHour"/>
+<entry id="19" method="true" symbol="renderHour"/>
 <entry id="8389553" method="true" symbol="onKeyPressed"/>
 <entry field="true" id="8388864" symbol="SUB_SPORT_INDOOR_ROWING"/>
 <entry field="true" id="8388845" symbol="SPORT_ROWING"/>
