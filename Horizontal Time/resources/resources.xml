@@ -1,0 +1,18 @@
+<resources>
+    <string id="AppName">Horizontal Time</string>
+    <bitmap id="LauncherIcon" filename="images/launcher_icon.png" />
+    <drawable-list id="Divider">
+    	<shape type="rectangle" width="80" height="1" x="center" y="191" color="Gfx.COLOR_DK_GRAY" />
+    </drawable-list>
+    <drawable-list id="Grid">
+    	<shape type="rectangle" width="1" height="218" x="center" y="center" color="Gfx.COLOR_GREEN" />
+    	<shape type="rectangle" width="1" height="218" x="189" y="center" color="Gfx.COLOR_GREEN" />
+    	<shape type="rectangle" width="1" height="218" x="169" y="center" color="Gfx.COLOR_GREEN" />
+    	<shape type="rectangle" width="1" height="218" x="149" y="center" color="Gfx.COLOR_GREEN" />
+    	<shape type="rectangle" width="1" height="218" x="129" y="center" color="Gfx.COLOR_GREEN" />
+    	<shape type="rectangle" width="1" height="218" x="89" y="center" color="Gfx.COLOR_GREEN" />
+    	<shape type="rectangle" width="1" height="218" x="69" y="center" color="Gfx.COLOR_GREEN" />
+    	<shape type="rectangle" width="1" height="218" x="49" y="center" color="Gfx.COLOR_GREEN" />
+    	<shape type="rectangle" width="1" height="218" x="29" y="center" color="Gfx.COLOR_GREEN" />
+    </drawable-list>
+</resources>
