@@ -1,0 +1,9 @@
+<resources>
+    <string id="AppName">Outside In</string>
+
+    <bitmap id="LauncherIcon" filename="images/launcher_icon.png" />
+    <drawable-list id="WatchFace" background="Gfx.COLOR_TRANSPARENT">
+	  <bitmap id="back" x="0" y="0" filename="images/watchface.png" />
+	  
+	</drawable-list>
+</resources>
