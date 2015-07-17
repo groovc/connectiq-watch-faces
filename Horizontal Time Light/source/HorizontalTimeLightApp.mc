@@ -1,6 +1,6 @@
 using Toybox.Application as App;
 
-class HorizontalTimeApp extends App.AppBase {
+class HorizontalTimeLightApp extends App.AppBase {
 
     //! onStart() is called on application start up
     function onStart() {
@@ -12,7 +12,7 @@ class HorizontalTimeApp extends App.AppBase {
 
     //! Return the initial view of your application here
     function getInitialView() {
-        return [ new HorizontalTimeView() ];
+        return [ new HorizontalTimeLightView() ];
     }
 
 }

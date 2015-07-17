@@ -6,7 +6,7 @@ using Toybox.ActivityMonitor as Act;
 using Toybox.Time as Time;
 using Toybox.Time.Gregorian as Calendar;
 
-class HorizontalTimeView extends Ui.WatchFace {
+class HorizontalTimeLightView extends Ui.WatchFace {
 
     //! Load your resources here
     function onLayout(dc) {
@@ -19,7 +19,7 @@ class HorizontalTimeView extends Ui.WatchFace {
     function onShow() {
     }
 
-	// Ensure all minutes are between 00-59 
+    // Ensure all minutes are between 00-59 
 	function checkMinute(num, modifier) {
 		// Check computed amount for weird edge cases when dealing with values out of range
 		if (num == 0 && num+modifier < 0) {
@@ -215,7 +215,7 @@ class HorizontalTimeView extends Ui.WatchFace {
     }
 
     //! The user has just looked at their watch. Timers and animations may be started here.
-    function onExitSleep(dc) {
+    function onExitSleep() {
     }
 
     //! Terminate any active timers and prepare for slow updates.
