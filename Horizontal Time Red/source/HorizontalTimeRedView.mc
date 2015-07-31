@@ -56,19 +56,27 @@ class HorizontalTimeRedView extends Ui.WatchFace {
 		// Check computed amount for weird edge cases when dealing with values out of range
 		if ((num+modifier == -1||-2) && num == 0) {
 	        num = 24;
-	    }
-	    
-	    if (num+modifier == -1 && num == 1) {
+	    } 
+
+		if (num+modifier == -1 && num == 1) {
 	        num = 25;
 	    }
 	    
-	    if (num+modifier == 24) {
+		if (num+modifier == 24 && num == 0) {
 	        num = 0;
 	        modifier = 0;
 	    } 
 	    
-	    if (num+modifier >= 25) {
+	    if (num+modifier == 24 && num == 22) {
+	        num = -2;
+	    } 
+	    
+	    if (num+modifier >= 24 && num == 23) {
 	        num = -1;
+	    } 
+	    
+	    if (num+modifier >= 25) {
+	        num = 0;
 	    }
 
 		// Return a 2-digit number string
@@ -179,7 +187,7 @@ class HorizontalTimeRedView extends Ui.WatchFace {
 		
 		if (isConnected) {
 			// render the bluetooth logo - use pixels for better fidelity
-			dc.setColor(Gfx.COLOR_DK_RED,Gfx.COLOR_TRANSPARENT);
+			dc.setColor(Gfx.COLOR_BLACK,Gfx.COLOR_TRANSPARENT);
 			dc.drawLine(154, 176, 154, 188);
 			dc.drawPoint(155, 177); 
 			dc.drawPoint(156, 178); 

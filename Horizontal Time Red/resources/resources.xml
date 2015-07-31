@@ -3,7 +3,7 @@
 
     <bitmap id="LauncherIcon" filename="images/launcher_icon.png" />
     <drawable-list id="Divider">
-    	<shape type="rectangle" width="80" height="1" x="center" y="191" color="Gfx.COLOR_DK_RED" />
+    	<shape type="rectangle" width="80" height="1" x="center" y="191" color="Gfx.COLOR_BLACK" />
     </drawable-list>
     <drawable-list id="Background">
     	<shape type="circle" x="109" y="109" radius="109" color="Gfx.COLOR_RED" />

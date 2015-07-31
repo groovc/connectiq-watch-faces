@@ -56,19 +56,27 @@ class HorizontalTimeLightView extends Ui.WatchFace {
 		// Check computed amount for weird edge cases when dealing with values out of range
 		if ((num+modifier == -1||-2) && num == 0) {
 	        num = 24;
-	    }
-	    
-	    if (num+modifier == -1 && num == 1) {
+	    } 
+
+		if (num+modifier == -1 && num == 1) {
 	        num = 25;
 	    }
 	    
-	    if (num+modifier == 24) {
+		if (num+modifier == 24 && num == 0) {
 	        num = 0;
 	        modifier = 0;
-	    }
+	    } 
+	    
+	    if (num+modifier == 24 && num == 22) {
+	        num = -2;
+	    } 
+	    
+	    if (num+modifier >= 24 && num == 23) {
+	        num = -1;
+	    } 
 	    
 	    if (num+modifier >= 25) {
-	        num = -1;
+	        num = 0;
 	    }
 
 		// Return a 2-digit number string

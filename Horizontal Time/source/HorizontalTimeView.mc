@@ -62,13 +62,21 @@ class HorizontalTimeView extends Ui.WatchFace {
 	        num = 25;
 	    }
 	    
-		if (num+modifier == 24) {
+		if (num+modifier == 24 && num == 0) {
 	        num = 0;
 	        modifier = 0;
 	    } 
-		
-		if (num+modifier >= 25) {
+	    
+	    if (num+modifier == 24 && num == 22) {
+	        num = -2;
+	    } 
+	    
+	    if (num+modifier >= 24 && num == 23) {
 	        num = -1;
+	    } 
+	    
+	    if (num+modifier >= 25) {
+	        num = 0;
 	    }
 
 		// Return a 2-digit number string
