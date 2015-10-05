@@ -19,149 +19,7 @@ class HorizontalTimeLightView extends Ui.WatchFace {
     function onShow() {
     }
 
-    // Ensure all minutes are between 00-59 
-	function checkMinute(num, modifier) {
-		// Check computed amount for weird edge cases when dealing with values out of range
-		if (num == 0 && num+modifier < 0) {
-        	num = 60;
-	    } 
-	    
-	    if ((num == 1 && num+modifier == 0) || (num == 57 && num+modifier == 60)) {
-	        num = 0;
-	        modifier = 0;
-	    }
-	    
-	    if (num == 1 && num+modifier < 0) {
-	        num = 61;
-	    }
-	    
-	    if (num == 2 && num+modifier == -1) {
-	        num = 62;
-	    }
-	
-	    if (num == 58 && num+modifier >= 60) {
-	        num = -2;
-	    }
-	    
-	    if (num == 59 && num+modifier >= 60) {
-	        num = -1;
-	    }
-		
-		// Return a 2-digit number string
-		return Lang.format("$1$",[(num+modifier).format("%02d")]);
-	}
-	
-	// Ensure all hours are between 0-23
-	function checkHour(num, modifier) {
-		// Check computed amount for weird edge cases when dealing with values out of range
-		if ((num+modifier == -1||-2) && num == 0) {
-	        num = 24;
-	    } 
-
-		if (num+modifier == -1 && num == 1) {
-	        num = 25;
-	    }
-	    
-		if (num+modifier == 24 && num == 0) {
-	        num = 0;
-	        modifier = 0;
-	    } 
-	    
-	    if (num+modifier == 24 && num == 22) {
-	        num = -2;
-	    } 
-	    
-	    if (num+modifier >= 24 && num == 23) {
-	        num = -1;
-	    } 
-	    
-	    if (num+modifier >= 25) {
-	        num = 0;
-	    }
-
-		// Return a 2-digit number string
-		return Lang.format("$1$",[(num+modifier).format("%02d")]);
-	}
-	
-	function renderHour(time) {
-		var hours = time.hour;
-		// Define hour variables and calculate the hours
-        var hourString = checkHour(hours,0);
-        var hourStringLess1 = checkHour(hours,-1); 
-        var hourStringLess2 = checkHour(hours,-2);
-        var hourStringPlus1 = checkHour(hours,1);
-        var hourStringPlus2 = checkHour(hours,2);
-        
-        // Define the layout labels
-        var hr;
-        var hrL1 = View.findDrawableById("HourLabelL1");
-        var hrL2 = View.findDrawableById("HourLabelL2");
-        var hrP1 = View.findDrawableById("HourLabelP1");
-        var hrP2 = View.findDrawableById("HourLabelP2");
-        
-        // Set values for layout items
-        hrL1.setText(hourStringLess1);
-        hrL2.setText(hourStringLess2);
-        hrP1.setText(hourStringPlus1);
-        hrP2.setText(hourStringPlus2);
-        
-        // Set the correct layout item based on time
-        if (hours > 9 && hours < 20) {
-        	hr = View.findDrawableById("HourLabel");
-        	hr.setText("");
-        	hr = View.findDrawableById("HourLabelAlt");
-			hr.setText(hourString);
-        } else {
-        	hr = View.findDrawableById("HourLabelAlt");
-        	hr.setText("");
-        	hr = View.findDrawableById("HourLabel");
-			hr.setText(hourString);
-        }
-	}
-	
-	function renderMinutes(time) {
-		var minutes = time.min.format("%.2d").toNumber();
-		// Define minute variables and calculate the minutes
-		var minuteString = checkMinute(minutes,0);
-        var minuteStringLess1 = checkMinute(minutes,-1);
-        var minuteStringLess2 = checkMinute(minutes,-2);
-        var minuteStringLess3 = checkMinute(minutes,-3);
-        var minuteStringPlus1 = checkMinute(minutes,1);
-        var minuteStringPlus2 = checkMinute(minutes,2);
-        var minuteStringPlus3 = checkMinute(minutes,3);
-        
-        // Define minute label
-		var mn = View.findDrawableById("MinuteLabel");
-        var mnL1 = View.findDrawableById("MinuteLabelL1");
-        var mnL2 = View.findDrawableById("MinuteLabelL2");
-        var mnL3 = View.findDrawableById("MinuteLabelL3");
-        var mnP1 = View.findDrawableById("MinuteLabelP1");
-        var mnP2 = View.findDrawableById("MinuteLabelP2");
-        var mnP3 = View.findDrawableById("MinuteLabelP3");
-        
-        // Set values for layout items
-        mnL1.setText(minuteStringLess1);
-        mnL2.setText(minuteStringLess2);
-        mnL3.setText(minuteStringLess3);
-        mnP1.setText(minuteStringPlus1);
-        mnP2.setText(minuteStringPlus2);
-        mnP3.setText(minuteStringPlus3);
-        
-        // Set the correct layout item based on time
-        if (minutes > 9 && minutes < 20) {
-        	mn = View.findDrawableById("MinuteLabel");
-			mn.setText("");
-        	mn = View.findDrawableById("MinuteLabelAlt");
-			mn.setText(minuteString);
-        } else {
-        	mn = View.findDrawableById("MinuteLabelAlt");
-			mn.setText("");
-        	mn = View.findDrawableById("MinuteLabel");
-			mn.setText(minuteString);
-        }
-	}
-	
-	function renderDate() {
+    function renderDate() {
 		// Get date
 		var now = Time.now();
 		var info = Calendar.info(now, Time.FORMAT_LONG);
@@ -207,13 +65,105 @@ class HorizontalTimeLightView extends Ui.WatchFace {
 		} 
 	}
 	
+	function drawHour(utc) {
+		// Define hour variables and calculate the hours
+        var hourStringLess2 = checkH(utc,-2);
+        var hourStringLess1 = checkH(utc,-1); 
+        var hourString = checkH(utc,0);
+        var hourStringPlus1 = checkH(utc,1);
+        var hourStringPlus2 = checkH(utc,2);
+		
+		// Define the layout labels
+        var hrL2 = View.findDrawableById("HourLabelL2");
+        var hrL1 = View.findDrawableById("HourLabelL1");
+        var hr;
+        var hrP1 = View.findDrawableById("HourLabelP1");
+        var hrP2 = View.findDrawableById("HourLabelP2");
+        
+        // Set values for layout items
+        hrL1.setText(hourStringLess1);
+        hrL2.setText(hourStringLess2);
+        hrP1.setText(hourStringPlus1);
+        hrP2.setText(hourStringPlus2);
+        
+        // Set the correct layout item based on time
+        if (hourString.toFloat() > 9 && hourString.toFloat() < 20) {
+        	hr = View.findDrawableById("HourLabel");
+        	hr.setText("");
+        	hr = View.findDrawableById("HourLabelAlt");
+			hr.setText(hourString);
+        } else {
+        	hr = View.findDrawableById("HourLabelAlt");
+        	hr.setText("");
+        	hr = View.findDrawableById("HourLabel");
+			hr.setText(hourString);
+        }
+	}
+	
+	function drawMinutes(utc) {
+		// Define minute variables and calculate the minutes
+        var minuteStringLess3 = checkM(utc,-3);
+        var minuteStringLess2 = checkM(utc,-2);
+        var minuteStringLess1 = checkM(utc,-1);
+        var minuteString = checkM(utc,0);
+        var minuteStringPlus1 = checkM(utc,1);
+        var minuteStringPlus2 = checkM(utc,2);
+        var minuteStringPlus3 = checkM(utc,3);
+        
+        // Define minute label
+        var mnL3 = View.findDrawableById("MinuteLabelL3");
+        var mnL2 = View.findDrawableById("MinuteLabelL2");
+        var mnL1 = View.findDrawableById("MinuteLabelL1");
+        var mn = View.findDrawableById("MinuteLabel");
+        var mnP1 = View.findDrawableById("MinuteLabelP1");
+        var mnP2 = View.findDrawableById("MinuteLabelP2");
+        var mnP3 = View.findDrawableById("MinuteLabelP3");
+        
+        // Set values for layout items
+        mnL3.setText(minuteStringLess3);
+        mnL2.setText(minuteStringLess2);
+        mnL1.setText(minuteStringLess1);
+        mnP1.setText(minuteStringPlus1);
+        mnP2.setText(minuteStringPlus2);
+        mnP3.setText(minuteStringPlus3);
+        
+        // Set the correct layout item based on time
+        if (minuteString.toFloat() > 9 && minuteString.toFloat() < 20) {
+        	mn = View.findDrawableById("MinuteLabel");
+			mn.setText("");
+        	mn = View.findDrawableById("MinuteLabelAlt");
+			mn.setText(minuteString);
+        } else {
+        	mn = View.findDrawableById("MinuteLabelAlt");
+			mn.setText("");
+        	mn = View.findDrawableById("MinuteLabel");
+			mn.setText(minuteString);
+        }
+	}
+	
+	function checkH(utc,modifier) {
+		var extraTime = new Time.Duration(60*60*modifier);
+		var newUTC = utc.add(extraTime);
+		var newUTCVal = newUTC.value();
+		var date = Calendar.info(newUTC,Time.FORMAT_SHORT);
+		return Lang.format("$1$",[date.hour.format("%02d")]);
+	}
+	
+	function checkM(utc,modifier) {
+		var extraTime = new Time.Duration(60*modifier);
+		var newUTC = utc.add(extraTime);
+		var newUTCVal = newUTC.value();
+		var date = Calendar.info(newUTC,Time.FORMAT_SHORT);
+		return Lang.format("$1$",[date.min.format("%02d")]);
+	}
+	
     //! Update the view
     function onUpdate(dc) {
         // Define the current time and hour
-        var clockTime = Sys.getClockTime();      
-        
-        renderHour(clockTime);
-        renderMinutes(clockTime);
+        var utc = Time.now();
+          
+		drawHour(utc);
+		drawMinutes(utc);
 		renderDate();
 		renderStats();
 		
