@@ -94,26 +94,26 @@ class HorizontalTime2View extends Ui.WatchFace {
         viewMinutes.setColor(App.getApp().getProperty("MinutesColor"));
         viewMinutes.setText(minuteString);
         
-        viewHourL1.setColor(App.getApp().getProperty("TimeSecondaryColor"));
+        viewHourL1.setColor(App.getApp().getProperty("TimeInnerColor"));
         viewHourL1.setText(hourStringL1);
-        viewHourP1.setColor(App.getApp().getProperty("TimeSecondaryColor"));
+        viewHourP1.setColor(App.getApp().getProperty("TimeInnerColor"));
         viewHourP1.setText(hourStringP1);
-        viewMinuteL1.setColor(App.getApp().getProperty("TimeSecondaryColor"));
+        viewMinuteL1.setColor(App.getApp().getProperty("TimeInnerColor"));
         viewMinuteL1.setText(minuteStringL1);
-        viewMinuteP1.setColor(App.getApp().getProperty("TimeSecondaryColor"));
+        viewMinuteP1.setColor(App.getApp().getProperty("TimeInnerColor"));
         viewMinuteP1.setText(minuteStringP1);
         
-        viewHourL2.setColor(App.getApp().getProperty("TimeTertiaryColor"));
+        viewHourL2.setColor(App.getApp().getProperty("TimeOuterColor"));
         viewHourL2.setText(hourStringL2);
-        viewHourP2.setColor(App.getApp().getProperty("TimeTertiaryColor"));
+        viewHourP2.setColor(App.getApp().getProperty("TimeOuterColor"));
         viewHourP2.setText(hourStringP2);
-        viewMinuteL2.setColor(App.getApp().getProperty("TimeTertiaryColor"));
+        viewMinuteL2.setColor(App.getApp().getProperty("TimeOuterColor"));
         viewMinuteL2.setText(minuteStringL2);
-        viewMinuteP2.setColor(App.getApp().getProperty("TimeTertiaryColor"));
+        viewMinuteP2.setColor(App.getApp().getProperty("TimeOuterColor"));
         viewMinuteP2.setText(minuteStringP2);
-        viewMinuteL3.setColor(App.getApp().getProperty("TimeTertiaryColor"));
+        viewMinuteL3.setColor(App.getApp().getProperty("TimeOuterColor"));
         viewMinuteL3.setText(minuteStringL3);
-        viewMinuteP3.setColor(App.getApp().getProperty("TimeTertiaryColor"));
+        viewMinuteP3.setColor(App.getApp().getProperty("TimeOuterColor"));
         viewMinuteP3.setText(minuteStringP3);
 	}
 

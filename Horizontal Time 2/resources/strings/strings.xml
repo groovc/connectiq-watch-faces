@@ -5,8 +5,8 @@
     <string id="HourColorTitle">Hour Color</string>
     <string id="MinutesColorTitle">Minutes Color</string>
 	<string id="BackgroundColorTitle">Background Color</string>
-	<string id="TimeSecondaryColorTitle">Time Secondary Color</string>
-	<string id="TimeTertiaryColorTitle">Time Tertiary Color</string>
+	<string id="TimeInnerColorTitle">Time Inner Color</string>
+	<string id="TimeOuterColorTitle">Time Outer Color</string>
     <string id="DateColorTitle">Date Color</string>
     <string id="StatsColorTitle">Stats Color</string>
     <string id="DividerColorTitle">Divider Color</string>

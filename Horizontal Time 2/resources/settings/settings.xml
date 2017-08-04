@@ -57,7 +57,7 @@
         </settingConfig>
     </setting>
     
-    <setting propertyKey="@Properties.TimeSecondaryColor" title="@Strings.TimeSecondaryColorTitle">
+    <setting propertyKey="@Properties.TimeInnerColor" title="@Strings.TimeInnerColorTitle">
         <settingConfig type="list">
             <listEntry value="0xFFFFFF">@Strings.ColorWhite</listEntry>
             <listEntry value="0xAAAAAA">@Strings.ColorLightGray</listEntry>
@@ -76,7 +76,7 @@
         </settingConfig>
     </setting>
     
-    <setting propertyKey="@Properties.TimeTertiaryColor" title="@Strings.TimeTertiaryColorTitle">
+    <setting propertyKey="@Properties.TimeOuterColor" title="@Strings.TimeOuterColorTitle">
         <settingConfig type="list">
             <listEntry value="0xFFFFFF">@Strings.ColorWhite</listEntry>
             <listEntry value="0xAAAAAA">@Strings.ColorLightGray</listEntry>
