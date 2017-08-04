@@ -2,6 +2,7 @@ using Toybox.WatchUi as Ui;
 using Toybox.Graphics as Gfx;
 using Toybox.System as Sys;
 using Toybox.ActivityMonitor as Act;
+using Toybox.SensorHistory;
 using Toybox.Time as Time;
 using Toybox.Time.Gregorian as Calendar;
 using Toybox.Lang as Lang;
@@ -15,6 +16,11 @@ class HorizontalTime2View extends Ui.WatchFace {
 	 	customFontMinute = null,
 	 	customFontXTiny = null,
 	 	myDivider;
+	
+	// add Activity.Info
+	// currentHeartRate
+	// averageHeartRate
+	// maxHeartRate
 	 	
     function initialize() {
         WatchFace.initialize();
@@ -130,16 +136,56 @@ class HorizontalTime2View extends Ui.WatchFace {
 	}
 		
 	function renderStats() {
-		// Get battery life and steps
+		var statsView = View.findDrawableById("StatsLabel");
+		// Get battery life
 		var stats = Sys.getSystemStats();
 		var batteryStatus = stats.battery;
-		var battView = View.findDrawableById("StatsLabel");
-		var stepStats = Act.getInfo();
-    		var steps = stepStats.steps;
 		var percentage = (stats.battery).toNumber();
-		// concatenate battery and steps
-		battView.setColor(App.getApp().getProperty("StatsColor"));
-		battView.setText(percentage.toString()+"%"+" | "+steps);
+		var layoutType = App.getApp().getProperty("StatsLayout");
+		
+		statsView.setColor(App.getApp().getProperty("StatsColor"));
+		
+		switch (layoutType) {
+			case 0:
+				statsView.setText(percentage.toString()+"%");
+			break;
+			case 1:
+				// Get steps
+				var stepStats = Act.getInfo();
+	    			var steps = stepStats.steps;
+	    			// concatenate battery and steps
+				statsView.setText(percentage.toString()+"%"+" | "+steps);
+			break;
+			case 2:
+				// get a HeartRateIterator object; oldest sample first
+				if ((Toybox has :SensorHistory) && (Toybox.SensorHistory has :getHeartRateHistory)) {
+					var hrIterator = Act.getHeartRateHistory(null, false);
+					var previous = hrIterator.next();                                   // get the previous HR
+					var lastSampleTime = null;                                          // get the last
+					var displayRate;		
+					
+				    var sample = hrIterator.next();
+				    if (null != sample) {                                           // null check
+				        if (sample.heartRate != Act.INVALID_HR_SAMPLE    // check for invalid samples
+				            && previous.heartRate
+				            != Act.INVALID_HR_SAMPLE) {
+				                lastSampleTime = sample.when;
+				                // System.println("Previous: " + previous.heartRate);  // print the previous sample
+				                // System.println("Sample: " + sample.heartRate);      // print the current sample
+				                displayRate = sample.heartRate;
+				                statsView.setText(percentage.toString()+"%"+" | "+ displayRate + " HR");
+				        }
+				    }
+			    } else {
+			    		statsView.setText(percentage.toString()+"%"+" | "+"No HR");
+			    }
+			    
+			break;
+			default:
+			// if all else fails
+				statsView.setText(percentage.toString()+"%");
+			break;
+		}
 	}
 	
 	function renderDivider(dc) {

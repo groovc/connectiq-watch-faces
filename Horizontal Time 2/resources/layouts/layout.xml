@@ -14,5 +14,4 @@
     <label id="MinuteLabelP3" x="225" y="123" font="@Fonts.customFontXTiny" justification="Gfx.TEXT_JUSTIFY_CENTER" color="Gfx.COLOR_DK_GRAY" />
     <label id="DateLabel" x="center" y="175" font="Gfx.FONT_XTINY" justification="Gfx.TEXT_JUSTIFY_CENTER" color="Gfx.COLOR_LT_GRAY" />
     <label id="StatsLabel" x="center" y="200" font="Gfx.FONT_XTINY" justification="Gfx.TEXT_JUSTIFY_CENTER" color="Gfx.COLOR_DK_GRAY" />
-    <drawable id="Divider" />
 </layout>

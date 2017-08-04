@@ -16,7 +16,9 @@
             <iq:product id="fenix3_hr"/>
             <iq:product id="fr935"/>
         </iq:products>
-        <iq:permissions/>
+        <iq:permissions>
+            <iq:uses-permission id="SensorHistory"/>
+        </iq:permissions>
         <iq:languages>
             <iq:language>eng</iq:language>
         </iq:languages>
