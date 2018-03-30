@@ -1,8 +1,0 @@
-<?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<launchConfiguration type="connectiq.launcher.AppLauncher">
-<stringAttribute key="connectiq.debugInfo" value="/Users/vchen/git/connectiq-watch-faces/Horizontal Time/bin/Horizontal Time.prg.debug.xml"/>
-<stringAttribute key="connectiq.prg" value="/Users/vchen/git/connectiq-watch-faces/Horizontal Time/bin/Horizontal Time.prg"/>
-<stringAttribute key="connectiq.project" value="Horizontal Time"/>
-<stringAttribute key="connectiq.targetDevice" value="fenix3"/>
-<stringAttribute key="connectiq.workingDir" value="/Users/vchen/git/connectiq-watch-faces/Horizontal Time"/>
-</launchConfiguration>

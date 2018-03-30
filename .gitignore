@@ -70,3 +70,36 @@ $RECYCLE.BIN/
 
 # Windows shortcuts
 *.lnk
+.metadata/.mylyn/.tasks.xml.zip
+
+.metadata/.mylyn/.tasks.xml.zip
+
+.metadata/.mylyn/.tasks.xml.zip
+
+.metadata/.mylyn/tasks.xml.zip
+
+.metadata/.plugins/org.eclipse.core.resources/.projects/Horizontal Time/.indexes/e5/history.index
+
+.metadata/.plugins/org.eclipse.core.resources/.history/90/40e7e7329b2c001511d1ab685c9d0fc5
+
+.metadata/.plugins/org.eclipse.core.resources/.history/a9/00341db99b2c001511d1ab685c9d0fc5
+/.metadata/*
+.metadata/.mylyn/.tasks.xml.zip
+
+.metadata/.mylyn/tasks.xml.zip
+
+Outside In/.project
+
+Outside In/manifest.xml
+
+Outside In/resources/images/launcher_icon.png
+
+Outside In/resources/images/watchface.png
+
+Outside In/resources/layouts/layout.xml
+
+Outside In/resources/resources.xml
+
+Outside In/source/OutsideInApp.mc
+
+Outside In/source/OutsideInView.mc

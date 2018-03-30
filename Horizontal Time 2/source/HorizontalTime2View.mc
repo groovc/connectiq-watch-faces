@@ -158,26 +158,24 @@ class HorizontalTime2View extends Ui.WatchFace {
 			break;
 			case 2:
 				// get a HeartRateIterator object; oldest sample first
+				var hrString = "--";
 				if ((Toybox has :SensorHistory) && (Toybox.SensorHistory has :getHeartRateHistory)) {
-					var hrIterator = Act.getHeartRateHistory(null, false);
-					var previous = hrIterator.next();                                   // get the previous HR
-					var lastSampleTime = null;                                          // get the last
-					var displayRate;		
-					
-				    var sample = hrIterator.next();
-				    if (null != sample) {                                           // null check
-				        if (sample.heartRate != Act.INVALID_HR_SAMPLE    // check for invalid samples
-				            && previous.heartRate
-				            != Act.INVALID_HR_SAMPLE) {
-				                lastSampleTime = sample.when;
-				                // System.println("Previous: " + previous.heartRate);  // print the previous sample
-				                // System.println("Sample: " + sample.heartRate);      // print the current sample
-				                displayRate = sample.heartRate;
-				                statsView.setText(percentage.toString()+"%"+" | "+ displayRate + " HR");
-				        }
-				    }
+					var hRate = Activity.getActivityInfo().currentHeartRate;
+				
+					if (hRate != null) {
+						hrString = hRate.toString();
+					} else {
+						var hrI = Act.getHeartRateHistory(1, true);						
+						var hrs = hrI.next().heartRate;
+						if (hrs != null && hrs != Act.INVALID_HR_SAMPLE) {
+							hrString = hrs.toString();
+							// Sys.println("hrString: "+hrString);
+						}  
+					}
+					statsView.setText(percentage.toString()+"%"+" | "+ hrString + " HR");
+
 			    } else {
-			    		statsView.setText(percentage.toString()+"%"+" | "+"No HR");
+			    	statsView.setText(percentage.toString()+"%"+" | "+hrString + " HR");
 			    }
 			    
 			break;

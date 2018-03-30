@@ -1,3 +1,7 @@
+build_for_device_build_type=true
+build_for_device_output_dir=/Users/vchen/Dropbox/Software/Garmin
+cmd_buildTimeout=300
+cmp_developerKey=/Users/vchen/Documents/developer_key.der
 console_error_coloring=204,0,0
 console_info_coloring=51,204,51
 console_warning_coloring=255,204,0
@@ -8,4 +12,8 @@ editor_syntax_coloring_name=225,213,39
 editor_syntax_coloring_number=80,80,80
 editor_syntax_coloring_object=17,0,255
 editor_syntax_coloring_string=81,159,93
-pathPreference=/Users/vchen/Development/connectiq-sdk-mac-1.1.3
+export_wizard_output_dir=/Users/vchen/Dropbox/Software/Garmin
+export_wizard_project_name=Horizontal Time 2
+notification_one_time_warning=true
+pathPreference=/Users/vchen/Development/connectiq-sdk-mac-2.4.4
+sdk_manager_new_sdk_available=true

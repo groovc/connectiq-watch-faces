@@ -1,0 +1,17 @@
+<layout id="WatchFace">
+    <drawable class="Background" />
+    <label id="HourLabelL2" x="38" y="49" font="@Fonts.customFontXTiny" justification="Gfx.TEXT_JUSTIFY_CENTER" color="Gfx.COLOR_DK_GRAY" />
+    <label id="HourLabelL1" x="70" y="49" font="@Fonts.customFontXTiny" justification="Gfx.TEXT_JUSTIFY_CENTER" color="Gfx.COLOR_LT_GRAY" />
+    <label id="HourLabel" x="center" y="0" font="@Fonts.customFontPrimary" justification="Gfx.TEXT_JUSTIFY_CENTER" color="Gfx.COLOR_WHITE" />
+    <label id="HourLabelP1" x="170" y="49" font="@Fonts.customFontXTiny" justification="Gfx.TEXT_JUSTIFY_CENTER" color="Gfx.COLOR_LT_GRAY" />
+    <label id="HourLabelP2" x="200" y="49" font="@Fonts.customFontXTiny" justification="Gfx.TEXT_JUSTIFY_CENTER" color="Gfx.COLOR_DK_GRAY" />
+    <label id="MinuteLabelL3" x="15" y="123" font="@Fonts.customFontXTiny" justification="Gfx.TEXT_JUSTIFY_CENTER" color="Gfx.COLOR_DK_GRAY" />
+    <label id="MinuteLabelL2" x="45" y="123" font="@Fonts.customFontXTiny" justification="Gfx.TEXT_JUSTIFY_CENTER" color="Gfx.COLOR_DK_GRAY" />
+    <label id="MinuteLabelL1" x="75" y="123" font="@Fonts.customFontXTiny" justification="Gfx.TEXT_JUSTIFY_CENTER" color="Gfx.COLOR_LT_GRAY" />
+    <label id="MinuteLabel" x="center" y="86" font="@Fonts.customFontSecondary" justification="Gfx.TEXT_JUSTIFY_CENTER" color="Gfx.COLOR_RED" />
+    <label id="MinuteLabelP1" x="165" y="123" font="@Fonts.customFontXTiny" justification="Gfx.TEXT_JUSTIFY_CENTER" color="Gfx.COLOR_LT_GRAY" />
+    <label id="MinuteLabelP2" x="195" y="123" font="@Fonts.customFontXTiny" justification="Gfx.TEXT_JUSTIFY_CENTER" color="Gfx.COLOR_DK_GRAY" />
+    <label id="MinuteLabelP3" x="225" y="123" font="@Fonts.customFontXTiny" justification="Gfx.TEXT_JUSTIFY_CENTER" color="Gfx.COLOR_DK_GRAY" />
+    <label id="DateLabel" x="center" y="175" font="Gfx.FONT_XTINY" justification="Gfx.TEXT_JUSTIFY_CENTER" color="Gfx.COLOR_LT_GRAY" />
+    <label id="StatsLabel" x="center" y="200" font="Gfx.FONT_XTINY" justification="Gfx.TEXT_JUSTIFY_CENTER" color="Gfx.COLOR_DK_GRAY" />
+</layout>

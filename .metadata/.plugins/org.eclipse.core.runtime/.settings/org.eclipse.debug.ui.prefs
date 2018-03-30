@@ -1,3 +1,10 @@
+Console.highWaterMark=88000
+StringVariablePreferencePage=156,130,129,103,
 eclipse.preferences.version=1
 org.eclipse.debug.ui.PREF_LAUNCH_PERSPECTIVES=<?xml version\="1.0" encoding\="UTF-8" standalone\="no"?>\n<launchPerspectives>\n<launchPerspective configurationType\="connectiq.launcher.AppLauncher" mode\="run" perspective\="connectiq.perspective"/>\n<launchPerspective configurationType\="connectiq.launcher.AppLauncher" delegate\="connectiq.launcher.AppLauncher" mode\="run" perspective\="connectiq.perspective"/>\n</launchPerspectives>\n
+org.eclipse.debug.ui.consoleBackground=245,245,245
+org.eclipse.debug.ui.errorColor=41,95,148
+org.eclipse.debug.ui.inColor=88,88,88
+org.eclipse.debug.ui.manage_view_perspectives=connectiq.perspective,org.eclipse.debug.ui.DebugPerspective,
+org.eclipse.debug.ui.outColor=88,88,88
 preferredTargets=default\:default|

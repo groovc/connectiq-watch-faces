@@ -11,4 +11,10 @@
 			<item value=""/>
 		</list>
 	</section>
+	<section name="NewWizardAction">
+		<item value="connectiq.wizard.new.custom" key="NewWizardSelectionPage.STORE_SELECTED_ID"/>
+		<list key="NewWizardSelectionPage.STORE_EXPANDED_CATEGORIES_ID">
+			<item value="connectiq.category.wizards"/>
+		</list>
+	</section>
 </section>
