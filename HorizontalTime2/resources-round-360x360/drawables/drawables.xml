@@ -1,0 +1,23 @@
+<drawables>
+    <bitmap id="LauncherIcon" filename="launcher_icon-40x40.png" />
+    <drawable-list id="Divider" background="Gfx.COLOR_TRANSPARENT">
+    		<shape type="rectangle" width="116" height="1" color="Gfx.COLOR_TRANSPARENT" />
+    </drawable-list>
+    <drawable-list id="Guide" background="Gfx.COLOR_TRANSPARENT">
+        <shape type="rectangle" width="360" height="1" x="center" y="center" color="Gfx.COLOR_GREEN" />
+        <shape type="rectangle" width="1" height="360" x="center" y="center" color="Gfx.COLOR_GREEN" />
+        
+        <shape type="rectangle" width="360" height="1" x="center" y="14" color="Gfx.COLOR_BLUE" />
+        <shape type="rectangle" width="360" height="1" x="center" y="77" color="Gfx.COLOR_YELLOW" />
+        <shape type="rectangle" width="360" height="1" x="center" y="140" color="Gfx.COLOR_BLUE" />
+
+        <shape type="rectangle" width="360" height="1" x="center" y="156" color="Gfx.COLOR_BLUE" />
+        <shape type="rectangle" width="360" height="1" x="center" y="206" color="Gfx.COLOR_YELLOW" />
+        <shape type="rectangle" width="360" height="1" x="center" y="260" color="Gfx.COLOR_BLUE" />
+
+        <shape type="rectangle" width="1" height="360" x="136" y="center" color="Gfx.COLOR_PINK" />
+		<shape type="rectangle" width="1" height="360" x="224" y="center" color="Gfx.COLOR_PINK" />
+		<shape type="rectangle" width="1" height="360" x="144" y="center" color="Gfx.COLOR_ORANGE" />
+    	<shape type="rectangle" width="1" height="360" x="214" y="center" color="Gfx.COLOR_ORANGE" /> 
+    </drawable-list>
+</drawables>

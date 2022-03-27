@@ -1,0 +1,18 @@
+<layout id="WatchFace">
+    <drawable class="Background" />
+    <label id="HourLabelL2" x="27" y="45" font="@Fonts.customFontXTiny" justification="Gfx.TEXT_JUSTIFY_CENTER" color="Gfx.COLOR_DK_GRAY" />
+    <label id="HourLabelL1" x="69" y="45" font="@Fonts.customFontXTiny" justification="Gfx.TEXT_JUSTIFY_CENTER" color="Gfx.COLOR_LT_GRAY" />
+    <label id="HourLabel" x="center" y="-14" font="@Fonts.customFontPrimary" justification="Gfx.TEXT_JUSTIFY_CENTER" color="Gfx.COLOR_WHITE" />
+    <label id="HourLabelP1" x="191" y="45" font="@Fonts.customFontXTiny" justification="Gfx.TEXT_JUSTIFY_CENTER" color="Gfx.COLOR_LT_GRAY" />
+    <label id="HourLabelP2" x="233" y="45" font="@Fonts.customFontXTiny" justification="Gfx.TEXT_JUSTIFY_CENTER" color="Gfx.COLOR_DK_GRAY" />
+    <label id="MinuteLabelL3" x="5" y="137" font="@Fonts.customFontXTiny" justification="Gfx.TEXT_JUSTIFY_CENTER" color="Gfx.COLOR_DK_GRAY" />
+    <label id="MinuteLabelL2" x="43" y="137" font="@Fonts.customFontXTiny" justification="Gfx.TEXT_JUSTIFY_CENTER" color="Gfx.COLOR_DK_GRAY" />
+    <label id="MinuteLabelL1" x="80" y="137" font="@Fonts.customFontXTiny" justification="Gfx.TEXT_JUSTIFY_CENTER" color="Gfx.COLOR_LT_GRAY" />
+    <label id="MinuteLabel" x="center" y="95" font="@Fonts.customFontSecondary" justification="Gfx.TEXT_JUSTIFY_CENTER" color="Gfx.COLOR_RED" />
+    <label id="MinuteLabelP1" x="180" y="137" font="@Fonts.customFontXTiny" justification="Gfx.TEXT_JUSTIFY_CENTER" color="Gfx.COLOR_LT_GRAY" />
+    <label id="MinuteLabelP2" x="217" y="137" font="@Fonts.customFontXTiny" justification="Gfx.TEXT_JUSTIFY_CENTER" color="Gfx.COLOR_DK_GRAY" />
+    <label id="MinuteLabelP3" x="255" y="137" font="@Fonts.customFontXTiny" justification="Gfx.TEXT_JUSTIFY_CENTER" color="Gfx.COLOR_DK_GRAY" />
+    <label id="DateLabel" x="center" y="202" font="Gfx.FONT_XTINY" justification="Gfx.TEXT_JUSTIFY_CENTER" color="Gfx.COLOR_LT_GRAY" />
+    <label id="StatsLabel" x="center" y="220" font="Gfx.FONT_XTINY" justification="Gfx.TEXT_JUSTIFY_CENTER" color="Gfx.COLOR_DK_GRAY" />
+    <drawable id="Divider" />
+</layout>
