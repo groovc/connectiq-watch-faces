@@ -1,5 +1,0 @@
-<fonts>
-	<font id="customFontPrimary" filename="Steelfish100B.fnt" filter="0123456789" />
-	<font id="customFontSecondary" filename="Steelfish80B.fnt" filter="0123456789" />
-	<font id="customFontXTiny" filename="RobotoCondensed22.fnt" filter=" 0123456789ABCDEFGHIJKLMNOPQRSTUVWXYZ|%" />
-</fonts>
