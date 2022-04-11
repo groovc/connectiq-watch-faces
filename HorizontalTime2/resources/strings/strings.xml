@@ -11,6 +11,7 @@
     <string id="StatsColorTitle">Stats Color</string>
     <string id="DividerColorTitle">Divider Color</string>
     <string id="StatsLayoutTitle">Stats Layout</string>
+    <string id="BatteryStyleTitle">Battery Style</string>
 
     <string id="ColorWhite">White</string>
     <string id="ColorLightGray">Light Gray</string>
@@ -29,5 +30,6 @@
     
     <string id="StatsBattery">Battery Only</string>
     <string id="StatsBatterySteps">Battery + Steps</string>
-    <string id="StatsBatteryHR">Battery + Heart Rate</string>
+    <string id="StatsBatteryDistance">Battery + Distance</string>
+    <string id="StatsBatteryHR">Battery + HR</string>
 </strings>

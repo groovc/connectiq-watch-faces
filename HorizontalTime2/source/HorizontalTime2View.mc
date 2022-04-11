@@ -1,12 +1,12 @@
-using Toybox.Application as App;
-using Toybox.Graphics as Gfx;
-using Toybox.Lang as Lang;
-using Toybox.System as Sys;
 using Toybox.WatchUi as Ui;
+using Toybox.Graphics as Gfx;
+using Toybox.System as Sys;
+using Toybox.ActivityMonitor as Act;
 using Toybox.Time as Time;
 using Toybox.Time.Gregorian as Calendar;
-using Toybox.ActivityMonitor as Act;
-using Toybox.SensorHistory;
+using Toybox.Lang as Lang;
+using Toybox.Application as App;
+using Toybox.Math as Math;
 
 class HorizontalTime2View extends Ui.WatchFace {
 	var screen_width,
@@ -28,8 +28,8 @@ class HorizontalTime2View extends Ui.WatchFace {
     }
 
     // Load your resources here
-    function onLayout(dc as Dc) as Void {
-    		//get screen dimensions
+    function onLayout(dc) {
+    	//get screen dimensions
 		screen_width = dc.getWidth();
 		screen_height = dc.getHeight();
 		
@@ -139,10 +139,16 @@ class HorizontalTime2View extends Ui.WatchFace {
 		var statsView = View.findDrawableById("StatsLabel");
 		// Get battery life
 		var stats = Sys.getSystemStats();
+		var deviceSettings = Sys.getDeviceSettings();
 		var batteryStatus = stats.battery;
 		var percentage = (stats.battery).toNumber();
+		var batteryStatusDisplay;
 		var layoutType = App.getApp().getProperty("StatsLayout");
-		
+		var isPhoneConnected = deviceSettings.phoneConnected;
+		var distanceUnitsPreferred = deviceSettings.distanceUnits;
+		//Sys.println("Is phone connected?: "+isPhoneConnected); // true or false
+		//Sys.println("What distance units: "+distanceUnitsPreferred); // 0 for metric, 1 for statute
+
 		statsView.setColor(App.getApp().getProperty("StatsColor"));
 		
 		switch (layoutType) {
@@ -152,11 +158,24 @@ class HorizontalTime2View extends Ui.WatchFace {
 			case 1:
 				// Get steps
 				var stepStats = Act.getInfo();
-	    			var steps = stepStats.steps;
-	    			// concatenate battery and steps
+	    		var steps = stepStats.steps;
+	    		// concatenate battery and steps
 				statsView.setText(percentage.toString()+"%"+" | "+steps);
 			break;
 			case 2:
+				// Get distance
+				var distanceStats = Act.getInfo();
+				var distance = distanceStats.distance; // distance in CM
+				// Calculate KM or MI depending on preferences
+				if (distanceUnitsPreferred == 0) {
+					distance = (distance.toNumber().toFloat()/100000).format("%.2f")+" KM"; // to km
+				} else {
+					distance = (distance.toNumber().toFloat()/100000*.62137119).format("%.2f")+" MI"; // to miles
+				}
+				// Display distance for the day
+				statsView.setText(percentage.toString()+"%"+" | "+distance);
+			break;
+			case 3:
 				// get a HeartRateIterator object; oldest sample first
 				var hrString = "--";
 				if ((Toybox has :SensorHistory) && (Toybox.SensorHistory has :getHeartRateHistory)) {
@@ -176,8 +195,7 @@ class HorizontalTime2View extends Ui.WatchFace {
 
 			    } else {
 			    	statsView.setText(percentage.toString()+"%"+" | "+hrString + " HR");
-			    }
-			    
+			    }    
 			break;
 			default:
 			// if all else fails
@@ -230,8 +248,8 @@ class HorizontalTime2View extends Ui.WatchFace {
             } 
             return Lang.format("$1$",[date.hour.format("%02d")]);
         } else {
-        		return Lang.format("$1$",[date.hour.format("%02d")]);
-        	}
+        	return Lang.format("$1$",[date.hour.format("%02d")]);
+        }
 	}
 	
 	// This function uses UTC time so that the minutes stay within 0-59
@@ -244,7 +262,7 @@ class HorizontalTime2View extends Ui.WatchFace {
 	}
 	
     // Update the view
-    function onUpdate(dc as Dc) as Void {
+    function onUpdate(dc) {
 		var utc = Time.now();
 		
 		// Render the date
@@ -264,15 +282,15 @@ class HorizontalTime2View extends Ui.WatchFace {
     // Called when this View is removed from the screen. Save the
     // state of this View here. This includes freeing resources from
     // memory.
-    function onHide() as Void {
+    function onHide() {
     }
 
     // The user has just looked at their watch. Timers and animations may be started here.
-    function onExitSleep() as Void {
+    function onExitSleep() {
     }
 
     // Terminate any active timers and prepare for slow updates.
-    function onEnterSleep() as Void {
+    function onEnterSleep() {
     }
 
 }

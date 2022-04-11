@@ -232,12 +232,4 @@
         </settingConfig>
     </setting>
     
-    <setting propertyKey="@Properties.StatsLayout" title="@Strings.StatsLayoutTitle">
-        <settingConfig type="list">
-        		<listEntry value="0">@Strings.StatsBattery</listEntry>
-            <listEntry value="1">@Strings.StatsBatterySteps</listEntry>
-            <listEntry value="2">@Strings.StatsBatteryHR</listEntry>          
-        </settingConfig>
-    </setting>
-
 </settings>
