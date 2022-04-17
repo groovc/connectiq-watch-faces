@@ -1,12 +1,12 @@
-using Toybox.WatchUi as Ui;
+using Toybox.Application as App;
 using Toybox.Graphics as Gfx;
+using Toybox.Lang as Lang;
 using Toybox.System as Sys;
-using Toybox.ActivityMonitor as Act;
+using Toybox.WatchUi as Ui;
 using Toybox.Time as Time;
 using Toybox.Time.Gregorian as Calendar;
-using Toybox.Lang as Lang;
-using Toybox.Application as App;
-using Toybox.Math as Math;
+using Toybox.ActivityMonitor as Act;
+using Toybox.SensorHistory;
 
 class HorizontalTime2View extends Ui.WatchFace {
 	var screen_width,
@@ -37,7 +37,7 @@ class HorizontalTime2View extends Ui.WatchFace {
 	}
 
     // Load your resources here
-    function onLayout(dc) {
+    function onLayout(dc as Dc) as Void {
     	//get screen dimensions
 		screen_width = dc.getWidth();
 		screen_height = dc.getHeight();
@@ -48,7 +48,7 @@ class HorizontalTime2View extends Ui.WatchFace {
     // Called when this View is brought to the foreground. Restore
     // the state of this View and prepare it to be shown. This includes
     // loading resources into memory.
-    function onShow() {
+    function onShow() as Void {
     }
 	
 	function renderTime(dc,utc) {
@@ -287,19 +287,29 @@ class HorizontalTime2View extends Ui.WatchFace {
 	}
 	
     // Update the view
-    function onUpdate(dc) {
+    function onUpdate(dc as Dc) as Void {
 		var utc = Time.now();
 
-		// shift the mask around
-		if (maskRandomizer == 0) {
-			maskRandomizer = 1;
-		} else {
-			maskRandomizer = 0;
-		}
-		
 		if (inLowPower && canBurnIn) {
+			// shift the mask around
+			if (maskRandomizer == 0) {
+				maskRandomizer = 1;
+			} else {
+				maskRandomizer = 0;
+			}	
+			// Render the date
+			renderDate(dc);
+			// Render the stats
+			renderStats();	
+			// Render the time
+			renderTime(dc,utc);
+			// Call the parent onUpdate function to redraw the layout
+			View.onUpdate(dc); 
+			
+			// Render the divider
+			renderDivider(dc);
+
 			// do AOD display (<10% 3 minutes max)
-			// draw the mask on top
 			dc.drawBitmap(maskRandomizer, 0, aodMask);
 		} else {
 			// Render the date
@@ -319,11 +329,11 @@ class HorizontalTime2View extends Ui.WatchFace {
     // Called when this View is removed from the screen. Save the
     // state of this View here. This includes freeing resources from
     // memory.
-    function onHide() {
+    function onHide() as Void {
     }
 
     // The user has just looked at their watch. Timers and animations may be started here.
-    function onExitSleep() {
+    function onExitSleep() as Void {
 		// entering high power mode
 		// switch to default view
 		inLowPower = false;
@@ -331,7 +341,7 @@ class HorizontalTime2View extends Ui.WatchFace {
     }
 
     // Terminate any active timers and prepare for slow updates.
-    function onEnterSleep() {
+    function onEnterSleep() as Void {
 		// entering low power mode
 		// perhaps render alternate version of watch face
 		inLowPower = true;

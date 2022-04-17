@@ -152,19 +152,17 @@
         </settingConfig>
     </setting>
     
-    <group id="groupStats" title="@Strings.GroupStatsTitle" description="@Strings.GroupStatsDescription">
-        <setting propertyKey="@Properties.BatteryInDays" title="@Strings.BatteryInDaysTitle">
-            <settingConfig type="boolean" />
-        </setting>
+    <setting propertyKey="@Properties.BatteryInDays" title="@Strings.BatteryInDaysTitle">
+        <settingConfig type="boolean" />
+    </setting>
 
-        <setting propertyKey="@Properties.StatsLayout" title="@Strings.StatsLayoutTitle">
-            <settingConfig type="list">
-                <listEntry value="0">@Strings.StatsBattery</listEntry>
-                <listEntry value="1">@Strings.StatsBatterySteps</listEntry>
-                <listEntry value="2">@Strings.StatsBatteryDistance</listEntry>
-                <listEntry value="3">@Strings.StatsBatteryHR</listEntry>          
-            </settingConfig>
-        </setting>
-    </group>
-    
+    <setting propertyKey="@Properties.StatsLayout" title="@Strings.StatsLayoutTitle">
+        <settingConfig type="list">
+            <listEntry value="0">@Strings.StatsBattery</listEntry>
+            <listEntry value="1">@Strings.StatsBatterySteps</listEntry>
+            <listEntry value="2">@Strings.StatsBatteryDistance</listEntry>
+            <listEntry value="3">@Strings.StatsBatteryHR</listEntry>          
+        </settingConfig>
+    </setting>
+   
 </settings>
