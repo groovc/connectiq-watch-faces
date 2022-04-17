@@ -15,11 +15,25 @@ class HorizontalTime3View extends Ui.WatchFace {
 	 	customFontHour = null,
 	 	customFontMinute = null,
 	 	customFontXTiny = null,
-	 	myDivider;
+	 	myDivider,
+		aodMask,
+		maskRandomizer,
+		inLowPower = false,
+		canBurnIn = false;		
 
     function initialize() {
         WatchFace.initialize();
         myDivider = new Rez.Drawables.Divider();
+		
+		// Check if device requires burn in protection and set flag
+		if (Sys.getDeviceSettings() has :requiresBurnInProtection) {
+			canBurnIn = Sys.getDeviceSettings().requiresBurnInProtection;
+			// check for real
+			if (canBurnIn) {
+				aodMask = Ui.loadResource(Rez.Drawables.AODMask); // load mask
+				maskRandomizer = 0; // init mask position
+			}        	
+        }		
     }
 
     // Load your resources here
@@ -28,9 +42,9 @@ class HorizontalTime3View extends Ui.WatchFace {
 		screen_width = dc.getWidth();
 		screen_height = dc.getHeight();
 		
-		customFontHour = Ui.loadResource(Rez.Fonts.customFontPrimary);
-		customFontMinute = Ui.loadResource(Rez.Fonts.customFontSecondary);
-		customFontXTiny = Ui.loadResource(Rez.Fonts.customFontXTiny);
+		//customFontHour = Ui.loadResource(Rez.Fonts.customFontPrimaryAOD);
+		//customFontMinute = Ui.loadResource(Rez.Fonts.customFontSecondaryAOD);
+		//customFontXTiny = Ui.loadResource(Rez.Fonts.customFontXTiny);
     
         setLayout(Rez.Layouts.WatchFace(dc));
     }
@@ -41,6 +55,8 @@ class HorizontalTime3View extends Ui.WatchFace {
     function onShow() as Void {
     }
 
+	// Render Time
+	// Add conditions for inLowPower and canBurnIn to display different things
 	function renderTime(dc,utc) {
 		// Get the current time and format it correctly
         var timeFormat = "$1$$2$";
@@ -117,12 +133,12 @@ class HorizontalTime3View extends Ui.WatchFace {
 		// Get date
 		var today = Calendar.info(Time.now(), Time.FORMAT_MEDIUM);
         var dateString = Lang.format(
-	        	"$1$ $2$ $3$",
-	        	[
-	        		today.day_of_week.toUpper(),
-	        		today.month.toUpper(),
-	        		today.day
-	        	]
+	        "$1$ $2$ $3$",
+	        [
+	        	today.day_of_week.toUpper(),
+	        	today.month.toUpper(),
+	        	today.day
+	        ]
         );
         var dateView = View.findDrawableById("DateLabel");
         dateView.setColor(App.getApp().getProperty("DateColor"));
@@ -132,27 +148,93 @@ class HorizontalTime3View extends Ui.WatchFace {
 	}
 		
 	function renderStats() {
-		var statsView = View.findDrawableById("StatsLabel");
-		// Get battery life
-		var stats = Sys.getSystemStats();
-		var batteryStatus = stats.battery;
-		var percentage = (stats.battery).toNumber();
-		var layoutType = App.getApp().getProperty("StatsLayout");
+		// Use to determine monkey API version support perhaps to support legacy devices
+		var mySettings = System.getDeviceSettings();
+		// req 1.2.0
+		var version = mySettings.monkeyVersion;
+		var versionString = Lang.format("$1$.$2$.$3$", version);
+		System.println("API Version: "+versionString); //e.g. 2.2.5
+
+		// req 3.0.12
+		// 10% of on-screen pixels can be lit up but for no more than 3 update cycles per minute
+		var isAMOLED = mySettings.requiresBurnInProtection;
+		System.println("Device requires Burn-in protection: "+isAMOLED);
+		// req 1.1.0
+		var isPhoneConnected = mySettings.phoneConnected;
+		System.println("Is phone connected: "+isPhoneConnected);
+		// req 1.0.0
+		var notifications = mySettings.notificationCount;
+		System.println("Number of notifications: "+notifications);
 		
+ 		var statsView = View.findDrawableById("StatsLabel");
+		// the battery string
+		var batteryDisplay;
+		var stats = Sys.getSystemStats();
+		
+		// First determine how we should display the battery
+		var showBatteryInDays = App.getApp().getProperty("BatteryInDays");
+		Sys.println("Does the user want to see battery in days: "+showBatteryInDays);
+
+		// Now check to see if the device truly supports batteryInDays
+		if (stats has :batteryInDays) {
+			// probably supported
+
+			// this check is necessary to work around WERETECH-12398 which caused
+			// some devices that don't have support to pass the has check and give
+			// a null
+			// req 3.3.0
+			var battInDays = Sys.getSystemStats().batteryInDays.toNumber();
+			System.println("Battery In Days: "+battInDays);
+			Sys.println("Probably supported");
+			if (stats.batteryInDays != null) {
+				Sys.println("Supported and returning non-null value");
+				if (showBatteryInDays) {
+					batteryDisplay = stats.batteryInDays.toNumber().toString()+" DAYS";
+				} else {
+					batteryDisplay = stats.battery.toNumber().toString()+"%";
+				}
+			} else {
+				Sys.println("Don't try to display otherwise");
+				batteryDisplay = stats.battery.toNumber().toString()+"%";
+			}
+		} else {
+			// ignore and display percentage
+			Sys.println("Ignoring and displaying percentage");
+			batteryDisplay = stats.battery.toNumber().toString()+"%";
+		}
+
+		var layoutType = App.getApp().getProperty("StatsLayout");
+
+		var distanceUnitsPreferred = mySettings.distanceUnits;
+		Sys.println("What distance units: "+distanceUnitsPreferred); // 0 for metric, 1 for statute
+
 		statsView.setColor(App.getApp().getProperty("StatsColor"));
 		
 		switch (layoutType) {
 			case 0:
-				statsView.setText(percentage.toString()+"%");
+				statsView.setText(batteryDisplay);
 			break;
 			case 1:
 				// Get steps
 				var stepStats = Act.getInfo();
-	    			var steps = stepStats.steps;
-	    			// concatenate battery and steps
-				statsView.setText(percentage.toString()+"%"+" | "+steps);
+	    		var steps = stepStats.steps;
+	    		// concatenate battery and steps
+				statsView.setText(batteryDisplay+" | "+steps);
 			break;
 			case 2:
+				// Get distance
+				var distanceStats = Act.getInfo();
+				var distance = distanceStats.distance; // distance in CM
+				// Calculate KM or MI depending on preferences
+				if (distanceUnitsPreferred == 0) {
+					distance = (distance.toNumber().toFloat()/100000).format("%.2f")+" KM"; // to km
+				} else {
+					distance = (distance.toNumber().toFloat()/100000*.62137119).format("%.2f")+" MI"; // to miles
+				}
+				// Display distance for the day
+				statsView.setText(batteryDisplay+" | "+distance);
+			break;
+			case 3:
 				// get a HeartRateIterator object; oldest sample first
 				var hrString = "--";
 				if ((Toybox has :SensorHistory) && (Toybox.SensorHistory has :getHeartRateHistory)) {
@@ -168,16 +250,15 @@ class HorizontalTime3View extends Ui.WatchFace {
 							// Sys.println("hrString: "+hrString);
 						}  
 					}
-					statsView.setText(percentage.toString()+"%"+" | "+ hrString + " HR");
+					statsView.setText(batteryDisplay+" | "+ hrString + " BPM");
 
 			    } else {
-			    	statsView.setText(percentage.toString()+"%"+" | "+hrString + " HR");
-			    }
-			    
+			    	statsView.setText(batteryDisplay+" | "+hrString + " BPM");
+			    }	    
 			break;
 			default:
 			// if all else fails
-				statsView.setText(percentage.toString()+"%");
+				statsView.setText(batteryDisplay);
 			break;
 		}
 	}
@@ -218,16 +299,16 @@ class HorizontalTime3View extends Ui.WatchFace {
 		if (!Sys.getDeviceSettings().is24Hour) {
             // Display 12 at 0 o'clock            
             if (date.hour == 0) {
-        			date.hour = 12;
-        		}
-        		// Subtract 12 so numbers you don't see UTC numbers
+       			date.hour = 12;
+       		}
+       		// Subtract 12 so numbers you don't see UTC numbers
             if (date.hour > 12) {
-            		date.hour = date.hour - 12;          		
+           		date.hour = date.hour - 12;          		
             } 
             return Lang.format("$1$",[date.hour.format("%02d")]);
         } else {
-        		return Lang.format("$1$",[date.hour.format("%02d")]);
-        	}
+        	return Lang.format("$1$",[date.hour.format("%02d")]);
+        }
 	}
 	
 	// This function uses UTC time so that the minutes stay within 0-59
@@ -242,19 +323,33 @@ class HorizontalTime3View extends Ui.WatchFace {
     // Update the view
     function onUpdate(dc as Dc) as Void {
         var utc = Time.now();
-		
-		// Render the date
-		renderDate(dc);
-		// Render the stats
-		renderStats();	
-		// Render the time
-        renderTime(dc,utc);
-        
-        // Call the parent onUpdate function to redraw the layout
-        View.onUpdate(dc); 
-        
-        // Render the divider
-        renderDivider(dc);
+		// shift the mask around
+		if (maskRandomizer == 0) {
+			maskRandomizer = 1;
+		} else {
+			maskRandomizer = 0;
+		}
+
+		if (inLowPower && canBurnIn) {
+			// do AOD display (<10% 3 minutes max)
+			Sys.println("InLowPower: "+inLowPower);
+			Sys.println("CanBurnIn: "+canBurnIn);
+			dc.drawBitmap(maskRandomizer, 0, aodMask);
+		} else {
+			Sys.println("InLowPower: "+inLowPower);
+			Sys.println("CanBurnIn: "+canBurnIn);
+			// Render the date
+			renderDate(dc);
+			// Render the stats
+			renderStats();	
+			// Render the time
+			renderTime(dc,utc);
+			// Call the parent onUpdate function to redraw the layout
+			View.onUpdate(dc); 
+			
+			// Render the divider
+			renderDivider(dc);
+		}
     }
 
     // Called when this View is removed from the screen. Save the
@@ -265,10 +360,18 @@ class HorizontalTime3View extends Ui.WatchFace {
 
     // The user has just looked at their watch. Timers and animations may be started here.
     function onExitSleep() as Void {
+		// entering high power mode
+		// switch to default view
+		inLowPower = false;
+		WatchUi.requestUpdate();  
     }
 
     // Terminate any active timers and prepare for slow updates.
     function onEnterSleep() as Void {
+		// entering low power mode
+		// perhaps render alternate version of watch face
+		inLowPower = true;
+		WatchUi.requestUpdate();  
     }
 
 }
