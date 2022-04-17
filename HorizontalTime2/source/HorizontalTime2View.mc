@@ -15,17 +15,26 @@ class HorizontalTime2View extends Ui.WatchFace {
 	 	customFontHour = null,
 	 	customFontMinute = null,
 	 	customFontXTiny = null,
-	 	myDivider;
+	 	myDivider,
+		aodMask,
+		maskRandomizer,
+		inLowPower = false,
+		canBurnIn = false;		
 	
-	// add Activity.Info
-	// currentHeartRate
-	// averageHeartRate
-	// maxHeartRate
-	 	
     function initialize() {
         WatchFace.initialize();
         myDivider = new Rez.Drawables.Divider();
-    }
+    
+		// Check if device requires burn in protection and set flag
+		if (Sys.getDeviceSettings() has :requiresBurnInProtection) {
+			canBurnIn = Sys.getDeviceSettings().requiresBurnInProtection;
+			// check for real
+			if (canBurnIn) {
+				aodMask = Ui.loadResource(Rez.Drawables.AODMask); // load mask
+				maskRandomizer = 0; // init mask position
+			}        	
+        }	
+	}
 
     // Load your resources here
     function onLayout(dc) {
@@ -33,10 +42,6 @@ class HorizontalTime2View extends Ui.WatchFace {
 		screen_width = dc.getWidth();
 		screen_height = dc.getHeight();
 		
-		customFontHour = Ui.loadResource(Rez.Fonts.customFontPrimary);
-		customFontMinute = Ui.loadResource(Rez.Fonts.customFontSecondary);
-		customFontXTiny = Ui.loadResource(Rez.Fonts.customFontXTiny);
-    
         setLayout(Rez.Layouts.WatchFace(dc));
     }
 
@@ -136,31 +141,51 @@ class HorizontalTime2View extends Ui.WatchFace {
 	}
 		
 	function renderStats() {
+		var mySettings = System.getDeviceSettings();
 		var statsView = View.findDrawableById("StatsLabel");
 		// Get battery life
+		var batteryDisplay;
 		var stats = Sys.getSystemStats();
-		var deviceSettings = Sys.getDeviceSettings();
-		var batteryStatus = stats.battery;
-		var percentage = (stats.battery).toNumber();
-		var batteryStatusDisplay;
+		// First determine how we should display the battery
+		var showBatteryInDays = App.getApp().getProperty("BatteryInDays");
+		
+		// Now check to see if the device truly supports batteryInDays
+		if (stats has :batteryInDays) {
+			// probably supported
+
+			// this check is necessary to work around WERETECH-12398 which caused
+			// some devices that don't have support to pass the has check and give
+			// a null
+			if (stats.batteryInDays != null) {
+				if (showBatteryInDays) {
+					batteryDisplay = stats.batteryInDays.toNumber().toString()+" DAYS";
+				} else {
+					batteryDisplay = stats.battery.toNumber().toString()+"%";
+				}
+			} else {
+				batteryDisplay = stats.battery.toNumber().toString()+"%";
+			}
+		} else {
+			// ignore and display percentage
+			batteryDisplay = stats.battery.toNumber().toString()+"%";
+		}
+
 		var layoutType = App.getApp().getProperty("StatsLayout");
-		var isPhoneConnected = deviceSettings.phoneConnected;
-		var distanceUnitsPreferred = deviceSettings.distanceUnits;
-		//Sys.println("Is phone connected?: "+isPhoneConnected); // true or false
-		//Sys.println("What distance units: "+distanceUnitsPreferred); // 0 for metric, 1 for statute
+		var distanceUnitsPreferred = mySettings.distanceUnits;
+		var isPhoneConnected = mySettings.phoneConnected;
 
 		statsView.setColor(App.getApp().getProperty("StatsColor"));
 		
 		switch (layoutType) {
 			case 0:
-				statsView.setText(percentage.toString()+"%");
+				statsView.setText(batteryDisplay);
 			break;
 			case 1:
 				// Get steps
 				var stepStats = Act.getInfo();
 	    		var steps = stepStats.steps;
 	    		// concatenate battery and steps
-				statsView.setText(percentage.toString()+"%"+" | "+steps);
+				statsView.setText(batteryDisplay+" | "+steps);
 			break;
 			case 2:
 				// Get distance
@@ -173,7 +198,7 @@ class HorizontalTime2View extends Ui.WatchFace {
 					distance = (distance.toNumber().toFloat()/100000*.62137119).format("%.2f")+" MI"; // to miles
 				}
 				// Display distance for the day
-				statsView.setText(percentage.toString()+"%"+" | "+distance);
+				statsView.setText(batteryDisplay+" | "+distance);
 			break;
 			case 3:
 				// get a HeartRateIterator object; oldest sample first
@@ -191,15 +216,15 @@ class HorizontalTime2View extends Ui.WatchFace {
 							// Sys.println("hrString: "+hrString);
 						}  
 					}
-					statsView.setText(percentage.toString()+"%"+" | "+ hrString + " HR");
+					statsView.setText(batteryDisplay+" | "+ hrString + " HR");
 
 			    } else {
-			    	statsView.setText(percentage.toString()+"%"+" | "+hrString + " HR");
+			    	statsView.setText(batteryDisplay+" | "+hrString + " HR");
 			    }    
 			break;
 			default:
 			// if all else fails
-				statsView.setText(percentage.toString()+"%");
+				statsView.setText(batteryDisplay);
 			break;
 		}
 	}
@@ -264,19 +289,31 @@ class HorizontalTime2View extends Ui.WatchFace {
     // Update the view
     function onUpdate(dc) {
 		var utc = Time.now();
+
+		// shift the mask around
+		if (maskRandomizer == 0) {
+			maskRandomizer = 1;
+		} else {
+			maskRandomizer = 0;
+		}
 		
-		// Render the date
-		renderDate(dc);
-		// Render the stats
-		renderStats();	
-		// Render the time
-        renderTime(dc,utc);
-        
-        // Call the parent onUpdate function to redraw the layout
-        View.onUpdate(dc); 
-        
-        // Render the divider
-        renderDivider(dc);
+		if (inLowPower && canBurnIn) {
+			// do AOD display (<10% 3 minutes max)
+			// draw the mask on top
+			dc.drawBitmap(maskRandomizer, 0, aodMask);
+		} else {
+			// Render the date
+			renderDate(dc);
+			// Render the stats
+			renderStats();	
+			// Render the time
+			renderTime(dc,utc);
+			// Call the parent onUpdate function to redraw the layout
+			View.onUpdate(dc); 
+			
+			// Render the divider
+			renderDivider(dc);
+		}
     }
 
     // Called when this View is removed from the screen. Save the
@@ -287,10 +324,18 @@ class HorizontalTime2View extends Ui.WatchFace {
 
     // The user has just looked at their watch. Timers and animations may be started here.
     function onExitSleep() {
+		// entering high power mode
+		// switch to default view
+		inLowPower = false;
+		WatchUi.requestUpdate();  
     }
 
     // Terminate any active timers and prepare for slow updates.
     function onEnterSleep() {
+		// entering low power mode
+		// perhaps render alternate version of watch face
+		inLowPower = true;
+		WatchUi.requestUpdate(); 
     }
 
 }

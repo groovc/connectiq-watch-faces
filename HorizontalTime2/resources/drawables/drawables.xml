@@ -20,4 +20,5 @@
     		<shape type="rectangle" width="240" height="1" x="center" y="210" color="Gfx.COLOR_GREEN" />
     		<shape type="rectangle" width="240" height="1" x="center" y="20" color="Gfx.COLOR_BLUE" />
     </drawable-list>
+	<bitmap id="AODMask" filename="420x420-checkerboard.png" />
 </drawables>

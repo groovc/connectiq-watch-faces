@@ -28,6 +28,9 @@
     <string id="ColorPurple">Purple</string>
     <string id="ColorLightPurple">Light Purple</string>
     
+    <string id="GroupStatsTitle">Stats Settings</string>
+    <string id="GroupStatsDescription">Configure what information you wish to display</string>    
+    <string id="BatteryInDaysTitle">Battery In Days? (If Device Supported)</string>
     <string id="StatsBattery">Battery Only</string>
     <string id="StatsBatterySteps">Battery + Steps</string>
     <string id="StatsBatteryDistance">Battery + Distance</string>
