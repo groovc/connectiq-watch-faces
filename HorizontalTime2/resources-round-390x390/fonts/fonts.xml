@@ -1,5 +1,5 @@
 <fonts>
-	<font id="customFontPrimary" filename="Steelfish208B.fnt" filter="0123456789" />
-	<font id="customFontSecondary" filename="Steelfish180B.fnt" filter="0123456789" />
-	<font id="customFontXTiny" filename="RobotoCondensed44.fnt" filter=" 0123456789ABCDEFGHIJKLMNOPQRSTUVWXYZ|%" />
+	<font id="customFontPrimary" filename="Steelfish208B.fnt" antialias="true" filter="0123456789" />
+	<font id="customFontSecondary" filename="Steelfish180B.fnt" antialias="true" filter="0123456789" />
+	<font id="customFontXTiny" filename="RobotoCondensed44.fnt" antialias="true" filter="0123456789" />
 </fonts>

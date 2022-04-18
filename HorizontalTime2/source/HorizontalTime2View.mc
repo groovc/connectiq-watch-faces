@@ -41,6 +41,10 @@ class HorizontalTime2View extends Ui.WatchFace {
     	//get screen dimensions
 		screen_width = dc.getWidth();
 		screen_height = dc.getHeight();
+
+		customFontHour = Ui.loadResource(Rez.Fonts.customFontPrimary);
+		customFontMinute = Ui.loadResource(Rez.Fonts.customFontSecondary);
+		customFontXTiny = Ui.loadResource(Rez.Fonts.customFontXTiny);
 		
         setLayout(Rez.Layouts.WatchFace(dc));
     }
