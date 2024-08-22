@@ -70,8 +70,9 @@ class UltraPlusView extends WatchUi.WatchFace {
         accentColor = Application.getApp().getProperty("AccentColor");
         // determine which layout to draw and initialize UI colors
         themeSelection = Application.getApp().getProperty("ThemeSelection");
-        
-        switch (themeSelection) { //
+
+        // Render background based on theme preference
+        switch (themeSelection) { 
             case true:
 
             break;
@@ -82,19 +83,18 @@ class UltraPlusView extends WatchUi.WatchFace {
                 uiTertiaryColor = Graphics.COLOR_WHITE;  
             break;
             case 1:
-                if (inLowPower && canBurnIn) {
-                    faceBG = WatchUi.loadResource(Rez.Drawables.BlackOut);
-                } else {
-                    faceBG = WatchUi.loadResource(Rez.Drawables.FaceBGW);
-                }
+                faceBG = WatchUi.loadResource(Rez.Drawables.FaceBGW);
                 uiPrimaryColor = Graphics.COLOR_BLACK; 
                 uiSecondaryColor = Graphics.COLOR_WHITE;
                 uiTertiaryColor = Graphics.COLOR_WHITE;
+
+                // dc.setColor(Graphics.COLOR_WHITE,Graphics.COLOR_TRANSPARENT);
+                // dc.fillRectangle(0, 0, dc.getWidth(), dc.getHeight());
             break;
             default:
             break;
         }
-
+        
         // shift the mask around to prevent burn-in
 		if (maskRandomizer == 0) {
 			maskRandomizer = 1;
@@ -429,7 +429,7 @@ class UltraPlusView extends WatchUi.WatchFace {
                 dc.setColor(Graphics.COLOR_DK_GRAY, Graphics.COLOR_TRANSPARENT);
             }
             // draw divider
-            dc.setPenWidth(1);
+            dc.setPenWidth(2);
             dc.drawLine(xPos-24, (screen_height/2), xPos+24,(screen_height/2));
         } else {
             feelsLikeC = "--°C";
@@ -439,7 +439,7 @@ class UltraPlusView extends WatchUi.WatchFace {
         // insert the data
         dc.setColor(uiTertiaryColor,Graphics.COLOR_TRANSPARENT);
         dc.drawText(xPos, (centerX)+5, font, feelsLikeC, justification);
-        dc.drawText(xPos, (centerX)-31, font, feelsLikeF, justification);
+        dc.drawText(xPos, (centerX)-33, font, feelsLikeF, justification);
 
         dc.setColor(uiPrimaryColor,Graphics.COLOR_TRANSPARENT);
         switch (currentConditions.condition) {
