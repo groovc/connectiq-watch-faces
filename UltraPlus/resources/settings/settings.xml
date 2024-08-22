@@ -1,0 +1,75 @@
+<settings>
+
+    <setting propertyKey="@Properties.AccentColor" title="@Strings.AccentColorTitle">
+        <settingConfig type="list">
+            <listEntry value="0x000000">@Strings.Color0x000000</listEntry>
+            <listEntry value="0xFFFFFF">@Strings.Color0xFFFFFF</listEntry>
+            <listEntry value="0x0000FF">@Strings.Color0x0000FF</listEntry>
+            <listEntry value="0x005500">@Strings.Color0x005500</listEntry>
+            <listEntry value="0xFF0000">@Strings.Color0xFF0000</listEntry>
+            <listEntry value="0xFF5500">@Strings.Color0xFF5500</listEntry> 
+            <listEntry value="0x5500AA">@Strings.Color0x5500AA</listEntry>
+            <listEntry value="0xFFAAFF">@Strings.Color0xFFAAFF</listEntry> 
+            <listEntry value="0xFFFF00">@Strings.Color0xFFFF00</listEntry> 
+            <listEntry value="0xAAAAAA">@Strings.Color0xAAAAAA</listEntry> 
+            <listEntry value="0x555555">@Strings.Color0x555555</listEntry>
+
+            <listEntry value="0x000055">@Strings.Color0x000055</listEntry>
+            <listEntry value="0x0000AA">@Strings.Color0x0000AA</listEntry>
+            <listEntry value="0x005555">@Strings.Color0x005555</listEntry>
+            <listEntry value="0x0055AA">@Strings.Color0x0055AA</listEntry>
+            <listEntry value="0x0055FF">@Strings.Color0x0055FF</listEntry>
+            <listEntry value="0x55AAFF">@Strings.Color0x55AAFF</listEntry>
+            <listEntry value="0x55FFFF">@Strings.Color0x55FFFF</listEntry>
+            <listEntry value="0xAAFFFF">@Strings.Color0xAAFFFF</listEntry> 
+
+            <listEntry value="0x550000">@Strings.Color0x550000</listEntry>
+            <listEntry value="0xAA00FF">@Strings.Color0xAA00FF</listEntry>
+            <listEntry value="0x550055">@Strings.Color0x550055</listEntry>
+            <listEntry value="0x5555AA">@Strings.Color0x5555AA</listEntry>
+            <listEntry value="0x5555FF">@Strings.Color0x5555FF</listEntry>
+            <listEntry value="0x5500FF">@Strings.Color0x5500FF</listEntry>
+            <listEntry value="0xAA00AA">@Strings.Color0xAA00AA</listEntry>
+            <listEntry value="0xAA55AA">@Strings.Color0xAA55AA</listEntry>
+            <listEntry value="0xAA55FF">@Strings.Color0xAA55FF</listEntry>
+            <listEntry value="0xAAAAFF">@Strings.Color0xAAAAFF</listEntry>
+
+            <listEntry value="0x555500">@Strings.Color0x555500</listEntry>
+            <listEntry value="0x55AA00">@Strings.Color0x55AA00</listEntry>
+            <listEntry value="0x55AA55">@Strings.Color0x55AA55</listEntry> 
+            <listEntry value="0x55AAAA">@Strings.Color0x55AAAA</listEntry>  
+            <listEntry value="0x55FF00">@Strings.Color0x55FF00</listEntry> 
+            <listEntry value="0x55FF55">@Strings.Color0x55FF55</listEntry> 
+            <listEntry value="0x55FFAA">@Strings.Color0x55FFAA</listEntry> 
+            
+            <listEntry value="0xAA0000">@Strings.Color0xAA0000</listEntry> 
+            <listEntry value="0xAA0055">@Strings.Color0xAA0055</listEntry>
+            <listEntry value="0xFF5555">@Strings.Color0xFF5555</listEntry> 
+            <listEntry value="0xFF55AA">@Strings.Color0xFF55AA</listEntry> 
+            <listEntry value="0xFF55FF">@Strings.Color0xFF55FF</listEntry> 
+            <listEntry value="0xFFAA00">@Strings.Color0xFFAA00</listEntry> 
+            <listEntry value="0xFFAA55">@Strings.Color0xFFAA55</listEntry> 
+            <listEntry value="0xFFAAAA">@Strings.Color0xFFAAAA</listEntry>
+            <listEntry value="0xFF0055">@Strings.Color0xFF0055</listEntry> 
+            <listEntry value="0xFF00AA">@Strings.Color0xFF00AA</listEntry> 
+            <listEntry value="0xFF00FF">@Strings.Color0xFF00FF</listEntry> 
+            
+            <listEntry value="0xAA5500">@Strings.Color0xAA5500</listEntry> 
+            <listEntry value="0xAA5555">@Strings.Color0xAA5555</listEntry>
+            <listEntry value="0xAAAA00">@Strings.Color0xAAAA00</listEntry> 
+            <listEntry value="0xAAAA55">@Strings.Color0xAAAA55</listEntry>
+            <listEntry value="0xAAFF00">@Strings.Color0xAAFF00</listEntry> 
+            <listEntry value="0xAAFF55">@Strings.Color0xAAFF55</listEntry>
+            <listEntry value="0xAAFFAA">@Strings.Color0xAAFFAA</listEntry>
+            <listEntry value="0xFFFF55">@Strings.Color0xFFFF55</listEntry> 
+            <listEntry value="0xFFFFAA">@Strings.Color0xFFFFAA</listEntry>
+        </settingConfig>
+    </setting>
+
+    <setting propertyKey="@Properties.ThemeSelection" title="@Strings.ThemeTitle">
+        <settingConfig type="list">
+            <listEntry value="0">@Strings.ThemeDarkTitle</listEntry>
+            <listEntry value="1">@Strings.ThemeLightTitle</listEntry>
+        </settingConfig>
+    </setting>
+</settings>

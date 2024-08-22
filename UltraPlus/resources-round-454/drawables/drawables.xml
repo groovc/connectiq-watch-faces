@@ -1,0 +1,7 @@
+<drawables>
+    <bitmap id="LauncherIcon" filename="launcher_icon.png" />
+    <bitmap id="AODMask" filename="454x454-checkerboard.png" />
+	<bitmap id="AODMask2" filename="454x454-checkerboard2.png" />
+    <bitmap id="FaceBG" filename="UltraPlus-BG-454.png" />
+    <bitmap id="FaceBGW" filename="UltraPlus-BGW-454.png" />
+</drawables>

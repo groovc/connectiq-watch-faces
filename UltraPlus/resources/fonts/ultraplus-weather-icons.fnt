@@ -1,0 +1,37 @@
+info face="ultraplusweather" size=64 bold=0 italic=0 charset="" unicode=1 stretchH=100 smooth=1 aa=1 padding=0,0,0,0 spacing=1,1 outline=0
+common lineHeight=64 base=55 scaleW=256 scaleH=256 pages=1 packed=0 alphaChnl=1 redChnl=0 greenChnl=0 blueChnl=0
+page id=0 file="ultraplus-weather-icons_0.png"
+chars count=33
+char id=65   x=46    y=0     width=32    height=44    xoffset=13    yoffset=9     xadvance=59    page=0  chnl=15
+char id=66   x=0     y=167   width=34    height=30    xoffset=13    yoffset=18    xadvance=59    page=0  chnl=15
+char id=67   x=132   y=122   width=31    height=35    xoffset=14    yoffset=15    xadvance=59    page=0  chnl=15
+char id=68   x=123   y=0     width=43    height=41    xoffset=8     yoffset=19    xadvance=59    page=0  chnl=15
+char id=69   x=30    y=129   width=51    height=35    xoffset=4     yoffset=19    xadvance=59    page=0  chnl=15
+char id=70   x=0     y=129   width=29    height=37    xoffset=15    yoffset=16    xadvance=59    page=0  chnl=15
+char id=71   x=208   y=121   width=29    height=33    xoffset=15    yoffset=16    xadvance=59    page=0  chnl=15
+char id=97   x=176   y=42    width=43    height=40    xoffset=8     yoffset=19    xadvance=59    page=0  chnl=15
+char id=98   x=167   y=0     width=43    height=41    xoffset=8     yoffset=19    xadvance=59    page=0  chnl=15
+char id=99   x=211   y=0     width=43    height=41    xoffset=8     yoffset=19    xadvance=59    page=0  chnl=15
+char id=100  x=0     y=46    width=43    height=41    xoffset=8     yoffset=19    xadvance=59    page=0  chnl=15
+char id=101  x=44    y=46    width=43    height=41    xoffset=7     yoffset=19    xadvance=59    page=0  chnl=15
+char id=102  x=88    y=44    width=43    height=41    xoffset=8     yoffset=19    xadvance=59    page=0  chnl=15
+char id=103  x=164   y=122   width=43    height=34    xoffset=8     yoffset=19    xadvance=59    page=0  chnl=15
+char id=104  x=238   y=121   width=17    height=22    xoffset=21    yoffset=20    xadvance=59    page=0  chnl=15
+char id=105  x=132   y=42    width=43    height=41    xoffset=8     yoffset=19    xadvance=59    page=0  chnl=15
+char id=106  x=35    y=165   width=31    height=30    xoffset=14    yoffset=18    xadvance=59    page=0  chnl=15
+char id=107  x=0     y=88    width=43    height=40    xoffset=8     yoffset=19    xadvance=59    page=0  chnl=15
+char id=108  x=44    y=88    width=43    height=40    xoffset=8     yoffset=19    xadvance=59    page=0  chnl=15
+char id=109  x=220   y=42    width=31    height=38    xoffset=14    yoffset=12    xadvance=59    page=0  chnl=15
+char id=110  x=180   y=83    width=35    height=37    xoffset=12    yoffset=14    xadvance=59    page=0  chnl=15
+char id=111  x=216   y=83    width=35    height=37    xoffset=12    yoffset=14    xadvance=59    page=0  chnl=15
+char id=112  x=67    y=165   width=49    height=29    xoffset=5     yoffset=19    xadvance=59    page=0  chnl=15
+char id=113  x=0     y=198   width=49    height=26    xoffset=5     yoffset=22    xadvance=59    page=0  chnl=15
+char id=114  x=0     y=0     width=45    height=45    xoffset=7     yoffset=10    xadvance=59    page=0  chnl=15
+char id=115  x=88    y=86    width=43    height=38    xoffset=8     yoffset=15    xadvance=59    page=0  chnl=15
+char id=116  x=50    y=196   width=43    height=15    xoffset=8     yoffset=27    xadvance=59    page=0  chnl=15
+char id=117  x=117   y=165   width=45    height=29    xoffset=7     yoffset=19    xadvance=59    page=0  chnl=15
+char id=118  x=132   y=84    width=47    height=37    xoffset=6     yoffset=19    xadvance=59    page=0  chnl=15
+char id=119  x=82    y=129   width=49    height=35    xoffset=5     yoffset=19    xadvance=59    page=0  chnl=15
+char id=120  x=163   y=158   width=43    height=29    xoffset=8     yoffset=19    xadvance=59    page=0  chnl=15
+char id=121  x=79    y=0     width=43    height=43    xoffset=8     yoffset=12    xadvance=59    page=0  chnl=15
+char id=122  x=207   y=157   width=31    height=21    xoffset=14    yoffset=24    xadvance=59    page=0  chnl=15

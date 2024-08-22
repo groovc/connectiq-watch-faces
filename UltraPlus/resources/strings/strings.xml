@@ -1,0 +1,70 @@
+<strings>
+    <string id="AppName">Ultra Plus</string>
+    <string id="AccentColorTitle">Accent Color</string>
+    <string id="ThemeTitle">Theme</string>
+    <string id="ThemeDarkTitle">Dark</string>
+    <string id="ThemeLightTitle">Light</string>
+
+    <string id="Color0x000000">Black</string>
+    <string id="Color0xFFFFFF">White</string>
+    <string id="Color0x0000FF">Blue</string>
+    <string id="Color0x005500">Green</string>
+    <string id="Color0xFF0000">Red</string>
+    <string id="Color0xFF5500">Orange</string>
+    <string id="Color0x5500AA">Purple</string>
+    <string id="Color0xFFAAFF">Pink</string>
+    <string id="Color0xFFFF00">Yellow</string>
+    <string id="Color0xAAAAAA">Gray</string>
+    <string id="Color0x555555">Dark Gray</string>
+
+    <string id="Color0x000055">Very Dark Blue</string>
+    <string id="Color0x0000AA">Dark Blue</string>
+    <string id="Color0x005555">Dark Teal</string>
+    <string id="Color0x0055AA">Medium Blue</string>
+    <string id="Color0x0055FF">Bright Blue</string>
+    <string id="Color0x55AAFF">Light Blue</string>
+    <string id="Color0x55FFFF">Aquamarine Blue</string>
+    <string id="Color0xAAFFFF">Pale Blue</string>
+
+    <string id="Color0x550000">Crimson</string>
+    <string id="Color0xAA00FF">Violet</string>
+    <string id="Color0x550055">Dark Purple</string>
+    <string id="Color0x5555AA">Dark Purple Blue</string>
+    <string id="Color0x5555FF">Purple Blue</string>
+    <string id="Color0x5500FF">Light Violet</string>
+    <string id="Color0xAA00AA">Dark Violet</string>
+    <string id="Color0xAA55AA">Pale Purple</string>
+    <string id="Color0xAA55FF">Light Purple</string>
+    <string id="Color0xAAAAFF">Pale Purple</string>
+
+    <string id="Color0x555500">Dark Olive</string>  
+    <string id="Color0x55AA00">Limeade</string>
+    <string id="Color0x55AA55">Pale Green</string>
+    <string id="Color0x55AAAA">Teal</string>
+    <string id="Color0x55FF00">Bright Green</string>
+    <string id="Color0x55FF55">Pale Green</string>
+    <string id="Color0x55FFAA">Aquamarine Green</string>
+    
+    <string id="Color0xAA0000">Dark Red</string>
+    <string id="Color0xAA0055">Red Pink</string>
+    <string id="Color0xFF5555">Pink Orange</string>
+    <string id="Color0xFF55AA">Hot Pink</string>
+    <string id="Color0xFF55FF">Pale Pink</string>
+    <string id="Color0xFFAA00">Light Orange</string>
+    <string id="Color0xFFAA55">Pale Orange</string>
+    <string id="Color0xFFAAAA">Salmon</string>
+    <string id="Color0xFF0055">Light Red</string>
+    <string id="Color0xFF00AA">Pink</string>
+    <string id="Color0xFF00FF">Magenta</string>
+    
+    <string id="Color0xAA5500">Brown</string>
+    <string id="Color0xAA5555">Pale Brown</string>
+    <string id="Color0xAAAA00">Burnt Yellow</string>
+    <string id="Color0xAAAA55">Olive Green</string>
+    <string id="Color0xAAFF00">Lime</string>
+    <string id="Color0xAAFF55">Green Yellow</string>
+    <string id="Color0xAAFFAA">Mint Green</string>
+    <string id="Color0xFFFF55">Light Yellow</string>
+    <string id="Color0xFFFFAA">Pale Yellow</string>
+    
+</strings>
