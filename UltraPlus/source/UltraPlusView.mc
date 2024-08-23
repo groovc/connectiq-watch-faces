@@ -83,13 +83,14 @@ class UltraPlusView extends WatchUi.WatchFace {
                 uiTertiaryColor = Graphics.COLOR_WHITE;  
             break;
             case 1:
-                faceBG = WatchUi.loadResource(Rez.Drawables.FaceBGW);
+                if (inLowPower && canBurnIn) {
+                    faceBG = WatchUi.loadResource(Rez.Drawables.FaceBG);
+                } else {
+                    faceBG = WatchUi.loadResource(Rez.Drawables.FaceBGW);
+                }
                 uiPrimaryColor = Graphics.COLOR_BLACK; 
                 uiSecondaryColor = Graphics.COLOR_WHITE;
                 uiTertiaryColor = Graphics.COLOR_WHITE;
-
-                // dc.setColor(Graphics.COLOR_WHITE,Graphics.COLOR_TRANSPARENT);
-                // dc.fillRectangle(0, 0, dc.getWidth(), dc.getHeight());
             break;
             default:
             break;
@@ -104,28 +105,12 @@ class UltraPlusView extends WatchUi.WatchFace {
 
         if (inLowPower && canBurnIn) {
             // do AOD display (<10% 3 minutes max)
-			// System.println("InLowPower: "+inLowPower);
-			// System.println("CanBurnIn: "+canBurnIn);
+			View.onUpdate(dc);
 
             // Draw the hash marks
             drawHashMarks(dc);
-            // Draw heart rate
-            // drawHeartRate(dc);
-            // Draw Weather
-            // drawWeather(dc);
-            // Draw Days of the Week
-            // drawDayOfWeek(dc);
-            // Draw bluetooth line if connected
-		    drawBluetooth(dc);
-
-            // Draw Body Battery Arc
-            // drawBodyBatteryArc(dc);
-            // Draw Battery Arc
-            // drawBatteryArc(dc);
-            // Draw Steps Arc
-            // drawStepsArc(dc);
-            // Draw Data Arc
-            //drawDataArc(dc);
+            // Draw the background bitmap
+            dc.drawBitmap(0, 0, faceBG);
 
             // Draw the hour. Convert it to minutes and compute the angle.
             hourHand = (((clockTime.hour % 12) * 60) + clockTime.min);
@@ -143,22 +128,15 @@ class UltraPlusView extends WatchUi.WatchFace {
             dc.fillCircle(screen_width / 2, screen_height / 2, 9);
             dc.setColor(Graphics.COLOR_BLACK, Graphics.COLOR_TRANSPARENT);
             dc.fillCircle(screen_width / 2, screen_height / 2, 8);
-            // Inner arbor
-            dc.setColor(Graphics.COLOR_BLACK, Graphics.COLOR_TRANSPARENT);
-            dc.fillCircle(screen_width / 2, screen_height / 2, 2);
-            dc.setColor(Graphics.COLOR_WHITE,Graphics.COLOR_TRANSPARENT);
-            dc.drawCircle(screen_width / 2, screen_height / 2, 1);
 
             // draw the mask at the new offset
             dc.drawBitmap(maskRandomizer, 0, aodMask);
         } else {
-            // draw the full experience
-
+            // Draw the full experience
             // Call the parent onUpdate function to redraw the layout
             View.onUpdate(dc);
-
+            // Draw the background bitmap
             dc.drawBitmap(0, 0, faceBG);
-
             // Draw the hash marks
             drawHashMarks(dc);
             // Draw heart rate
@@ -169,7 +147,6 @@ class UltraPlusView extends WatchUi.WatchFace {
             drawDayOfWeek(dc);
             // Draw bluetooth line if connected
 		    drawBluetooth(dc);
-
             // Draw Body Battery Arc
             drawBodyBatteryArc(dc);
             // Draw Battery Arc
@@ -207,7 +184,6 @@ class UltraPlusView extends WatchUi.WatchFace {
             dc.setColor(accentColor,Graphics.COLOR_TRANSPARENT);
             dc.drawCircle(screen_width / 2, screen_height / 2, 1);
         }        
-
         // for debugging layout
         // drawReferenceLines(dc);
     }
@@ -687,7 +663,6 @@ class UltraPlusView extends WatchUi.WatchFace {
         var coords;
         var radius = centerY * 0.63;
         var dotSize = 15;
-        // var arcWidth = 10;
 
         // draw centered circle
         dc.setPenWidth(3);
@@ -701,10 +676,6 @@ class UltraPlusView extends WatchUi.WatchFace {
         // Draw the date
         dc.setColor(uiTertiaryColor, Graphics.COLOR_TRANSPARENT);
         dc.drawText(centerX, yPos+2, font, dateString, justification);
-
-        // Debug: Draw Arc to Align Days
-        // dc.setColor(Graphics.COLOR_GREEN, Graphics.COLOR_TRANSPARENT);
-        // dc.drawArc(width/2, height/2, (height/2.35) - (60/2.35), Graphics.ARC_CLOCKWISE, 0, 360);
         
         // Draw the days of the week       
         dc.setColor(uiPrimaryColor, Graphics.COLOR_TRANSPARENT);
@@ -797,8 +768,13 @@ class UltraPlusView extends WatchUi.WatchFace {
 
         // Transform the coordinates
         for (var i = 0; i < coords.size(); i += 1) {
-            var x = (coords[i][0] * cos) - (coords[i][1] * sin);
-            var y = (coords[i][0] * sin) + (coords[i][1] * cos);
+            var a = coords[i][0];
+            var b = coords[i][1];
+
+            var x = (a * cos) - (b * sin);
+            var y = (a * sin) + (b * cos);
+            //var x = (coords[i][0] * cos) - (coords[i][1] * sin);
+            //var y = (coords[i][0] * sin) + (coords[i][1] * cos);
             result[i] = [centerX + x, centerY + y];
         }
         
