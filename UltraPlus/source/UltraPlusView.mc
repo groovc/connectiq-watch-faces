@@ -21,12 +21,19 @@ class UltraPlusView extends WatchUi.WatchFace {
         uiPrimaryColor,
         uiSecondaryColor,
         uiTertiaryColor,
+        fontFace,
+        arcLabelFontSize,
+        dayOfWeekFontSize,
+        circleFontSize,
+        dataFontSize,
+        displayUTC,
 		inLowPower = false,
 		canBurnIn = false;	
 
     function initialize() {
         WatchFace.initialize();
         screenShape = System.getDeviceSettings().screenShape;
+        var screenSize = System.getDeviceSettings().screenWidth;
 
         // Check if device requires burn in protection and set flag
 		if (System.getDeviceSettings() has :requiresBurnInProtection) {
@@ -37,6 +44,34 @@ class UltraPlusView extends WatchUi.WatchFace {
 				maskRandomizer = 0; // init mask position
 			}        	
         }
+
+        // Set The Font and Default Styles
+        fontFace = "RobotoCondensedBold";
+        // Change font for Venu 3
+        if (Graphics.getVectorFont({:face=>["RobotoCondensedBold"], :size=>30}) == null) {
+            fontFace = "RobotoRegular";   
+        }
+
+        // Set Font Sizes
+        arcLabelFontSize = 16;
+        dayOfWeekFontSize = 28;
+        circleFontSize = 30;
+        dataFontSize = 36;
+
+        // Change Font Size based on Screen Size
+        if (screenSize == 390) {
+            arcLabelFontSize = arcLabelFontSize*0.875;
+            dayOfWeekFontSize = dayOfWeekFontSize*0.875;
+            circleFontSize = circleFontSize*0.875;
+            dataFontSize = dataFontSize*0.875;
+        }
+
+        if (screenSize == 454) {
+            arcLabelFontSize = arcLabelFontSize*1.125;
+            dayOfWeekFontSize = dayOfWeekFontSize*1.125;
+            circleFontSize = circleFontSize*1.125;
+            dataFontSize = dataFontSize*1.125;
+        }
     }
 
     // Load your resources here
@@ -44,7 +79,11 @@ class UltraPlusView extends WatchUi.WatchFace {
         // get screen dimensions
 		screen_width = dc.getWidth();
 		screen_height = dc.getHeight();
-        System.println("Screen dimension: "+screen_width+"x"+screen_height);
+        // System.println("Screen dimension: "+screen_width+"x"+screen_height);
+
+        
+
+        // Set Font Size based on screen size
 
         // get custom font icons
         customIcons = WatchUi.loadResource(Rez.Fonts.customIcons);
@@ -70,19 +109,13 @@ class UltraPlusView extends WatchUi.WatchFace {
         accentColor = Application.getApp().getProperty("AccentColor");
         // determine which layout to draw and initialize UI colors
         themeSelection = Application.getApp().getProperty("ThemeSelection");
+        displayUTC = Application.getApp().getProperty("DisplayUTCTime");
 
         // Render background based on theme preference
         switch (themeSelection) { 
             case true:
-
             break;
             case 0:
-                faceBG = WatchUi.loadResource(Rez.Drawables.FaceBG);
-                uiPrimaryColor = Graphics.COLOR_WHITE;      
-                uiSecondaryColor = Graphics.COLOR_BLACK;
-                uiTertiaryColor = Graphics.COLOR_WHITE;  
-            break;
-            case 1:
                 if (inLowPower && canBurnIn) {
                     faceBG = WatchUi.loadResource(Rez.Drawables.FaceBG);
                 } else {
@@ -91,6 +124,12 @@ class UltraPlusView extends WatchUi.WatchFace {
                 uiPrimaryColor = Graphics.COLOR_BLACK; 
                 uiSecondaryColor = Graphics.COLOR_WHITE;
                 uiTertiaryColor = Graphics.COLOR_WHITE;
+            break;
+            case 1:
+                faceBG = WatchUi.loadResource(Rez.Drawables.FaceBG);
+                uiPrimaryColor = Graphics.COLOR_WHITE;      
+                uiSecondaryColor = Graphics.COLOR_BLACK;
+                uiTertiaryColor = Graphics.COLOR_WHITE;  
             break;
             default:
             break;
@@ -155,7 +194,7 @@ class UltraPlusView extends WatchUi.WatchFace {
             drawStepsArc(dc);
             // Draw Data Arc
             drawDataArc(dc);
-
+            
             // Draw the hour. Convert it to minutes and compute the angle.
             hourHand = (((clockTime.hour % 12) * 60) + clockTime.min);
             hourHand = hourHand / (12 * 60.0);
@@ -215,12 +254,12 @@ class UltraPlusView extends WatchUi.WatchFace {
     private function drawBodyBatteryArc(dc) {
         var width = dc.getWidth();
         var height = dc.getHeight();
-        var font = Graphics.getVectorFont({:face=>["RobotoCondensedBold"], :size=>16});
+        var font = Graphics.getVectorFont({:face=>[fontFace], :size=>arcLabelFontSize});
         var arcLength = 60;
         var arcWidth = 10;
         var arcDataAngle = 103;
         var arcLabelAngle = 177;
-        var arcLabel = "BODY";
+        var arcLabel = WatchUi.loadResource(Rez.Strings.BodyArcTitle);
         var justification = Graphics.TEXT_JUSTIFY_LEFT;
         var arcDataString = getBodyBatteryString(); 
         var arcData = getBodyBattery();
@@ -246,12 +285,12 @@ class UltraPlusView extends WatchUi.WatchFace {
     private function drawBatteryArc(dc) {
         var width= dc.getWidth();
         var height = dc.getHeight();
-        var font = Graphics.getVectorFont({:face=>["RobotoCondensedBold"], :size=>16});
+        var font = Graphics.getVectorFont({:face=>[fontFace], :size=>arcLabelFontSize});
         var arcLength = 60;
         var arcWidth = 10;
         var arcDataAngle = 13;
         var arcLabelAngle = 87;
-        var arcLabel = "BATT";
+        var arcLabel = WatchUi.loadResource(Rez.Strings.BatteryArcTitle);
         var justification = Graphics.TEXT_JUSTIFY_LEFT;
         var arcDataString = getBattery().toNumber().toString()+"%"; 
         var arcData = getBattery();
@@ -277,12 +316,12 @@ class UltraPlusView extends WatchUi.WatchFace {
     private function drawStepsArc(dc) {
         var width = dc.getWidth();
         var height = dc.getHeight();
-        var font = Graphics.getVectorFont({:face=>["RobotoCondensedBold"], :size=>16});
+        var font = Graphics.getVectorFont({:face=>[fontFace], :size=>arcLabelFontSize});
         var arcLength = 60;
         var arcWidth = 10;
         var arcDataAngle = 256;
         var arcLabelAngle = 184;
-        var arcLabel = "STEP";
+        var arcLabel = WatchUi.loadResource(Rez.Strings.StepArcTitle);
         var ratio = arcLength*getStepsRatioThresholded();
         var justification = Graphics.TEXT_JUSTIFY_LEFT;
         var arcDataString = Math.round(getStepsRatioThresholded()*100).format("%.2i")+"%";
@@ -312,7 +351,7 @@ class UltraPlusView extends WatchUi.WatchFace {
     private function drawDataArc(dc) {
         var width = dc.getWidth();
 		var height = dc.getHeight();
-        var font = Graphics.getVectorFont({:face=>["RobotoCondensedBold"], :size=>36});
+        var font = Graphics.getVectorFont({:face=>[fontFace], :size=>dataFontSize});
         var arcWidth = 10;
         var arcDataAngle = 315;
         var justification = Graphics.TEXT_JUSTIFY_CENTER;
@@ -324,7 +363,11 @@ class UltraPlusView extends WatchUi.WatchFace {
         var utcTimeString = Lang.format("$1$:$2$", [utcInfo.hour, utcInfo.min.format("%02d")]);
         var localInfo = Gregorian.info(now, Time.FORMAT_SHORT);
         var localTimeString = Lang.format("$1$:$2$", [localInfo.hour, localInfo.min.format("%02d")]);
-        arcDataString = utcTimeString+" UTC" +" / "+localTimeString;
+        if (displayUTC == 0) {
+            arcDataString = utcTimeString+" UTC" +" / "+localTimeString;        
+        } else {
+            arcDataString = localTimeString;
+        }
 
         // Draw Radial Time
         dc.setColor(uiPrimaryColor,Graphics.COLOR_TRANSPARENT);
@@ -345,51 +388,51 @@ class UltraPlusView extends WatchUi.WatchFace {
     // Draw the current heart rate circle
     // @param dc Device context
     private function drawHeartRate(dc) {
-        var font = Graphics.getVectorFont({:face=>["RobotoCondensedBold"], :size=>30});
+        var font = Graphics.getVectorFont({:face=>[fontFace], :size=>circleFontSize});
         var dataString;
         var justification = Graphics.TEXT_JUSTIFY_CENTER;
-        var xPos = (screen_width/2)-(screen_width/4)+12;
+        var xPos = (screen_width/2)-(screen_width/4)+screen_width*0.0288;
 
         // draw left circle
-        
         dc.setPenWidth(3);
         dc.setColor(Graphics.COLOR_DK_GRAY, Graphics.COLOR_TRANSPARENT);
-        dc.fillCircle(xPos, screen_height/2, 51);
+        dc.fillCircle(xPos, screen_height/2, screen_width*0.1225);
         dc.setColor(Graphics.COLOR_BLACK,Graphics.COLOR_DK_GRAY);
-        dc.fillCircle(xPos, screen_height/2, 50); // 
+        dc.fillCircle(xPos, screen_height/2, screen_width*0.1201); 
         // draw heart
         dc.setColor(Graphics.COLOR_DK_RED, Graphics.COLOR_TRANSPARENT);
-        dc.drawText(xPos, (screen_height/2)-34, customIcons, "m", justification);
+        dc.drawText(xPos, (screen_height/2)-(screen_height*0.0817), customIcons, "m", justification);
         
         // insert current HR data
         dc.setColor(uiTertiaryColor,Graphics.COLOR_TRANSPARENT);
+
         if (getHeartRateString() != "") {
             dataString = getHeartRateString();
         } else {
             dataString = "--";
         }
-        dc.drawText((screen_width/2)-(screen_width/4)+10, (screen_height/2)+3, font, dataString, justification);
+        dc.drawText((screen_width/2)-(screen_width/4)+screen_height*0.024, (screen_height/2)+screen_height*0.0072, font, dataString, justification);
     }
 
     // Draw the current "feels like" temperature circle in both C and F
     // @param dc Device context
     private function drawWeather(dc) {
-        var font = Graphics.getVectorFont({:face=>["RobotoCondensedBold"], :size=>30});
+        var font = Graphics.getVectorFont({:face=>[fontFace], :size=>circleFontSize});
         var currentConditions = Weather.getCurrentConditions();
         var feelsLikeTemp;
         var feelsLikeC;
         var feelsLikeF;
         var justification = Graphics.TEXT_JUSTIFY_CENTER;
         var centerX = screen_width/2;
-        var xPos = (centerX)+(screen_width/4)-12;
-        var yPosCondition = (screen_height/4)-10;
+        var xPos = (centerX)+(screen_width/4)-screen_width*0.0288;
+        var yPosCondition = (screen_height/4)-screen_height*0.024;
 
         // draw right circle
         dc.setPenWidth(3);
         dc.setColor(Graphics.COLOR_DK_GRAY, Graphics.COLOR_TRANSPARENT);
-        dc.fillCircle(xPos, centerX, 51);
+        dc.fillCircle(xPos, centerX, screen_width*0.1225);
         dc.setColor(Graphics.COLOR_BLACK, Graphics.COLOR_DK_GRAY);
-        dc.fillCircle(xPos, centerX, 50);
+        dc.fillCircle(xPos, centerX, screen_width*0.1201);
 
         // Check to see if weather exists otherwise display null temps
         if (currentConditions != null) {
@@ -406,7 +449,7 @@ class UltraPlusView extends WatchUi.WatchFace {
             }
             // draw divider
             dc.setPenWidth(2);
-            dc.drawLine(xPos-24, (screen_height/2), xPos+24,(screen_height/2));
+            dc.drawLine(xPos-(screen_width*0.0576), (screen_height/2), xPos+(screen_width*0.0576),(screen_height/2));
         } else {
             feelsLikeC = "--°C";
             feelsLikeF = "--°F";
@@ -414,8 +457,8 @@ class UltraPlusView extends WatchUi.WatchFace {
         
         // insert the data
         dc.setColor(uiTertiaryColor,Graphics.COLOR_TRANSPARENT);
-        dc.drawText(xPos, (centerX)+5, font, feelsLikeC, justification);
-        dc.drawText(xPos, (centerX)-33, font, feelsLikeF, justification);
+        dc.drawText(xPos, (centerX)+screen_height*0.012, font, feelsLikeC, justification);
+        dc.drawText(xPos, (centerX)-screen_height*0.079, font, feelsLikeF, justification);
 
         dc.setColor(uiPrimaryColor,Graphics.COLOR_TRANSPARENT);
         switch (currentConditions.condition) {
@@ -657,42 +700,43 @@ class UltraPlusView extends WatchUi.WatchFace {
         ).toUpper();
         var centerX = dc.getWidth() / 2;
         var centerY = dc.getHeight() / 2;
-        var font = Graphics.getVectorFont({:face=>["RobotoCondensedBold"], :size=>28});
+        var font = Graphics.getVectorFont({:face=>[fontFace], :size=>dayOfWeekFontSize});
         var justification = Graphics.TEXT_JUSTIFY_CENTER;
         var yPos = (screen_height)-(screen_height/3.5);
         var coords;
         var radius = centerY * 0.63;
-        var dotSize = 15;
+        var radiusOffset = radius + screen_height*0.021634;
+        var dotSize = screen_height*0.03605769;
 
         // draw centered circle
         dc.setPenWidth(3);
         dc.setColor(Graphics.COLOR_DK_GRAY, Graphics.COLOR_TRANSPARENT);
-        dc.fillCircle(centerX, yPos, 51);
+        dc.fillCircle(centerX, yPos, screen_width*0.1225);
         dc.setColor(Graphics.COLOR_BLACK, Graphics.COLOR_DK_GRAY);
-        dc.fillCircle(centerX, yPos, 50);
+        dc.fillCircle(centerX, yPos, screen_width*0.1201);
         // draw calendar
         dc.setColor(Graphics.COLOR_LT_GRAY, Graphics.COLOR_TRANSPARENT);
-        dc.drawText(centerX, yPos-37, customIcons, "W", justification);
+        dc.drawText(centerX, yPos-screen_height*0.0889, customIcons, "W", justification);
         // Draw the date
         dc.setColor(uiTertiaryColor, Graphics.COLOR_TRANSPARENT);
-        dc.drawText(centerX, yPos+2, font, dateString, justification);
+        dc.drawText(centerX, yPos+screen_height*0.0048, font, dateString, justification);
         
         // Draw the days of the week       
         dc.setColor(uiPrimaryColor, Graphics.COLOR_TRANSPARENT);
         coords = getCoordinates(210,radius);
-        dc.drawAngledText(centerX+coords[0],centerY+coords[1], font, "S", justification, 60); 
+        dc.drawAngledText(centerX+coords[0],centerY+coords[1], font, WatchUi.loadResource(Rez.Strings.Sunday), justification, 60); 
         coords = getCoordinates(230,radius);
-        dc.drawAngledText(centerX+coords[0],centerY+coords[1], font, "M", justification, 40);
+        dc.drawAngledText(centerX+coords[0],centerY+coords[1], font, WatchUi.loadResource(Rez.Strings.Monday), justification, 40);
         coords = getCoordinates(250,radius);
-        dc.drawAngledText(centerX+coords[0],centerY+coords[1], font, "T", justification, 20);
+        dc.drawAngledText(centerX+coords[0],centerY+coords[1], font, WatchUi.loadResource(Rez.Strings.Tuesday), justification, 20);
         coords = getCoordinates(270,radius);
-        dc.drawAngledText(centerX+coords[0],centerY+coords[1], font, "W", justification, 0);
+        dc.drawAngledText(centerX+coords[0],centerY+coords[1], font, WatchUi.loadResource(Rez.Strings.Wednesday), justification, 0);
         coords = getCoordinates(290,radius);
-        dc.drawAngledText(centerX+coords[0],centerY+coords[1], font, "T", justification, -20);
+        dc.drawAngledText(centerX+coords[0],centerY+coords[1], font, WatchUi.loadResource(Rez.Strings.Thursday), justification, -20);
         coords = getCoordinates(310,radius);
-        dc.drawAngledText(centerX+coords[0],centerY+coords[1], font, "F", justification, -40);
+        dc.drawAngledText(centerX+coords[0],centerY+coords[1], font, WatchUi.loadResource(Rez.Strings.Friday), justification, -40);
         coords = getCoordinates(330,radius);
-        dc.drawAngledText(centerX+coords[0],centerY+coords[1], font, "S", justification, -60);
+        dc.drawAngledText(centerX+coords[0],centerY+coords[1], font, WatchUi.loadResource(Rez.Strings.Saturday), justification, -60);
         
         // Highlight the actual day
         dc.setColor(accentColor, Graphics.COLOR_TRANSPARENT);
@@ -701,53 +745,53 @@ class UltraPlusView extends WatchUi.WatchFace {
                 
             break;
             case 1:
-                coords = getCoordinates(210,radius+9);
+                coords = getCoordinates(210,radiusOffset);
                 dc.fillCircle(centerX+coords[0],centerY+coords[1], dotSize);
                 coords = getCoordinates(210,radius);
                 dc.setColor(uiSecondaryColor, Graphics.COLOR_TRANSPARENT);
-                dc.drawAngledText(centerX+coords[0],centerY+coords[1], font, "S", justification, 60);
+                dc.drawAngledText(centerX+coords[0],centerY+coords[1], font, WatchUi.loadResource(Rez.Strings.Sunday), justification, 60);
             break;
             case 2:
-                coords = getCoordinates(230,radius+9);
+                coords = getCoordinates(230,radiusOffset);
                 dc.fillCircle(centerX+coords[0],centerY+coords[1], dotSize);
                 coords = getCoordinates(230,radius);
                 dc.setColor(uiSecondaryColor, Graphics.COLOR_TRANSPARENT);
-                dc.drawAngledText(centerX+coords[0],centerY+coords[1], font, "M", justification, 40);
+                dc.drawAngledText(centerX+coords[0],centerY+coords[1], font, WatchUi.loadResource(Rez.Strings.Monday), justification, 40);
             break;
             case 3:
-                coords = getCoordinates(250,radius+9);
+                coords = getCoordinates(250,radiusOffset);
                 dc.fillCircle(centerX+coords[0],centerY+coords[1], dotSize);
                 coords = getCoordinates(250,radius);
                 dc.setColor(uiSecondaryColor, Graphics.COLOR_TRANSPARENT);
-                dc.drawAngledText(centerX+coords[0],centerY+coords[1], font, "T", justification, 20);
+                dc.drawAngledText(centerX+coords[0],centerY+coords[1], font, WatchUi.loadResource(Rez.Strings.Tuesday), justification, 20);
             break;
             case 4:
-                coords = getCoordinates(270,radius+9);
+                coords = getCoordinates(270,radiusOffset);
                 dc.fillCircle(centerX+coords[0],centerY+coords[1], dotSize);
                 coords = getCoordinates(270,radius);
                 dc.setColor(uiSecondaryColor, Graphics.COLOR_TRANSPARENT);
-                dc.drawAngledText(centerX+coords[0],centerY+coords[1], font, "W", justification, 0);
+                dc.drawAngledText(centerX+coords[0],centerY+coords[1], font, WatchUi.loadResource(Rez.Strings.Wednesday), justification, 0);
             break;
             case 5:
-                coords = getCoordinates(290,radius+9);
+                coords = getCoordinates(290,radiusOffset);
                 dc.fillCircle(centerX+coords[0],centerY+coords[1], dotSize);
                 coords = getCoordinates(290,radius);
                 dc.setColor(uiSecondaryColor, Graphics.COLOR_TRANSPARENT);
-                dc.drawAngledText(centerX+coords[0],centerY+coords[1], font, "T", justification, -20);
+                dc.drawAngledText(centerX+coords[0],centerY+coords[1], font, WatchUi.loadResource(Rez.Strings.Thursday), justification, -20);
             break;
             case 6:
-                coords = getCoordinates(310,radius+9);
+                coords = getCoordinates(310,radiusOffset);
                 dc.fillCircle(centerX+coords[0],centerY+coords[1], dotSize);
                 coords = getCoordinates(310,radius);
                 dc.setColor(uiSecondaryColor, Graphics.COLOR_TRANSPARENT);
-                dc.drawAngledText(centerX+coords[0],centerY+coords[1], font, "F", justification, -40);
+                dc.drawAngledText(centerX+coords[0],centerY+coords[1], font, WatchUi.loadResource(Rez.Strings.Friday), justification, -40);
             break;
             case 7:
-                coords = getCoordinates(330,radius+9);
+                coords = getCoordinates(330,radiusOffset);
                 dc.fillCircle(centerX+coords[0],centerY+coords[1], dotSize);
                 coords = getCoordinates(330,radius);
                 dc.setColor(uiSecondaryColor, Graphics.COLOR_TRANSPARENT);
-                dc.drawAngledText(centerX+coords[0],centerY+coords[1], font, "S", justification, -60);
+                dc.drawAngledText(centerX+coords[0],centerY+coords[1], font, WatchUi.loadResource(Rez.Strings.Saturday), justification, -60);
             break;
             default:
             // if all else fails
@@ -846,13 +890,13 @@ class UltraPlusView extends WatchUi.WatchFace {
 
     private function drawBluetooth(dc) {
 		// only draw if device is connected
-		dc.setColor(Graphics.COLOR_ORANGE, Graphics.COLOR_TRANSPARENT);
+		dc.setColor(accentColor, Graphics.COLOR_TRANSPARENT);
 		if(System.getDeviceSettings().phoneConnected) {
 			// Symbol parameters
-			var symbolHeight = 16;
+			var symbolHeight = screen_height*0.03846;
             var centerX = (screen_width / 2);
 			var centerY = screen_height - symbolHeight*2; 
-			var xoffset = 5;
+			var xoffset = screen_width*0.012019;
 			dc.setPenWidth(1.8);
 			// Draw the symbol
 			dc.drawLine(centerX, centerY - (symbolHeight/2),centerX,centerY+(symbolHeight/2));

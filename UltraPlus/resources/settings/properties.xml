@@ -1,4 +1,5 @@
 <properties>
     <property id="AccentColor" type="number">0xFF5500</property>
-    <property id="ThemeSelection" type="number">1</property>
+    <property id="ThemeSelection" type="number">0</property>
+    <property id="DisplayUTCTime" type="number">0</property>
 </properties>

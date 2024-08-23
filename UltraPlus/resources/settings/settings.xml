@@ -68,8 +68,15 @@
 
     <setting propertyKey="@Properties.ThemeSelection" title="@Strings.ThemeTitle">
         <settingConfig type="list">
-            <listEntry value="0">@Strings.ThemeDarkTitle</listEntry>
-            <listEntry value="1">@Strings.ThemeLightTitle</listEntry>
+            <listEntry value="0">@Strings.ThemeLightTitle</listEntry>
+            <listEntry value="1">@Strings.ThemeDarkTitle</listEntry>
+        </settingConfig>
+    </setting>
+
+    <setting propertyKey="@Properties.DisplayUTCTime" title="@Strings.DisplayUTCTimeTitle">
+        <settingConfig type="list">
+            <listEntry value="0">@Strings.DisplayUTCTimeYesTitle</listEntry>
+            <listEntry value="1">@Strings.DisplayUTCTimeNoTitle</listEntry>
         </settingConfig>
     </setting>
 </settings>

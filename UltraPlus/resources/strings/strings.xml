@@ -4,6 +4,13 @@
     <string id="ThemeTitle">Theme</string>
     <string id="ThemeDarkTitle">Dark</string>
     <string id="ThemeLightTitle">Light</string>
+    <string id="DisplayUTCTimeTitle">Display UTC Time</string>
+    <string id="DisplayUTCTimeYesTitle">Yes</string>
+    <string id="DisplayUTCTimeNoTitle">No</string>
+    <string id="DayOfWeekLanguageTitle">Language (Day of the Week)</string>
+    <string id="BatteryArcTitle">BATT</string>
+    <string id="BodyArcTitle">BODY</string>
+    <string id="StepArcTitle">STEP</string>
 
     <string id="Color0x000000">Black</string>
     <string id="Color0xFFFFFF">White</string>
@@ -67,4 +74,15 @@
     <string id="Color0xFFFF55">Light Yellow</string>
     <string id="Color0xFFFFAA">Pale Yellow</string>
     
+    <string id="Sunday">S</string>
+    <string id="Monday">M</string>
+    <string id="Tuesday">T</string>
+    <string id="Wednesday">W</string>
+    <string id="Thursday">T</string>
+    <string id="Friday">F</string>
+    <string id="Saturday">S</string>
+
+    <string id="DayOfWeekLanguageTitle">Language (Day of the Week)</string>
+    <string id="DOWLanguageENG">English</string>
+    <string id="DOWLanguageJPN">Japanese</string>
 </strings>

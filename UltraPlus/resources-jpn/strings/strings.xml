@@ -1,0 +1,9 @@
+<strings>
+    <string id="Sunday">日</string>
+    <string id="Monday">月</string>
+    <string id="Tuesday">火</string>
+    <string id="Wednesday">水</string>
+    <string id="Thursday">木</string>
+    <string id="Friday">金</string>
+    <string id="Saturday">土</string>
+</strings>
