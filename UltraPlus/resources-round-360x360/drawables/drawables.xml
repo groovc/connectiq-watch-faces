@@ -1,0 +1,4 @@
+<drawables>
+    <bitmap id="FaceBG" filename="UltraPlus-BG-360.png" />
+    <bitmap id="FaceBGW" filename="UltraPlus-BGW-360.png" />
+</drawables>

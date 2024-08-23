@@ -59,18 +59,35 @@ class UltraPlusView extends WatchUi.WatchFace {
         dataFontSize = 36;
 
         // Change Font Size based on Screen Size
-        if (screenSize == 390) {
-            arcLabelFontSize = arcLabelFontSize*0.875;
-            dayOfWeekFontSize = dayOfWeekFontSize*0.875;
-            circleFontSize = circleFontSize*0.875;
-            dataFontSize = dataFontSize*0.875;
-        }
-
-        if (screenSize == 454) {
-            arcLabelFontSize = arcLabelFontSize*1.125;
-            dayOfWeekFontSize = dayOfWeekFontSize*1.125;
-            circleFontSize = circleFontSize*1.125;
-            dataFontSize = dataFontSize*1.125;
+        switch (screenSize) {
+            case true:
+                
+            break;
+            case 360:
+                arcLabelFontSize = arcLabelFontSize*0.75;
+                dayOfWeekFontSize = dayOfWeekFontSize*0.75;
+                circleFontSize = circleFontSize*0.75;
+                dataFontSize = dataFontSize*0.75;
+            break;
+            case 390:
+                arcLabelFontSize = arcLabelFontSize*0.875;
+                dayOfWeekFontSize = dayOfWeekFontSize*0.875;
+                circleFontSize = circleFontSize*0.875;
+                dataFontSize = dataFontSize*0.875;
+            break;
+            case 454:
+                arcLabelFontSize = arcLabelFontSize*1.125;
+                dayOfWeekFontSize = dayOfWeekFontSize*1.125;
+                circleFontSize = circleFontSize*1.125;
+                dataFontSize = dataFontSize*1.125;
+            break;
+            default:
+                // Set Font Sizes
+                arcLabelFontSize = 16;
+                dayOfWeekFontSize = 28;
+                circleFontSize = 30;
+                dataFontSize = 36;
+            break;
         }
     }
 
@@ -456,9 +473,10 @@ class UltraPlusView extends WatchUi.WatchFace {
         }
         
         // insert the data
-        dc.setColor(uiTertiaryColor,Graphics.COLOR_TRANSPARENT);
-        dc.drawText(xPos, (centerX)+screen_height*0.012, font, feelsLikeC, justification);
-        dc.drawText(xPos, (centerX)-screen_height*0.079, font, feelsLikeF, justification);
+        dc.setColor(uiTertiaryColor,Graphics.COLOR_TRANSPARENT); 
+        // font offset should take into account the font-height
+        dc.drawText(xPos, (centerX)+(screen_height*0.012), font, feelsLikeC, justification);
+        dc.drawText(xPos, (centerX)-(circleFontSize+(screen_height*0.0025)), font, feelsLikeF, justification);
 
         dc.setColor(uiPrimaryColor,Graphics.COLOR_TRANSPARENT);
         switch (currentConditions.condition) {
@@ -833,7 +851,7 @@ class UltraPlusView extends WatchUi.WatchFace {
 	private function drawHourHand(dc, angle) {	
 		// Define hand shape using coordinates
 		var length = (screen_height/2)*.528; 
-		var width = 9;
+		var width = screen_height*0.0216;
 		// Define shape of the hand
 		var coords_outer;
         var coords_inner;
@@ -855,7 +873,7 @@ class UltraPlusView extends WatchUi.WatchFace {
 	private function drawMinuteHand(dc, angle) {
 		// Define hand shape using coordinates
 		var length = (screen_height/2)*0.889;
-		var width = 9;
+		var width = screen_height*0.0216;
 		// Define shape of the hand
 		// Outer pointer
 		var coords_outer = [[-width ,0],[width ,0],[width ,(length - 5)],[0,length],[-width ,(length-5)]];
@@ -876,7 +894,7 @@ class UltraPlusView extends WatchUi.WatchFace {
 		// Define hand shape using coordinates
 		var length = screen_height - 10;
 		var width = 1;
-        var lengthTail = 35;
+        var lengthTail = screen_height*0.08413;
         var widthTail = 5;
 		// Define hand shape
 		var coords = [[0,0],[width,0],[0,length],[-width,0]];
