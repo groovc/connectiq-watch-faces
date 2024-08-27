@@ -21,12 +21,15 @@ class UltraPlusView extends WatchUi.WatchFace {
         uiPrimaryColor,
         uiSecondaryColor,
         uiTertiaryColor,
+        uiHashColor,
         fontFace,
         arcLabelFontSize,
         dayOfWeekFontSize,
+        hourFontSize,
         circleFontSize,
         dataFontSize,
         displayUTC,
+        hourMarkers,
 		inLowPower = false,
 		canBurnIn = false;	
 
@@ -57,6 +60,7 @@ class UltraPlusView extends WatchUi.WatchFace {
         dayOfWeekFontSize = 28;
         circleFontSize = 30;
         dataFontSize = 36;
+        hourFontSize = 18;
 
         // Change Font Size based on Screen Size
         switch (screenSize) {
@@ -68,18 +72,21 @@ class UltraPlusView extends WatchUi.WatchFace {
                 dayOfWeekFontSize = dayOfWeekFontSize*0.75;
                 circleFontSize = circleFontSize*0.75;
                 dataFontSize = dataFontSize*0.75;
+                hourFontSize = hourFontSize*0.75;
             break;
             case 390:
                 arcLabelFontSize = arcLabelFontSize*0.875;
                 dayOfWeekFontSize = dayOfWeekFontSize*0.875;
                 circleFontSize = circleFontSize*0.875;
                 dataFontSize = dataFontSize*0.875;
+                hourFontSize = hourFontSize*0.875;
             break;
             case 454:
                 arcLabelFontSize = arcLabelFontSize*1.125;
                 dayOfWeekFontSize = dayOfWeekFontSize*1.125;
                 circleFontSize = circleFontSize*1.125;
                 dataFontSize = dataFontSize*1.125;
+                hourFontSize = hourFontSize*1.25;
             break;
             default:
                 // Set Font Sizes
@@ -87,6 +94,7 @@ class UltraPlusView extends WatchUi.WatchFace {
                 dayOfWeekFontSize = 28;
                 circleFontSize = 30;
                 dataFontSize = 36;
+                hourFontSize = 18;
             break;
         }
     }
@@ -96,11 +104,6 @@ class UltraPlusView extends WatchUi.WatchFace {
         // get screen dimensions
 		screen_width = dc.getWidth();
 		screen_height = dc.getHeight();
-        // System.println("Screen dimension: "+screen_width+"x"+screen_height);
-
-        
-
-        // Set Font Size based on screen size
 
         // get custom font icons
         customIcons = WatchUi.loadResource(Rez.Fonts.customIcons);
@@ -127,6 +130,8 @@ class UltraPlusView extends WatchUi.WatchFace {
         // determine which layout to draw and initialize UI colors
         themeSelection = Application.getApp().getProperty("ThemeSelection");
         displayUTC = Application.getApp().getProperty("DisplayUTCTime");
+        hourMarkers = Application.getApp().getProperty("HourMarkers");
+        uiHashColor = 0x555555;
 
         // Render background based on theme preference
         switch (themeSelection) { 
@@ -163,10 +168,26 @@ class UltraPlusView extends WatchUi.WatchFace {
             // do AOD display (<10% 3 minutes max)
 			View.onUpdate(dc);
 
-            // Draw the hash marks
-            drawHashMarks(dc);
             // Draw the background bitmap
             dc.drawBitmap(0, 0, faceBG);
+
+            // Draw the hash marks
+            switch (hourMarkers) { 
+            case true:
+            break;
+            case 0:
+                drawHashMarks(dc);
+            break;
+            case 1:
+                drawNumbersAndHashMarks(dc);
+            break;
+            case 2:
+                drawNumbersOnlyMarks(dc);
+            break;
+            default:
+                drawHashMarks(dc);
+            break;
+            }
 
             // Draw the hour. Convert it to minutes and compute the angle.
             hourHand = (((clockTime.hour % 12) * 60) + clockTime.min);
@@ -193,8 +214,24 @@ class UltraPlusView extends WatchUi.WatchFace {
             View.onUpdate(dc);
             // Draw the background bitmap
             dc.drawBitmap(0, 0, faceBG);
+
             // Draw the hash marks
-            drawHashMarks(dc);
+            switch (hourMarkers) { 
+            case true:
+            break;
+            case 0:
+                drawHashMarks(dc);
+            break;
+            case 1:
+                drawNumbersAndHashMarks(dc);
+            break;
+            case 2:
+                drawNumbersOnlyMarks(dc);
+            break;
+            default:
+                drawHashMarks(dc);
+            break;
+            }
             // Draw heart rate
             drawHeartRate(dc);
             // Draw Weather
@@ -861,9 +898,9 @@ class UltraPlusView extends WatchUi.WatchFace {
 		coords_inner = [[-(width - 2),55],[(width - 2),55],[(width - 2),(length - 11)],[-(width - 2),(length - 11)]];
 
 		// Draw these with their color and orientation
-        dc.setColor(uiPrimaryColor, Graphics.COLOR_BLACK);
+        dc.setColor(uiPrimaryColor, 0x80);
 		drawHand(dc, angle, coords_outer);
-		dc.setColor(uiSecondaryColor, Graphics.COLOR_BLACK);
+		dc.setColor(uiSecondaryColor, 0x80);
 		drawHand(dc, angle, coords_inner);
 	}
 
@@ -881,9 +918,9 @@ class UltraPlusView extends WatchUi.WatchFace {
 		var coords_inner = [[-(width - 2),55],[(width - 2),55],[(width - 2),(length - 11)],[-(width - 2),(length - 11)]];
 
 		// Draw hands with their color and orientation
-        dc.setColor(uiPrimaryColor, Graphics.COLOR_BLACK);
+        dc.setColor(uiPrimaryColor, 0x80);
 		drawHand(dc, angle, coords_outer);
-		dc.setColor(uiSecondaryColor, Graphics.COLOR_BLACK);
+		dc.setColor(uiSecondaryColor, 0x80);
 		drawHand(dc, angle, coords_inner);
 	}
 
@@ -901,7 +938,7 @@ class UltraPlusView extends WatchUi.WatchFace {
         var coordsTail = [[0,0],[0,0],[widthTail,-lengthTail],[-widthTail,-lengthTail]];
                 
 		// Draw the hand with it's appropriate color
-		dc.setColor(accentColor, Graphics.COLOR_TRANSPARENT);
+		dc.setColor(accentColor, 0x80);
 		drawHand(dc, angle, coords);
         drawHand(dc, angle, coordsTail);      
 	}
@@ -927,9 +964,7 @@ class UltraPlusView extends WatchUi.WatchFace {
 
     // Draw the hash mark symbols on the watch
     // @param dc Device context
-    private function drawHashMarks(dc) {
-       	dc.setColor(uiPrimaryColor, Graphics.COLOR_TRANSPARENT);
-    
+    private function drawHashMarks(dc) { 	
         // Draw hashmarks differently depending on screen geometry
         if (System.SCREEN_SHAPE_ROUND == screenShape) {
             var sX, sY;
@@ -941,14 +976,16 @@ class UltraPlusView extends WatchUi.WatchFace {
             	var angle = i * Math.PI / 30;
             	
             	// thicker lines at 5 min intervals
-            	if( (i % 5) == 0) {
-                    dc.setPenWidth(3);             
+            	if ((i % 5) == 0) {
+                    dc.setPenWidth(3);
+                    dc.setColor(uiPrimaryColor, Graphics.COLOR_TRANSPARENT);
                 }
                 else {
-                    dc.setPenWidth(1);            
+                    dc.setPenWidth(1);
+                    dc.setColor(uiHashColor, Graphics.COLOR_TRANSPARENT);            
                 }
                 // longer lines at intermediate 5 min marks
-                if( (i % 5) == 0 && !((i % 15) == 0)) {               		
+                if ((i % 5) == 0 && !((i % 15) == 0)) {               		
             		sY = (innerRad-10) * Math.sin(angle);
                 	eY = outerRad * Math.sin(angle);
                 	sX = (innerRad-10) * Math.cos(angle);
@@ -974,6 +1011,98 @@ class UltraPlusView extends WatchUi.WatchFace {
                 // Draw the lower hash marks
                 dc.fillPolygon([[coords[i] - 1, screen_height-2], [upperX - 1, screen_height - 12], [upperX + 1, screen_height - 12], [coords[i] + 1, screen_height - 2]]);
             }
+        }
+    }
+
+    // Draw primary numbers and the hash mark symbols on the watch
+    // @param dc Device context
+    private function drawNumbersAndHashMarks(dc) {
+       	dc.setColor(uiHashColor, Graphics.COLOR_TRANSPARENT);
+    
+        // Draw hashmarks differently depending on screen geometry
+        if (System.SCREEN_SHAPE_ROUND == screenShape) {
+            var sX, sY;
+            var eX, eY;
+            var outerRad = screen_width / 2;
+            var innerRad = outerRad - 10;
+            // Loop through each minute and draw tick marks
+            for (var i = 0; i <= 59; i += 1) {
+            	var angle = i * Math.PI / 30;
+            	
+                dc.setPenWidth(1);
+
+                // lines at intermediate 5 min marks except for the main numbers
+                if ((i == 0) || ((i % 5) == 0 && !((i % 15) == 0)) || (i == 30) || (i == 15) || (i == 45)) {               		
+                    sX = 0;
+                    sY = 0;
+                    eX = 0;
+                    eY = 0;
+                }
+                else {
+                	sY = innerRad * Math.sin(angle);
+                	eY = outerRad * Math.sin(angle);
+                	sX = innerRad * Math.cos(angle);
+                	eX = outerRad * Math.cos(angle);
+            	}
+
+                sX += outerRad; sY += outerRad;
+                eX += outerRad; eY += outerRad;
+                dc.drawLine(sX, sY, eX, eY);
+            }
+
+            var centerX = dc.getWidth() / 2;
+            var centerY = dc.getHeight() / 2 - hourFontSize/2 + 2;
+            var radius = dc.getHeight()/2 - hourFontSize/2.5;
+            var font = Graphics.getVectorFont({:face=>[fontFace], :size=>hourFontSize});
+            var justification = Graphics.TEXT_JUSTIFY_CENTER;
+            dc.setColor(uiPrimaryColor, Graphics.COLOR_TRANSPARENT);
+
+            for (var j = 1; j <= 12; j++) {
+                var angle = 360 / 12 * j + -90;
+                var radians = angle * Math.PI / 180;
+
+                var x = centerX + radius * Math.cos(radians);
+                var y = centerY + radius * Math.sin(radians);
+
+                dc.drawText(x,y, font, j.toString(), justification);
+            }
+
+        } else {
+            var coords = [0, screen_width / 4, (3 * screen_width) / 4, screen_width];
+            for (var i = 0; i < coords.size(); i += 1) {
+                var dx = ((screen_width / 2.0) - coords[i]) / (screen_height / 2.0);
+                var upperX = coords[i] + (dx * 10);
+                // Draw the upper hash marks
+                dc.fillPolygon([[coords[i] - 1, 2], [upperX - 1, 12], [upperX + 1, 12], [coords[i] + 1, 2]]);
+                // Draw the lower hash marks
+                dc.fillPolygon([[coords[i] - 1, screen_height-2], [upperX - 1, screen_height - 12], [upperX + 1, screen_height - 12], [coords[i] + 1, screen_height - 2]]);
+            }
+        }
+    }
+
+    // Draw primary numbers on the watch
+    // @param dc Device context
+    private function drawNumbersOnlyMarks(dc) {
+       	dc.setColor(uiPrimaryColor, Graphics.COLOR_TRANSPARENT);
+    
+        // Draw hashmarks differently depending on screen geometry
+        if (System.SCREEN_SHAPE_ROUND == screenShape) {
+            var centerX = dc.getWidth() / 2;
+            var centerY = dc.getHeight() / 2 - hourFontSize/2 +2;
+            var radius = dc.getHeight()/2 - hourFontSize/2.5;
+            var font = Graphics.getVectorFont({:face=>[fontFace], :size=>hourFontSize});
+            var justification = Graphics.TEXT_JUSTIFY_CENTER;
+
+            for (var j = 1; j <= 12; j++) {
+                var angle = 360 / 12 * j + -90;
+                var radians = angle * Math.PI / 180;
+
+                var x = centerX + radius * Math.cos(radians);
+                var y = centerY + radius * Math.sin(radians);
+
+                dc.drawText(x,y, font, j.toString(), justification);
+            }
+
         }
     }
 

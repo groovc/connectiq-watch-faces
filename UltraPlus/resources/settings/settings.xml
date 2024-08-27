@@ -79,4 +79,11 @@
             <listEntry value="1">@Strings.DisplayUTCTimeNoTitle</listEntry>
         </settingConfig>
     </setting>
+    <setting propertyKey="@Properties.HourMarkers" title="@Strings.HourMarkersTitle">
+        <settingConfig type="list">
+            <listEntry value="0">@Strings.HourMarkersNoTitle</listEntry>
+            <listEntry value="1">@Strings.HourMarkersYesTitle</listEntry>
+            <listEntry value="2">@Strings.HourMarkersNumbersOnlyTitle</listEntry>
+        </settingConfig>
+    </setting>
 </settings>

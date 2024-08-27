@@ -11,7 +11,11 @@
     <string id="BatteryArcTitle">BATT</string>
     <string id="BodyArcTitle">BODY</string>
     <string id="StepArcTitle">STEP</string>
-
+    <string id="HourMarkersTitle">Display Hours</string>
+    <string id="HourMarkersNoTitle">No</string>
+    <string id="HourMarkersYesTitle">Yes</string>
+    <string id="HourMarkersNumbersOnlyTitle">Numbers Only</string>
+    
     <string id="Color0x000000">Black</string>
     <string id="Color0xFFFFFF">White</string>
     <string id="Color0x0000FF">Blue</string>

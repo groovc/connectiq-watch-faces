@@ -2,4 +2,5 @@
     <property id="AccentColor" type="number">0xFF5500</property>
     <property id="ThemeSelection" type="number">0</property>
     <property id="DisplayUTCTime" type="number">0</property>
+    <property id="HourMarkers" type="number">0</property>
 </properties>
