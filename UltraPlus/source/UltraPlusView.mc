@@ -30,6 +30,7 @@ class UltraPlusView extends WatchUi.WatchFace {
         dataFontSize,
         displayUTC,
         hourMarkers,
+        temperatureSelection,
         alternateMarkers,
 		inLowPower = false,
 		canBurnIn = false;	
@@ -130,6 +131,7 @@ class UltraPlusView extends WatchUi.WatchFace {
         accentColor = Application.getApp().getProperty("AccentColor");
         // determine which layout to draw and initialize UI colors
         themeSelection = Application.getApp().getProperty("ThemeSelection");
+        temperatureSelection = Application.getApp().getProperty("TemperatureSelection");
         displayUTC = Application.getApp().getProperty("DisplayUTCTime");
         hourMarkers = Application.getApp().getProperty("HourMarkers");
         alternateMarkers = Application.getApp().getProperty("AlternateMarkers");
@@ -470,7 +472,7 @@ class UltraPlusView extends WatchUi.WatchFace {
         dc.fillCircle(xPos, screen_height/2, screen_width*0.1201); 
         // draw heart
         dc.setColor(Graphics.COLOR_DK_RED, Graphics.COLOR_TRANSPARENT);
-        dc.drawText(xPos, (screen_height/2)-(screen_height*0.0817), customIcons, "m", justification);
+        dc.drawText(xPos, (screen_height/2)-(screen_height*0.0817), customIcons, "a", justification);
         
         // insert current HR data
         dc.setColor(uiTertiaryColor,Graphics.COLOR_TRANSPARENT);
@@ -493,6 +495,7 @@ class UltraPlusView extends WatchUi.WatchFace {
         var feelsLikeF;
         var justification = Graphics.TEXT_JUSTIFY_CENTER;
         var centerX = screen_width/2;
+        var centerY = screen_height/2;
         var xPos = (centerX)+(screen_width/4)-screen_width*0.0288;
         var yPosCondition = (screen_height/4)-screen_height*0.024;
 
@@ -502,13 +505,13 @@ class UltraPlusView extends WatchUi.WatchFace {
         dc.fillCircle(xPos, centerX, screen_width*0.1225);
         dc.setColor(Graphics.COLOR_BLACK, Graphics.COLOR_DK_GRAY);
         dc.fillCircle(xPos, centerX, screen_width*0.1201);
-
+        
         // Check to see if weather exists otherwise display null temps
         if (currentConditions != null) {
             feelsLikeTemp = currentConditions.feelsLikeTemperature;
             feelsLikeC = feelsLikeTemp.format("%.2i")+"°C";
             feelsLikeF = (feelsLikeTemp*9/5+32).format("%.2i")+"°F";
-            
+            /*
             if (feelsLikeTemp > 25) {
                 dc.setColor(Graphics.COLOR_YELLOW, Graphics.COLOR_TRANSPARENT);
             } else if (feelsLikeTemp < 10) {
@@ -519,17 +522,53 @@ class UltraPlusView extends WatchUi.WatchFace {
             // draw divider
             dc.setPenWidth(2);
             dc.drawLine(xPos-(screen_width*0.0576), (screen_height/2), xPos+(screen_width*0.0576),(screen_height/2));
+            */
         } else {
+            feelsLikeTemp = "--";
             feelsLikeC = "--°C";
             feelsLikeF = "--°F";
         }
-        
-        // insert the data
-        dc.setColor(uiTertiaryColor,Graphics.COLOR_TRANSPARENT); 
-        // font offset should take into account the font-height
-        dc.drawText(xPos, (centerX)+(screen_height*0.012), font, feelsLikeC, justification);
-        dc.drawText(xPos, (centerX)-(circleFontSize+(screen_height*0.0025)), font, feelsLikeF, justification);
+        switch (temperatureSelection) {
+            case true:
+            break;
+            case 0:
+                if (feelsLikeTemp > 25) {
+                dc.setColor(Graphics.COLOR_YELLOW, Graphics.COLOR_TRANSPARENT);
+                } else if (feelsLikeTemp < 10) {
+                    dc.setColor(Graphics.COLOR_BLUE, Graphics.COLOR_TRANSPARENT);
+                } else {
+                    dc.setColor(Graphics.COLOR_DK_GRAY, Graphics.COLOR_TRANSPARENT);
+                }
+                
+                // draw divider
+                dc.setPenWidth(2);
+                dc.drawLine(xPos-(screen_width*0.0576), (screen_height/2), xPos+(screen_width*0.0576),(screen_height/2));
+                // insert the data
+                dc.setColor(uiTertiaryColor,Graphics.COLOR_TRANSPARENT); 
+                dc.drawText(xPos, (centerY)+(screen_height*0.012), font, feelsLikeC, justification);
+                dc.drawText(xPos, (centerY)-(circleFontSize+(screen_height*0.0025)), font, feelsLikeF, justification);
+            break;
+            case 1:
+                dc.setColor(Graphics.COLOR_LT_GRAY, Graphics.COLOR_TRANSPARENT);
+                dc.drawText(xPos, (centerY)-(circleFontSize+(screen_height*0.0025)), customIcons, "c", justification);
+                // insert the data
+                dc.setColor(uiTertiaryColor,Graphics.COLOR_TRANSPARENT); 
+                // font offset should take into account the font-height
+                dc.drawText(xPos, (centerY)+(screen_height*0.012), font, feelsLikeC, justification);
+            break;
+            case 2:
+                dc.setColor(Graphics.COLOR_LT_GRAY, Graphics.COLOR_TRANSPARENT);
+                dc.drawText(xPos, (centerY)-(circleFontSize+(screen_height*0.0025)), customIcons, "c", justification);
+                // insert the data
+                dc.setColor(uiTertiaryColor,Graphics.COLOR_TRANSPARENT); 
+                // font offset should take into account the font-height
+                dc.drawText(xPos, (centerY)+(screen_height*0.012), font, feelsLikeF, justification);
+            break;
+            default:
+            break;
+        }   
 
+        // Draw the weather icons
         dc.setColor(uiPrimaryColor,Graphics.COLOR_TRANSPARENT);
         switch (currentConditions.condition) {
             case true:
@@ -786,7 +825,7 @@ class UltraPlusView extends WatchUi.WatchFace {
         dc.fillCircle(centerX, yPos, screen_width*0.1201);
         // draw calendar
         dc.setColor(Graphics.COLOR_LT_GRAY, Graphics.COLOR_TRANSPARENT);
-        dc.drawText(centerX, yPos-screen_height*0.0889, customIcons, "W", justification);
+        dc.drawText(centerX, yPos-screen_height*0.0889, customIcons, "b", justification);
         // Draw the date
         dc.setColor(uiTertiaryColor, Graphics.COLOR_TRANSPARENT);
         dc.drawText(centerX, yPos+screen_height*0.0048, font, dateString, justification);
@@ -960,21 +999,25 @@ class UltraPlusView extends WatchUi.WatchFace {
 
     private function drawBluetooth(dc) {
 		// only draw if device is connected
-		dc.setColor(accentColor, Graphics.COLOR_TRANSPARENT);
+		
 		if(System.getDeviceSettings().phoneConnected) {
-			// Symbol parameters
-			var symbolHeight = screen_height*0.03846;
-            var centerX = (screen_width / 2);
-			var centerY = screen_height - symbolHeight*2; 
-			var xoffset = screen_width*0.012019;
-			dc.setPenWidth(1.8);
-			// Draw the symbol
-			dc.drawLine(centerX, centerY - (symbolHeight/2),centerX,centerY+(symbolHeight/2));
-			dc.drawLine(centerX, centerY - (symbolHeight/2),centerX+xoffset,centerY - (symbolHeight/4));
-			dc.drawLine(centerX+xoffset,centerY - (symbolHeight/4),centerX-xoffset,centerY + (symbolHeight/4));
-			dc.drawLine(centerX, centerY + (symbolHeight/2),centerX+xoffset,centerY + (symbolHeight/4));
-			dc.drawLine(centerX+xoffset,centerY + (symbolHeight/4),centerX-xoffset,centerY - (symbolHeight/4));
-		}
+            dc.setColor(accentColor, Graphics.COLOR_TRANSPARENT);
+		} else {
+            dc.setColor(Graphics.COLOR_DK_GRAY, Graphics.COLOR_TRANSPARENT);
+        }
+
+        // Symbol parameters
+        var symbolHeight = screen_height*0.03846;
+        var centerX = (screen_width / 2);
+        var centerY = screen_height - symbolHeight*2; 
+        var xoffset = screen_width*0.012019;
+        dc.setPenWidth(1.8);
+        // Draw the symbol
+        dc.drawLine(centerX, centerY - (symbolHeight/2),centerX,centerY+(symbolHeight/2));
+        dc.drawLine(centerX, centerY - (symbolHeight/2),centerX+xoffset,centerY - (symbolHeight/4));
+        dc.drawLine(centerX+xoffset,centerY - (symbolHeight/4),centerX-xoffset,centerY + (symbolHeight/4));
+        dc.drawLine(centerX, centerY + (symbolHeight/2),centerX+xoffset,centerY + (symbolHeight/4));
+        dc.drawLine(centerX+xoffset,centerY + (symbolHeight/4),centerX-xoffset,centerY - (symbolHeight/4));
 	}
 
     // Draw the hash mark symbols on the watch

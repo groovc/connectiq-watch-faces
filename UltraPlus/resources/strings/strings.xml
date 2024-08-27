@@ -18,6 +18,10 @@
     <string id="AlternateMarkersTitle">Lighter Hash Marks</string>
     <string id="AlternateMarkersNoTitle">No</string>
     <string id="AlternateMarkersYesTitle">Yes</string>
+    <string id="TemperatureSelectionTitle">Temperature (Feels Like)</string>
+    <string id="TemperatureBothTitle">°C and °F</string>
+    <string id="TemperatureCOnlyTitle">°C Only</string>
+    <string id="TemperatureFOnlyTitle">°F Only</string>
     
     <string id="Color0x000000">Black</string>
     <string id="Color0xFFFFFF">White</string>
