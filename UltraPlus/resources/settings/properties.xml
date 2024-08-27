@@ -3,4 +3,5 @@
     <property id="ThemeSelection" type="number">0</property>
     <property id="DisplayUTCTime" type="number">0</property>
     <property id="HourMarkers" type="number">0</property>
+    <property id="AlternateMarkers" type="number">0</property>
 </properties>

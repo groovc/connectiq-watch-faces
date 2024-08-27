@@ -30,6 +30,7 @@ class UltraPlusView extends WatchUi.WatchFace {
         dataFontSize,
         displayUTC,
         hourMarkers,
+        alternateMarkers,
 		inLowPower = false,
 		canBurnIn = false;	
 
@@ -131,7 +132,7 @@ class UltraPlusView extends WatchUi.WatchFace {
         themeSelection = Application.getApp().getProperty("ThemeSelection");
         displayUTC = Application.getApp().getProperty("DisplayUTCTime");
         hourMarkers = Application.getApp().getProperty("HourMarkers");
-        uiHashColor = 0x555555;
+        alternateMarkers = Application.getApp().getProperty("AlternateMarkers");
 
         // Render background based on theme preference
         switch (themeSelection) { 
@@ -152,6 +153,20 @@ class UltraPlusView extends WatchUi.WatchFace {
                 uiPrimaryColor = Graphics.COLOR_WHITE;      
                 uiSecondaryColor = Graphics.COLOR_BLACK;
                 uiTertiaryColor = Graphics.COLOR_WHITE;  
+            break;
+            default:
+            break;
+        }
+
+        // Render lighter markers
+        switch (alternateMarkers) {
+            case true:
+            break;
+            case 0:
+                uiHashColor = uiPrimaryColor;
+            break;
+            case 1:
+                uiHashColor = 0x555555;
             break;
             default:
             break;

@@ -86,4 +86,10 @@
             <listEntry value="2">@Strings.HourMarkersNumbersOnlyTitle</listEntry>
         </settingConfig>
     </setting>
+    <setting propertyKey="@Properties.AlternateMarkers" title="@Strings.AlternateMarkersTitle">
+        <settingConfig type="list">
+            <listEntry value="0">@Strings.AlternateMarkersNoTitle</listEntry>
+            <listEntry value="1">@Strings.AlternateMarkersYesTitle</listEntry>
+        </settingConfig>
+    </setting>
 </settings>

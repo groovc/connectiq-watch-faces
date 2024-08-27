@@ -15,6 +15,9 @@
     <string id="HourMarkersNoTitle">No</string>
     <string id="HourMarkersYesTitle">Yes</string>
     <string id="HourMarkersNumbersOnlyTitle">Numbers Only</string>
+    <string id="AlternateMarkersTitle">Lighter Hash Marks</string>
+    <string id="AlternateMarkersNoTitle">No</string>
+    <string id="AlternateMarkersYesTitle">Yes</string>
     
     <string id="Color0x000000">Black</string>
     <string id="Color0xFFFFFF">White</string>
