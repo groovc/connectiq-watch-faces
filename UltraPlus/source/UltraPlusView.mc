@@ -190,6 +190,13 @@ class UltraPlusView extends WatchUi.WatchFace {
 		}
 
         if (inLowPower && canBurnIn) {
+			// if low power mode
+			// force dark mode color scheme
+			faceBG = WatchUi.loadResource(Rez.Drawables.FaceBG);
+			uiPrimaryColor = Graphics.COLOR_WHITE;      
+			uiSecondaryColor = Graphics.COLOR_BLACK;
+			uiTertiaryColor = Graphics.COLOR_WHITE; 
+			
             // do AOD display (<10% 3 minutes max)
 			View.onUpdate(dc);
 
@@ -211,6 +218,15 @@ class UltraPlusView extends WatchUi.WatchFace {
                 drawHashMarks(dc);
             break;
             }
+
+			// Draw heart rate
+            drawHeartRate(dc);
+            // Draw Weather
+            drawWeather(dc);
+            // Draw Days of the Week
+            drawDayOfWeek(dc);
+            // Draw bluetooth line if connected
+		    drawBluetooth(dc);
 
             // Draw the hour. Convert it to minutes and compute the angle.
             hourHand = (((clockTime.hour % 12) * 60) + clockTime.min);
@@ -373,12 +389,18 @@ class UltraPlusView extends WatchUi.WatchFace {
         var arcLabel = WatchUi.loadResource(Rez.Strings.BatteryArcTitle);
         var justification = Graphics.TEXT_JUSTIFY_LEFT;
         var arcDataString;
-        var arcData = getBattery();
+        var arcData;
+		
+		if (getBattery() != null) {
+			arcData = getBattery();
+		} else {
+			arcData = 0;
+		}
 
 		if (inDays == 1) {
 			arcDataString = getBatteryInDays().toNumber().toString()+"d";
 		} else {
-			arcDataString = getBattery().toNumber().toString()+"%"; 
+			arcDataString = arcData.toNumber().toString()+"%"; 
 		}
 
         // Set width of the arc line width
@@ -394,7 +416,7 @@ class UltraPlusView extends WatchUi.WatchFace {
         // display the current percentage of body battery remaining
         if(getBattery() != null) {
             dc.setColor(accentColor, Graphics.COLOR_TRANSPARENT);
-            dc.drawArc(centerX, centerY, (screen_height / 2.35) - (arcWidth / 2.35), Graphics.ARC_COUNTER_CLOCKWISE, 15, 15 + (arcLength * arcData / 100));
+            dc.drawArc(centerX, centerY, (screen_height / 2.35) - (arcWidth / 2.35), Graphics.ARC_CLOCKWISE, 75, 75 - (arcLength * arcData / 100));
         }
     }
 
@@ -523,9 +545,9 @@ class UltraPlusView extends WatchUi.WatchFace {
         dc.setColor(Graphics.COLOR_BLACK, Graphics.COLOR_DK_GRAY);
         dc.fillCircle(xPos, centerX, screen_width * 0.1201);
 
-		currentConditions = Weather.getCurrentConditions();
-        
         // Check to see if weather exists otherwise display null temps
+		currentConditions = Weather.getCurrentConditions();
+
         if (currentConditions != null) {
             feelsLikeTemp = currentConditions.feelsLikeTemperature;
             feelsLikeC = feelsLikeTemp.format("%.2i")+"°C";
@@ -536,16 +558,17 @@ class UltraPlusView extends WatchUi.WatchFace {
             feelsLikeF = "--°F";
         }
 
+		// Depending on user selection, display the correct temperature layout 
         switch (temperatureSelection) {
-            case true:
-            break;
             case 0:
-				if (feelsLikeTemp > 25 && currentConditions != null) {
-                dc.setColor(Graphics.COLOR_YELLOW, Graphics.COLOR_TRANSPARENT);
-				} else if (feelsLikeTemp < 10) {
-					dc.setColor(Graphics.COLOR_BLUE, Graphics.COLOR_TRANSPARENT);
-				} else {
-					dc.setColor(Graphics.COLOR_DK_GRAY, Graphics.COLOR_TRANSPARENT);
+				dc.setColor(Graphics.COLOR_DK_GRAY, Graphics.COLOR_TRANSPARENT);
+
+				if (currentConditions != null) {
+					if (feelsLikeTemp > 25) {
+						dc.setColor(Graphics.COLOR_YELLOW, Graphics.COLOR_TRANSPARENT);
+					} else if (feelsLikeTemp < 10) {
+						dc.setColor(Graphics.COLOR_BLUE, Graphics.COLOR_TRANSPARENT);
+					}
 				}
                 // draw divider
                 dc.setPenWidth(2);
@@ -577,6 +600,7 @@ class UltraPlusView extends WatchUi.WatchFace {
 
         // Draw the weather icons
         dc.setColor(uiPrimaryColor,Graphics.COLOR_TRANSPARENT);
+		// Only display this if conditions are available
 		if (currentConditions != null) {
 			switch (currentConditions.condition) {
 				case 0:
@@ -822,10 +846,13 @@ class UltraPlusView extends WatchUi.WatchFace {
         var radiusOffset = radius + screen_height * 0.021634;
         var dotSize = screen_height * 0.03605769;
 		// Check what is the first day of the week in Device Settings
-		var firstDayOfWeek = System.getDeviceSettings().firstDayOfWeek;
+		var firstDayOfWeek = 0; 
 		var dayOfWeekOrder = new [7];
 		var dayOfWeekOrderString = new [7];
 	
+		if (System.getDeviceSettings().firstDayOfWeek != null) { 
+			firstDayOfWeek = System.getDeviceSettings().firstDayOfWeek;
+		}
 		// Reorder the days based on device settings
 		if (firstDayOfWeek == 2 && respectFirstDay == 1) { // Monday
 			dayOfWeekOrder = [Rez.Strings.Day2, Rez.Strings.Day3, Rez.Strings.Day4, Rez.Strings.Day5, Rez.Strings.Day6, Rez.Strings.Day7, Rez.Strings.Day1];
@@ -964,8 +991,6 @@ class UltraPlusView extends WatchUi.WatchFace {
 
             var x = (a * cos) - (b * sin);
             var y = (a * sin) + (b * cos);
-            //var x = (coords[i][0] * cos) - (coords[i][1] * sin);
-            //var y = (coords[i][0] * sin) + (coords[i][1] * cos);
             result[i] = [centerX + x, centerY + y];
         }
         
@@ -1010,8 +1035,8 @@ class UltraPlusView extends WatchUi.WatchFace {
 	// @param angle Angle of the watch hand
 	private function drawMinuteHand(dc, angle, aod) {
 		// Define hand shape using coordinates
-		var length = (centerY)*0.889;
-		var width = screen_height*0.0216;
+		var length = centerY * 0.889;
+		var width = screen_height * 0.0216;
 		// Define shape of the hand
 		// Outer pointer
 		var coords_outer = [[-width ,0],[width ,0],[width ,(length - 5)],[0,length],[-width ,(length - 5)]];
@@ -1055,7 +1080,7 @@ class UltraPlusView extends WatchUi.WatchFace {
     private function drawBluetooth(dc) {
 		// only draw if device is connected
 		
-		if(System.getDeviceSettings().phoneConnected) {
+		if (System.getDeviceSettings().phoneConnected) {
             dc.setColor(accentColor, Graphics.COLOR_TRANSPARENT);
 		} else {
             dc.setColor(Graphics.COLOR_DK_GRAY, Graphics.COLOR_TRANSPARENT);
