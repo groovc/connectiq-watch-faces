@@ -5,4 +5,6 @@
     <property id="DisplayUTCTime" type="number">0</property>
     <property id="HourMarkers" type="number">0</property>
     <property id="AlternateMarkers" type="number">0</property>
+    <property id="BatteryInDays" type="number">0</property>
+    <property id="RespectFirstDay" type="number">0</property>
 </properties>

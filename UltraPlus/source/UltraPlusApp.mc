@@ -2,10 +2,14 @@ import Toybox.Application;
 import Toybox.Lang;
 import Toybox.WatchUi;
 
+var gAppSettings;
+var gSettingsChanged = false;
+
 class UltraPlusApp extends Application.AppBase {
 
     function initialize() {
         AppBase.initialize();
+        $.gAppSettings = Application.getApp();
     }
 
     // onStart() is called on application start up
@@ -23,6 +27,8 @@ class UltraPlusApp extends Application.AppBase {
 
     // New app settings have been received so trigger a UI update
     function onSettingsChanged() as Void {
+        $.gSettingsChanged = true;
+        $.gAppSettings = Application.getApp();
         WatchUi.requestUpdate();
     }
 

@@ -100,4 +100,16 @@
             <listEntry value="1">@Strings.AlternateMarkersYesTitle</listEntry>
         </settingConfig>
     </setting>
+    <setting propertyKey="@Properties.BatteryInDays" title="@Strings.BatteryInDaysTitle">
+        <settingConfig type="list">
+            <listEntry value="0">@Strings.BatteryInDaysNoTitle</listEntry>
+            <listEntry value="1">@Strings.BatteryInDaysYesTitle</listEntry>
+        </settingConfig>
+    </setting>
+    <setting propertyKey="@Properties.RespectFirstDay" title="@Strings.RespectFirstDayTitle">
+        <settingConfig type="list">
+            <listEntry value="0">@Strings.RespectFirstDayNoTitle</listEntry>
+            <listEntry value="1">@Strings.RespectFirstDayYesTitle</listEntry>
+        </settingConfig>
+    </setting>
 </settings>
