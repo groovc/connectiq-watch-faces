@@ -33,11 +33,13 @@ class UltraPlusView extends WatchUi.WatchFace {
         circleFontSize,
         dataFontSize,
         displayUTC,
+		utcTimeOffset,
         hourMarkers,
         temperatureSelection,
 		batteryInDays,
 		respectFirstDay,
         alternateMarkers,
+		alwaysOnDisplay,
 		inLowPower = false,
 		canBurnIn = false;
 
@@ -46,6 +48,7 @@ class UltraPlusView extends WatchUi.WatchFace {
         screenShape = System.getDeviceSettings().screenShape;
         // Get the Screen Size. Just need one dimension since it's round.
         var screenSize = System.getDeviceSettings().screenWidth;
+		// var lang = System.getDeviceSettings().systemLanguage;
 
         // Check if device requires burn in protection and set flag
 		if (System.getDeviceSettings() has :requiresBurnInProtection) {
@@ -56,13 +59,13 @@ class UltraPlusView extends WatchUi.WatchFace {
 				maskRandomizer = 0; // init mask position
 			}        	
         }
-
+		
         // Set The Font and Default Styles
         fontFace = "RobotoCondensedBold";
-        // If default font not available then load alternate font for Venu 3
-        if (Graphics.getVectorFont({:face=>["RobotoCondensedBold"], :size=>30}) == null) {
-            fontFace = "RobotoRegular";   
-        }
+		// If default font not available then load alternate font for Venu 3
+		if (Graphics.getVectorFont({:face=>["RobotoCondensedBold"], :size=>30}) == null) {
+			fontFace = "RobotoRegular";   
+		}
 
         // Set Font Sizes
         arcLabelFontSize = 16;
@@ -73,8 +76,6 @@ class UltraPlusView extends WatchUi.WatchFace {
 
         // Change Font Size based on Screen Size
         switch (screenSize) {
-            case true:
-            break;
             case 360:
                 arcLabelFontSize = arcLabelFontSize * 0.75;
                 dayOfWeekFontSize = dayOfWeekFontSize * 0.75;
@@ -94,10 +95,10 @@ class UltraPlusView extends WatchUi.WatchFace {
                 dayOfWeekFontSize = dayOfWeekFontSize * 1.125;
                 circleFontSize = circleFontSize * 1.125;
                 dataFontSize = dataFontSize * 1.125;
-                hourFontSize = hourFontSize * 1.25;
+                hourFontSize = hourFontSize * 1.125;
             break;
             default:
-                // Set Font Sizes
+                // Set Font Sizes for 416
                 arcLabelFontSize = 16;
                 dayOfWeekFontSize = 28;
                 circleFontSize = 30;
@@ -116,9 +117,10 @@ class UltraPlusView extends WatchUi.WatchFace {
     // Load your resources here
     function onLayout(dc as Dc) as Void {
 		// Things that need to be retrieved or set once
-        // get screen dimensions
+        // Get screen dimensions
 		screen_width = dc.getWidth();
 		screen_height = dc.getHeight();
+		// Set Centered Positioning
 		centerX = screen_width / 2;
 		centerY = screen_height / 2;
 
@@ -143,7 +145,7 @@ class UltraPlusView extends WatchUi.WatchFace {
         // Get the current time and format it correctly
         var clockTime = System.getClockTime();
 
-		// Only get properties if something has changed.
+		// Only get properties if something has changed other use pre-cached settings
 		if ($.gSettingsChanged) {
 			fetchAppSettings();
 		}
@@ -151,8 +153,9 @@ class UltraPlusView extends WatchUi.WatchFace {
         // Render background based on theme preference
         switch (themeSelection) { 
             case 0:
+				// Light Mode
                 if (inLowPower && canBurnIn) {
-                    faceBG = WatchUi.loadResource(Rez.Drawables.FaceBG);
+                    faceBG = WatchUi.loadResource(Rez.Drawables.FaceBG); // load dark BG in AOD mode
                 } else {
                     faceBG = WatchUi.loadResource(Rez.Drawables.FaceBGW);
                 }
@@ -161,6 +164,7 @@ class UltraPlusView extends WatchUi.WatchFace {
                 uiTertiaryColor = Graphics.COLOR_WHITE;
             break;
             case 1:
+				// Dark Mode
                 faceBG = WatchUi.loadResource(Rez.Drawables.FaceBG);
                 uiPrimaryColor = Graphics.COLOR_WHITE;      
                 uiSecondaryColor = Graphics.COLOR_BLACK;
@@ -219,14 +223,16 @@ class UltraPlusView extends WatchUi.WatchFace {
             break;
             }
 
-			// Draw heart rate
-            drawHeartRate(dc);
-            // Draw Weather
-            drawWeather(dc);
-            // Draw Days of the Week
-            drawDayOfWeek(dc);
-            // Draw bluetooth line if connected
-		    drawBluetooth(dc);
+			if (alwaysOnDisplay == 0) {
+				// Draw heart rate
+				drawHeartRate(dc);
+				// Draw Weather
+				drawWeather(dc);
+				// Draw Days of the Week
+				drawDayOfWeek(dc);
+				// Draw bluetooth line if connected
+				drawBluetooth(dc);
+			}
 
             // Draw the hour. Convert it to minutes and compute the angle.
             hourHand = (((clockTime.hour % 12) * 60) + clockTime.min);
@@ -414,7 +420,7 @@ class UltraPlusView extends WatchUi.WatchFace {
         dc.drawRadialText(centerX, centerY, font, arcLabel, justification, arcLabelAngle, (screen_height / 2.425) - (arcWidth / 2.425), Graphics.ARC_COUNTER_CLOCKWISE);
 
         // display the current percentage of body battery remaining
-        if(getBattery() != null) {
+        if (getBattery() != null) {
             dc.setColor(accentColor, Graphics.COLOR_TRANSPARENT);
             dc.drawArc(centerX, centerY, (screen_height / 2.35) - (arcWidth / 2.35), Graphics.ARC_CLOCKWISE, 75, 75 - (arcLength * arcData / 100));
         }
@@ -448,8 +454,8 @@ class UltraPlusView extends WatchUi.WatchFace {
         dc.setColor(uiPrimaryColor, Graphics.COLOR_TRANSPARENT);
         dc.drawRadialText(centerX, centerY, font, arcDataString, justification, arcDataAngle, (screen_height / 2.275) - (arcWidth / 2.275), Graphics.ARC_CLOCKWISE);
         dc.drawRadialText(centerX, centerY, font, arcLabel, justification, arcLabelAngle, (screen_height / 2.275) - (arcWidth / 2.275), Graphics.ARC_CLOCKWISE);
-        // display the current percentage of steps remaining
-
+        
+		// display the current percentage of steps remaining
         if ((getSteps() != null) && (getSteps() > 0) && (getStepGoal() != null)) {
             dc.setColor(accentColor, Graphics.COLOR_TRANSPARENT);
             // don't let less than 1 otherwise drawing gets messed up
@@ -465,36 +471,49 @@ class UltraPlusView extends WatchUi.WatchFace {
     private function drawDataArc(dc) {
         var font = Graphics.getVectorFont({:face=>[fontFace], :size=>dataFontSize});
         var arcWidth = 10;
-        var arcDataAngle = 315;
+        var arcDataAngle = 315+2;
         var justification = Graphics.TEXT_JUSTIFY_CENTER;
         var arcDataString;
-
-        // Get UTC time
         var now = Time.now();
-        var utcInfo = Gregorian.utcInfo(now, Time.FORMAT_SHORT);
-        var utcTimeString = Lang.format("$1$:$2$", [utcInfo.hour, utcInfo.min.format("%02d")]);
+		var utcOffset = new Time.Duration(utcTimeOffset); 
+		var utcNow = now.add(utcOffset);
+        var utcInfo = Gregorian.utcInfo(utcNow, Time.FORMAT_SHORT);
+		var utcTimeString = Lang.format("$1$:$2$", [utcInfo.hour, utcInfo.min.format("%02d")]);
         var localInfo = Gregorian.info(now, Time.FORMAT_SHORT);
         var localTimeString = Lang.format("$1$:$2$", [localInfo.hour, localInfo.min.format("%02d")]);
+		var utcOffsetString;
 		
+		// Update string appropriately
+		if (utcTimeOffset == 0) {
+			utcOffsetString = "UTC";
+		} else if (utcTimeOffset < 0) {
+			utcOffsetString = utcTimeOffset / 3600; 
+			if (utcTimeOffset % 3600 == -1800) {
+				utcOffsetString = utcOffsetString + ":30";
+			}
+			utcOffsetString = "(" + utcOffsetString + ")";
+		} else {
+			utcOffsetString = utcTimeOffset / 3600;
+			if (utcTimeOffset % 3600 == 1800) {
+				utcOffsetString = utcOffsetString + ":30";
+			} else if (utcTimeOffset % 3600 == 2700) {
+				utcOffsetString = utcOffsetString + ":45";
+			}
+			utcOffsetString = "(+" + utcOffsetString + ")";
+		}
+
 		// Display UTC depending on settings
         if (displayUTC == 0) {
-            arcDataString = utcTimeString+" UTC" +" / "+localTimeString;        
-        } else {
+            arcDataString = utcTimeString + " " + utcOffsetString + " / " + localTimeString;        
+        } else if (displayUTC == 1) {
             arcDataString = localTimeString;
-        }
+        } else {
+			arcDataString = utcTimeString + " " + utcOffsetString;
+		}
 
         // Draw Radial Time
         dc.setColor(uiPrimaryColor,Graphics.COLOR_TRANSPARENT);
         dc.drawRadialText(centerX, centerY, font, arcDataString, justification, arcDataAngle, (screen_height / 2.275) - (arcWidth / 2.275), Graphics.ARC_CLOCKWISE);
-    }
-
-    // Draw an arc in the bottom right corner
-    // @param dc Device context
-    private function drawArc(dc) {
-        var arcWidth = 15;
-        dc.setPenWidth(arcWidth);
-        dc.setColor(Graphics.COLOR_DK_BLUE, Graphics.COLOR_TRANSPARENT);
-        dc.drawArc(centerX, centerY, screen_height / 2.5 - arcWidth / 2.5, Graphics.ARC_COUNTER_CLOCKWISE, centerX, centerY);
     }
 
     // Draw the current heart rate circle
@@ -511,16 +530,18 @@ class UltraPlusView extends WatchUi.WatchFace {
         dc.fillCircle(xPos, centerY, screen_width * 0.1225);
         dc.setColor(Graphics.COLOR_BLACK,Graphics.COLOR_DK_GRAY);
         dc.fillCircle(xPos, centerY, screen_width * 0.1201); 
-        // draw heart
+        
+		// draw heart
         dc.setColor(Graphics.COLOR_DK_RED, Graphics.COLOR_TRANSPARENT);
         dc.drawText(xPos, (centerY) - (screen_height * 0.0817), customIcons, "a", justification);
         
-        // Check for invalud sample
+        // Check for invalid sample
         if (getHeartRate() != ActivityMonitor.INVALID_HR_SAMPLE) {
             dataString = getHeartRateString();
         } else {
             dataString = "--";
         }
+
         // insert current HR data
         dc.setColor(uiTertiaryColor,Graphics.COLOR_TRANSPARENT); 
         dc.drawText((centerX) - (screen_width/4) + screen_height * 0.024, (screen_height / 2)+screen_height * 0.0072, font, dataString, justification);
@@ -837,7 +858,7 @@ class UltraPlusView extends WatchUi.WatchFace {
                 todayM.day,
             ]
         ).toUpper();
-				
+		var lang = System.getDeviceSettings().systemLanguage;				
         var font = Graphics.getVectorFont({:face=>[fontFace], :size=>dayOfWeekFontSize});
         var justification = Graphics.TEXT_JUSTIFY_CENTER;
         var yPos = (screen_height) - (screen_height / 3.5);
@@ -853,6 +874,7 @@ class UltraPlusView extends WatchUi.WatchFace {
 		if (System.getDeviceSettings().firstDayOfWeek != null) { 
 			firstDayOfWeek = System.getDeviceSettings().firstDayOfWeek;
 		}
+
 		// Reorder the days based on device settings
 		if (firstDayOfWeek == 2 && respectFirstDay == 1) { // Monday
 			dayOfWeekOrder = [Rez.Strings.Day2, Rez.Strings.Day3, Rez.Strings.Day4, Rez.Strings.Day5, Rez.Strings.Day6, Rez.Strings.Day7, Rez.Strings.Day1];
@@ -971,6 +993,9 @@ class UltraPlusView extends WatchUi.WatchFace {
         dc.setColor(Graphics.COLOR_LT_GRAY, Graphics.COLOR_TRANSPARENT);
         dc.drawText(centerX, yPos - screen_height * 0.0889, customIcons, "b", justification);
         // Draw the date
+		if (lang == 8389373 || lang == 8389696 || lang == 8389372 || lang == 8389371) {
+			font = Graphics.FONT_XTINY;
+		}
         dc.setColor(uiTertiaryColor, Graphics.COLOR_TRANSPARENT);
         dc.drawText(centerX, yPos + screen_height * 0.0048, font, dateString, justification);
     }
@@ -1004,16 +1029,16 @@ class UltraPlusView extends WatchUi.WatchFace {
 	// @param angle Angle of the watch hand
 	private function drawHourHand(dc, angle, aod) {	
 		// Define hand shape using coordinates
-		var length = centerY * .528; 
+		var length = centerY * .65; 
 		var width = screen_height * 0.0216;
 		// Define shape of the hand
 		var coords_outer;
         var coords_inner;
         // Outer pointer
-		coords_outer = [[-width ,0],[width ,0],[width ,(length - 5)],[0,length],[-width ,(length - 5)]];
+		coords_outer = [[-width, 0],[width, 0],[width, (length - 5)],[0, length],[-width, (length - 5)]];
 		// Inner accent
-		coords_inner = [[-(width - 2),55],[(width - 2),55],[(width - 2),(length - 11)],[-(width - 2),(length - 11)]];
-
+		coords_inner = [[-(width-2), 55],[(width - 2), 55],[(width - 2), (length - 11)],[-(width - 2), (length - 11)]];
+		
 		// Draw these with their color and orientation
 		if (aod) {
 			// Draw these with their color and orientation
@@ -1022,7 +1047,7 @@ class UltraPlusView extends WatchUi.WatchFace {
 			dc.setColor(uiLowPowerAltColor, Graphics.COLOR_TRANSPARENT);
 			drawHand(dc, angle, coords_inner);
 		} else {
-			dc.setColor(uiPrimaryColor, Graphics.COLOR_TRANSPARENT);
+			dc.setColor(uiPrimaryColor, Graphics.COLOR_TRANSPARENT); 
 			drawHand(dc, angle, coords_outer);
 			dc.setColor(uiSecondaryColor, Graphics.COLOR_TRANSPARENT);
 			drawHand(dc, angle, coords_inner);
@@ -1035,7 +1060,7 @@ class UltraPlusView extends WatchUi.WatchFace {
 	// @param angle Angle of the watch hand
 	private function drawMinuteHand(dc, angle, aod) {
 		// Define hand shape using coordinates
-		var length = centerY * 0.889;
+		var length = centerY * 0.925;
 		var width = screen_height * 0.0216;
 		// Define shape of the hand
 		// Outer pointer
@@ -1344,6 +1369,8 @@ class UltraPlusView extends WatchUi.WatchFace {
 		themeSelection = $.gAppSettings.getProperty("ThemeSelection");
 		temperatureSelection = $.gAppSettings.getProperty("TemperatureSelection");
 		displayUTC = $.gAppSettings.getProperty("DisplayUTCTime");
+		utcTimeOffset = $.gAppSettings.getProperty("UTCTimeOffset");
+		alwaysOnDisplay = $.gAppSettings.getProperty("AlwaysOnDisplay");
 		hourMarkers = $.gAppSettings.getProperty("HourMarkers");
 		alternateMarkers = $.gAppSettings.getProperty("AlternateMarkers");
 		batteryInDays = $.gAppSettings.getProperty("BatteryInDays");

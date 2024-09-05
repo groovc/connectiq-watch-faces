@@ -80,11 +80,53 @@
             <listEntry value="2">@Strings.TemperatureFOnlyTitle</listEntry>
         </settingConfig>
     </setting>
-
     <setting propertyKey="@Properties.DisplayUTCTime" title="@Strings.DisplayUTCTimeTitle">
         <settingConfig type="list">
             <listEntry value="0">@Strings.DisplayUTCTimeYesTitle</listEntry>
             <listEntry value="1">@Strings.DisplayUTCTimeNoTitle</listEntry>
+            <listEntry value="2">@Strings.DisplayUTCTimeOnlyTitle</listEntry>
+        </settingConfig>
+    </setting>
+    <setting propertyKey="@Properties.UTCTimeOffset" title="@Strings.UTCTimeOffsetTitle">
+        <settingConfig type="list">
+            <listEntry value="-43200">@Strings.UTCm12</listEntry>
+            <listEntry value="-39600">@Strings.UTCm11</listEntry>
+            <listEntry value="-36000">@Strings.UTCm10</listEntry>
+            <listEntry value="-34200">@Strings.UTCm930</listEntry>
+            <listEntry value="-32400">@Strings.UTCm9</listEntry>
+            <listEntry value="-28800">@Strings.UTCm8</listEntry>
+            <listEntry value="-25200">@Strings.UTCm7</listEntry>
+            <listEntry value="-21600">@Strings.UTCm6</listEntry>
+            <listEntry value="-18000">@Strings.UTCm5</listEntry>
+            <listEntry value="-14400">@Strings.UTCm4</listEntry>
+            <listEntry value="-10800">@Strings.UTCm3</listEntry>
+            <listEntry value="-9000">@Strings.UTCm230</listEntry>
+            <listEntry value="-7200">@Strings.UTCm2</listEntry>
+            <listEntry value="-3600">@Strings.UTCm1</listEntry>
+            <listEntry value="0">@Strings.UTCp0</listEntry>
+            <listEntry value="3600">@Strings.UTCp1</listEntry>
+            <listEntry value="7200">@Strings.UTCp2</listEntry>
+            <listEntry value="10800">@Strings.UTCp3</listEntry>
+            <listEntry value="12600">@Strings.UTCp330</listEntry>
+            <listEntry value="14400">@Strings.UTCp4</listEntry>
+            <listEntry value="16200">@Strings.UTCp430</listEntry>
+            <listEntry value="18000">@Strings.UTCp5</listEntry>
+            <listEntry value="19800">@Strings.UTCp530</listEntry>
+            <listEntry value="20700">@Strings.UTCp545</listEntry>
+            <listEntry value="21600">@Strings.UTCp6</listEntry>
+            <listEntry value="23400">@Strings.UTCp630</listEntry>
+            <listEntry value="25200">@Strings.UTCp7</listEntry>
+            <listEntry value="28800">@Strings.UTCp8</listEntry>
+            <listEntry value="31500">@Strings.UTCp845</listEntry>
+            <listEntry value="32400">@Strings.UTCp9</listEntry>
+            <listEntry value="34200">@Strings.UTCp930</listEntry>
+            <listEntry value="36000">@Strings.UTCp10</listEntry>
+            <listEntry value="37800">@Strings.UTCp1030</listEntry>
+            <listEntry value="39600">@Strings.UTCp11</listEntry>
+            <listEntry value="43200">@Strings.UTCp12</listEntry>
+            <listEntry value="45900">@Strings.UTCp1245</listEntry>
+            <listEntry value="46800">@Strings.UTCp13</listEntry>
+            <listEntry value="50400">@Strings.UTCp14</listEntry>
         </settingConfig>
     </setting>
     <setting propertyKey="@Properties.HourMarkers" title="@Strings.HourMarkersTitle">
@@ -94,22 +136,28 @@
             <listEntry value="2">@Strings.HourMarkersNumbersOnlyTitle</listEntry>
         </settingConfig>
     </setting>
-    <setting propertyKey="@Properties.AlternateMarkers" title="@Strings.AlternateMarkersTitle">
-        <settingConfig type="list">
-            <listEntry value="0">@Strings.AlternateMarkersNoTitle</listEntry>
-            <listEntry value="1">@Strings.AlternateMarkersYesTitle</listEntry>
-        </settingConfig>
-    </setting>
     <setting propertyKey="@Properties.BatteryInDays" title="@Strings.BatteryInDaysTitle">
         <settingConfig type="list">
             <listEntry value="0">@Strings.BatteryInDaysNoTitle</listEntry>
             <listEntry value="1">@Strings.BatteryInDaysYesTitle</listEntry>
         </settingConfig>
     </setting>
+    <setting propertyKey="@Properties.AlwaysOnDisplay" title="@Strings.AlwaysOnDisplayTitle">
+        <settingConfig type="list">
+            <listEntry value="0">@Strings.AlwaysOnDisplayDetailedTitle</listEntry>
+            <listEntry value="1">@Strings.AlwaysOnDisplaySimpleTitle</listEntry>
+        </settingConfig>
+    </setting>
     <setting propertyKey="@Properties.RespectFirstDay" title="@Strings.RespectFirstDayTitle">
         <settingConfig type="list">
             <listEntry value="0">@Strings.RespectFirstDayNoTitle</listEntry>
             <listEntry value="1">@Strings.RespectFirstDayYesTitle</listEntry>
+        </settingConfig>
+    </setting>
+    <setting propertyKey="@Properties.AlternateMarkers" title="@Strings.AlternateMarkersTitle">
+        <settingConfig type="list">
+            <listEntry value="0">@Strings.AlternateMarkersNoTitle</listEntry>
+            <listEntry value="1">@Strings.AlternateMarkersYesTitle</listEntry>
         </settingConfig>
     </setting>
 </settings>

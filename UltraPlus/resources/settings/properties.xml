@@ -3,8 +3,10 @@
     <property id="ThemeSelection" type="number">0</property>
     <property id="TemperatureSelection" type="number">0</property>
     <property id="DisplayUTCTime" type="number">0</property>
+    <property id="UTCTimeOffset" type="number">0</property>
+    <property id="AlwaysOnDisplay" type="number">0</property>
     <property id="HourMarkers" type="number">0</property>
-    <property id="AlternateMarkers" type="number">0</property>
     <property id="BatteryInDays" type="number">0</property>
     <property id="RespectFirstDay" type="number">0</property>
+    <property id="AlternateMarkers" type="number">0</property>
 </properties>
