@@ -40,6 +40,8 @@ class UltraPlusView extends WatchUi.WatchFace {
 		respectFirstDay,
         alternateMarkers,
 		alwaysOnDisplay,
+		handOffset,
+		handOffset2,
 		inLowPower = false,
 		canBurnIn = false;
 
@@ -73,15 +75,46 @@ class UltraPlusView extends WatchUi.WatchFace {
         circleFontSize = 30;
         dataFontSize = 36;
         hourFontSize = 18;
+		handOffset = 55;
+		handOffset2 = 11;
 
         // Change Font Size based on Screen Size
         switch (screenSize) {
+			case 240:
+				arcLabelFontSize = arcLabelFontSize * 0.575;
+                dayOfWeekFontSize = dayOfWeekFontSize * 0.575;
+                circleFontSize = circleFontSize * 0.575;
+                dataFontSize = dataFontSize * 0.575;
+                hourFontSize = hourFontSize * 0.575;
+				handOffset = handOffset * 0.575;
+				handOffset2 = handOffset2 * 0.575;
+			break;
+			case 260:
+				arcLabelFontSize = arcLabelFontSize * 0.625;
+                dayOfWeekFontSize = dayOfWeekFontSize * 0.625;
+                circleFontSize = circleFontSize * 0.625;
+                dataFontSize = dataFontSize * 0.625;
+                hourFontSize = hourFontSize * 0.625;
+				handOffset = handOffset * 0.625;
+				handOffset2 = handOffset2 * 0.625;
+			break;
+			case 280:
+				arcLabelFontSize = arcLabelFontSize * 0.675;
+                dayOfWeekFontSize = dayOfWeekFontSize * 0.675;
+                circleFontSize = circleFontSize * 0.675;
+                dataFontSize = dataFontSize * 0.675;
+                hourFontSize = hourFontSize * 0.675;
+				handOffset = handOffset * 0.675;
+				handOffset2 = handOffset2 * 0.675;
+			break;
             case 360:
                 arcLabelFontSize = arcLabelFontSize * 0.75;
                 dayOfWeekFontSize = dayOfWeekFontSize * 0.75;
                 circleFontSize = circleFontSize * 0.75;
                 dataFontSize = dataFontSize * 0.75;
                 hourFontSize = hourFontSize * 0.75;
+				handOffset = handOffset * 0.75;
+				handOffset2 = handOffset2 * 0.75;
             break;
             case 390:
                 arcLabelFontSize = arcLabelFontSize * 0.875;
@@ -89,6 +122,8 @@ class UltraPlusView extends WatchUi.WatchFace {
                 circleFontSize = circleFontSize * 0.875;
                 dataFontSize = dataFontSize * 0.875;
                 hourFontSize = hourFontSize * 0.875;
+				handOffset = handOffset * 0.875;
+				handOffset2 = handOffset2 * 0.875;
             break;
             case 454:
                 arcLabelFontSize = arcLabelFontSize * 1.125;
@@ -96,6 +131,8 @@ class UltraPlusView extends WatchUi.WatchFace {
                 circleFontSize = circleFontSize * 1.125;
                 dataFontSize = dataFontSize * 1.125;
                 hourFontSize = hourFontSize * 1.125;
+				handOffset = handOffset * 1.125;
+				handOffset2 = handOffset2 * 1.125;
             break;
             default:
                 // Set Font Sizes for 416
@@ -104,6 +141,8 @@ class UltraPlusView extends WatchUi.WatchFace {
                 circleFontSize = 30;
                 dataFontSize = 36;
                 hourFontSize = 18;
+				handOffset = 55;
+				handOffset2 = 11;
             break;
         }
 
@@ -258,7 +297,67 @@ class UltraPlusView extends WatchUi.WatchFace {
 
             // draw the mask at the new offset
             dc.drawBitmap(maskRandomizer, 0, aodMask);
-        } else {
+        } else if (inLowPower) {
+			// Draw the full experience
+            // Call the parent onUpdate function to redraw the layout
+            View.onUpdate(dc);
+            // Draw the background bitmap
+            dc.drawBitmap(0, 0, faceBG);
+
+            // Draw the hash marks
+            switch (hourMarkers) { 
+            case 0:
+                drawHashMarks(dc);
+            break;
+            case 1:
+                drawNumbersAndHashMarks(dc);
+            break;
+            case 2:
+                drawNumbersOnlyMarks(dc,false);
+            break;
+            default:
+                drawHashMarks(dc);
+            break;
+            }
+            // Draw heart rate
+            drawHeartRate(dc);
+            // Draw Weather
+            drawWeather(dc);
+            // Draw Days of the Week
+            drawDayOfWeek(dc);
+            // Draw bluetooth line if connected
+		    drawBluetooth(dc);
+            // Draw Body Battery Arc
+            drawBodyBatteryArc(dc);
+            // Draw Battery Arc
+            drawBatteryArc(dc,batteryInDays);
+            // Draw Steps Arc
+            drawStepsArc(dc);
+            // Draw Data Arc
+            drawDataArc(dc);
+            
+            // Draw the hour. Convert it to minutes and compute the angle.
+            hourHand = (((clockTime.hour % 12) * 60) + clockTime.min);
+            hourHand = hourHand / (12 * 60.0);
+            hourHand = hourHand * Math.PI * 2;
+            drawHourHand(dc, hourHand, false);
+            
+            // Draw the minute
+            minuteHand = (clockTime.min / 60.0) * Math.PI * 2;
+            drawMinuteHand(dc, minuteHand, false);
+
+			// Draw Seconds Hand Circle
+            // Outer arbor
+            dc.setColor(accentColor, Graphics.COLOR_TRANSPARENT);
+            dc.fillCircle(centerX, centerY, 10);
+			dc.setColor(Graphics.COLOR_BLACK, Graphics.COLOR_TRANSPARENT);
+            dc.fillCircle(centerX, centerY, 8);
+			// Inner arbor
+            dc.setColor(Graphics.COLOR_BLACK, Graphics.COLOR_TRANSPARENT);
+            dc.fillCircle(centerX, centerY, 1);
+            dc.setColor(accentColor,Graphics.COLOR_TRANSPARENT);
+            dc.drawCircle(centerX, centerY, 1);
+		} else {
             // Draw the full experience
             // Call the parent onUpdate function to redraw the layout
             View.onUpdate(dc);
@@ -527,9 +626,9 @@ class UltraPlusView extends WatchUi.WatchFace {
         // draw left circle
         dc.setPenWidth(3);
         dc.setColor(Graphics.COLOR_DK_GRAY, Graphics.COLOR_TRANSPARENT);
-        dc.fillCircle(xPos, centerY, screen_width * 0.1225);
+        dc.fillCircle(xPos, centerY, screen_width * 0.125);
         dc.setColor(Graphics.COLOR_BLACK,Graphics.COLOR_DK_GRAY);
-        dc.fillCircle(xPos, centerY, screen_width * 0.1201); 
+        dc.fillCircle(xPos, centerY, screen_width * 0.12); 
         
 		// draw heart
         dc.setColor(Graphics.COLOR_DK_RED, Graphics.COLOR_TRANSPARENT);
@@ -562,9 +661,9 @@ class UltraPlusView extends WatchUi.WatchFace {
         // draw right circle
         dc.setPenWidth(3);
         dc.setColor(Graphics.COLOR_DK_GRAY, Graphics.COLOR_TRANSPARENT);
-        dc.fillCircle(xPos, centerX, screen_width * 0.1225);
+        dc.fillCircle(xPos, centerX, screen_width * 0.125);
         dc.setColor(Graphics.COLOR_BLACK, Graphics.COLOR_DK_GRAY);
-        dc.fillCircle(xPos, centerX, screen_width * 0.1201);
+        dc.fillCircle(xPos, centerX, screen_width * 0.12);
 
         // Check to see if weather exists otherwise display null temps
 		currentConditions = Weather.getCurrentConditions();
@@ -593,7 +692,7 @@ class UltraPlusView extends WatchUi.WatchFace {
 				}
                 // draw divider
                 dc.setPenWidth(2);
-                dc.drawLine(xPos-(screen_width * 0.0576), (screen_height / 2), xPos+(screen_width * 0.0576),(screen_height / 2));
+                dc.drawLine(xPos - (screen_width * 0.0576), (screen_height / 2), xPos + (screen_width * 0.0576), (screen_height / 2));
                 // insert the data
                 dc.setColor(uiTertiaryColor,Graphics.COLOR_TRANSPARENT); 
                 dc.drawText(xPos, (centerY) + (screen_height * 0.012), font, feelsLikeC, justification);
@@ -986,9 +1085,9 @@ class UltraPlusView extends WatchUi.WatchFace {
 		// draw centered circle
         dc.setPenWidth(3);
         dc.setColor(Graphics.COLOR_DK_GRAY, Graphics.COLOR_TRANSPARENT);
-        dc.fillCircle(centerX, yPos, screen_width * 0.1225);
+        dc.fillCircle(centerX, yPos, screen_width * 0.125);
         dc.setColor(Graphics.COLOR_BLACK, Graphics.COLOR_DK_GRAY);
-        dc.fillCircle(centerX, yPos, screen_width * 0.1201);
+        dc.fillCircle(centerX, yPos, screen_width * 0.12);
         // draw calendar
         dc.setColor(Graphics.COLOR_LT_GRAY, Graphics.COLOR_TRANSPARENT);
         dc.drawText(centerX, yPos - screen_height * 0.0889, customIcons, "b", justification);
@@ -1037,7 +1136,7 @@ class UltraPlusView extends WatchUi.WatchFace {
         // Outer pointer
 		coords_outer = [[-width, 0],[width, 0],[width, (length - 5)],[0, length],[-width, (length - 5)]];
 		// Inner accent
-		coords_inner = [[-(width-2), 55],[(width - 2), 55],[(width - 2), (length - 11)],[-(width - 2), (length - 11)]];
+		coords_inner = [[-(width-2), handOffset],[(width - 2), handOffset],[(width - 2), (length - handOffset2)],[-(width - 2), (length - handOffset2)]];
 		
 		// Draw these with their color and orientation
 		if (aod) {
@@ -1066,7 +1165,7 @@ class UltraPlusView extends WatchUi.WatchFace {
 		// Outer pointer
 		var coords_outer = [[-width ,0],[width ,0],[width ,(length - 5)],[0,length],[-width ,(length - 5)]];
 		// Inner accent
-		var coords_inner = [[-(width - 2),55],[(width - 2),55],[(width - 2),(length - 11)],[-(width - 2),(length - 11)]];
+		var coords_inner = [[-(width - 2),handOffset],[(width - 2),handOffset],[(width - 2),(length - handOffset2)],[-(width - 2),(length - handOffset2)]];
 
 		// Draw these with their color and orientation
 		if (aod) {
@@ -1284,8 +1383,18 @@ class UltraPlusView extends WatchUi.WatchFace {
     }
 
     private function getHeartRate() as Number  {
-        var heartrateIterator = Toybox.ActivityMonitor.getHeartRateHistory(1, true);
-        return heartrateIterator.next().heartRate;
+		// check to see if I can get current HR first
+		if (Toybox.ActivityMonitor has :getHeartRateHistory && Activity.getActivityInfo != null) {
+			var heartRate = Toybox.Activity.getActivityInfo().currentHeartRate;
+			if (heartRate == null) {
+				var heartrateIterator = Toybox.ActivityMonitor.getHeartRateHistory(1, true);
+				return heartrateIterator.next().heartRate;
+			} else {
+				return heartRate;
+			}
+		} else {
+			return 0;
+		}
     }
 
     private function getHeartRateString() as String  {
@@ -1318,7 +1427,11 @@ class UltraPlusView extends WatchUi.WatchFace {
     }
 
     private function getSteps() as Lang.Number or Null {
-        return Toybox.ActivityMonitor.getInfo().steps; 
+		if (Toybox.ActivityMonitor.getInfo().steps != null) {
+        	return Toybox.ActivityMonitor.getInfo().steps; 
+		} else {
+			return 0;
+		}
     }
 
     private function getStepsString() as String {
@@ -1326,22 +1439,35 @@ class UltraPlusView extends WatchUi.WatchFace {
     }
 
     private function getStepGoal() as Lang.Number or Null {
-        return Toybox.ActivityMonitor.getInfo().stepGoal;
+		if (Toybox.ActivityMonitor.getInfo().stepGoal != null) {
+			return Toybox.ActivityMonitor.getInfo().stepGoal;
+		} else {
+			return 0;
+		}  
     }
 
     private function getStepsRatioThresholded() as Lang.Float or Null {
-        var stepGoal = getStepGoal(); 
-        var steps = getSteps();
+		if (Toybox.ActivityMonitor.getInfo().stepGoal != null) {
+			var stepGoal = getStepGoal().toFloat(); 
+			var steps = getSteps().toFloat();
 
-        if (steps == null || stepGoal == null) {
-            return null;
-        }
+			// To handle divide by 0 issues
+			if (stepGoal == 0) {
+				stepGoal = 1;
+			}
 
-        if (steps > stepGoal) {
-            steps = stepGoal;
-        }
+			if (steps == null || stepGoal == null) {
+				return null;	
+			}
 
-        return 1.0 * steps / stepGoal;
+			if (steps > stepGoal) {
+				steps = stepGoal;
+			}
+			
+			return 1.0 * (steps / stepGoal);
+		} else {
+			return null;
+		} 
     }
 
     private function getBattery() as Float  {

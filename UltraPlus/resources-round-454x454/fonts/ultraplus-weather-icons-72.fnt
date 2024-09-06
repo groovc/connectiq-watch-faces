@@ -1,0 +1,37 @@
+info face="ultraplusweather" size=72 bold=0 italic=0 charset="" unicode=1 stretchH=100 smooth=1 aa=1 padding=0,0,0,0 spacing=1,1 outline=0
+common lineHeight=72 base=62 scaleW=384 scaleH=384 pages=1 packed=0 alphaChnl=1 redChnl=0 greenChnl=0 blueChnl=0
+page id=0 file="ultraplus-weather-icons-72_0.png"
+chars count=33
+char id=65   x=51    y=0     width=35    height=49    xoffset=15    yoffset=11    xadvance=66    page=0  chnl=15
+char id=66   x=35    y=139   width=38    height=33    xoffset=14    yoffset=21    xadvance=66    page=0  chnl=15
+char id=67   x=238   y=93    width=36    height=39    xoffset=15    yoffset=17    xadvance=66    page=0  chnl=15
+char id=68   x=0     y=51    width=48    height=45    xoffset=9     yoffset=22    xadvance=66    page=0  chnl=15
+char id=69   x=126   y=94    width=56    height=39    xoffset=5     yoffset=22    xadvance=66    page=0  chnl=15
+char id=70   x=40    y=97    width=32    height=41    xoffset=17    yoffset=19    xadvance=66    page=0  chnl=15
+char id=71   x=324   y=90    width=33    height=36    xoffset=17    yoffset=20    xadvance=66    page=0  chnl=15
+char id=97   x=49    y=51    width=48    height=45    xoffset=9     yoffset=22    xadvance=66    page=0  chnl=15
+char id=98   x=136   y=0     width=48    height=46    xoffset=9     yoffset=22    xadvance=66    page=0  chnl=15
+char id=99   x=185   y=0     width=48    height=46    xoffset=9     yoffset=22    xadvance=66    page=0  chnl=15
+char id=100  x=98    y=48    width=48    height=45    xoffset=9     yoffset=22    xadvance=66    page=0  chnl=15
+char id=101  x=234   y=0     width=48    height=46    xoffset=8     yoffset=22    xadvance=66    page=0  chnl=15
+char id=102  x=147   y=47    width=48    height=45    xoffset=9     yoffset=22    xadvance=66    page=0  chnl=15
+char id=103  x=275   y=91    width=48    height=37    xoffset=9     yoffset=22    xadvance=66    page=0  chnl=15
+char id=104  x=358   y=89    width=19    height=25    xoffset=23    yoffset=22    xadvance=66    page=0  chnl=15
+char id=105  x=283   y=0     width=48    height=46    xoffset=9     yoffset=22    xadvance=66    page=0  chnl=15
+char id=106  x=0     y=139   width=34    height=34    xoffset=16    yoffset=20    xadvance=66    page=0  chnl=15
+char id=107  x=196   y=47    width=48    height=45    xoffset=9     yoffset=22    xadvance=66    page=0  chnl=15
+char id=108  x=332   y=0     width=48    height=45    xoffset=9     yoffset=22    xadvance=66    page=0  chnl=15
+char id=109  x=245   y=47    width=36    height=43    xoffset=15    yoffset=13    xadvance=66    page=0  chnl=15
+char id=110  x=0     y=97    width=39    height=41    xoffset=13    yoffset=16    xadvance=66    page=0  chnl=15
+char id=111  x=331   y=47    width=40    height=41    xoffset=13    yoffset=16    xadvance=66    page=0  chnl=15
+char id=112  x=74    y=138   width=54    height=32    xoffset=6     yoffset=22    xadvance=66    page=0  chnl=15
+char id=113  x=229   y=133   width=54    height=28    xoffset=6     yoffset=26    xadvance=66    page=0  chnl=15
+char id=114  x=0     y=0     width=50    height=50    xoffset=8     yoffset=12    xadvance=66    page=0  chnl=15
+char id=115  x=282   y=47    width=48    height=42    xoffset=9     yoffset=17    xadvance=66    page=0  chnl=15
+char id=116  x=321   y=129   width=48    height=16    xoffset=9     yoffset=32    xadvance=66    page=0  chnl=15
+char id=117  x=129   y=134   width=50    height=32    xoffset=8     yoffset=22    xadvance=66    page=0  chnl=15
+char id=118  x=73    y=97    width=52    height=40    xoffset=7     yoffset=22    xadvance=66    page=0  chnl=15
+char id=119  x=183   y=93    width=54    height=39    xoffset=6     yoffset=22    xadvance=66    page=0  chnl=15
+char id=120  x=180   y=134   width=48    height=32    xoffset=9     yoffset=22    xadvance=66    page=0  chnl=15
+char id=121  x=87    y=0     width=48    height=47    xoffset=9     yoffset=14    xadvance=66    page=0  chnl=15
+char id=122  x=284   y=129   width=36    height=23    xoffset=15    yoffset=28    xadvance=66    page=0  chnl=15
