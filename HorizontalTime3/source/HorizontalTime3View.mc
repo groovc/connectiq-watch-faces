@@ -37,7 +37,7 @@ class HorizontalTime3View extends Ui.WatchFace {
     }
 
     // Load your resources here
-    function onLayout(dc as Dc) as Void {
+    function onLayout(dc) as Void {
         //get screen dimensions
 		screen_width = dc.getWidth();
 		screen_height = dc.getHeight();
@@ -59,7 +59,7 @@ class HorizontalTime3View extends Ui.WatchFace {
 	// Add conditions for inLowPower and canBurnIn to display different things
 	function renderTime(dc,utc) {
 		// Get the current time and format it correctly
-        var timeFormat = "$1$$2$";
+        //var timeFormat = "$1$$2$";
         var clockTime = Sys.getClockTime();
         var hours = clockTime.hour;
         var minutes = clockTime.min;
@@ -292,7 +292,7 @@ class HorizontalTime3View extends Ui.WatchFace {
 	function formatHour(utc, modifier) {
 		var extraTime = new Time.Duration(60*60*modifier);
 		var newUTC = utc.add(extraTime);
-		var newUTCVal = newUTC.value();
+		// var newUTCVal = newUTC.value();
 		var date = Calendar.info(newUTC,Time.FORMAT_SHORT);
 		
 		// Handle the weird use cases of using 12 hour time display
@@ -315,13 +315,13 @@ class HorizontalTime3View extends Ui.WatchFace {
 	function formatMinutes(utc,modifier) {
 		var extraTime = new Time.Duration(60*modifier);
 		var newUTC = utc.add(extraTime);
-		var newUTCVal = newUTC.value();
+		// var newUTCVal = newUTC.value();
 		var date = Calendar.info(newUTC,Time.FORMAT_SHORT);
 		return Lang.format("$1$",[date.min.format("%02d")]);
 	}
 
     // Update the view
-    function onUpdate(dc as Dc) as Void {
+    function onUpdate(dc) as Void {
         var utc = Time.now();
 		// shift the mask around
 		if (maskRandomizer == 0) {

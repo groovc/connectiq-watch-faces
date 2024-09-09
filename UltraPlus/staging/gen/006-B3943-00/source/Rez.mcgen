@@ -20,9 +20,9 @@ module Rez {
 
     module Layouts {
         function WatchFace(dc as Graphics.Dc) as Array<WatchUi.Drawable> {
-            var rez_cmp_local_custom_drawable_81030009919522498481 = new Background();
+            var rez_cmp_local_custom_drawable_20893048131510698263 = new Background();
 
-            return [rez_cmp_local_custom_drawable_81030009919522498481] as Array<WatchUi.Drawable>;
+            return [rez_cmp_local_custom_drawable_20893048131510698263] as Array<WatchUi.Drawable>;
         }
     } // Layouts
 
@@ -33,6 +33,7 @@ module Rez {
         (:initialized) var Color0x0055FF as ResourceId;
         (:initialized) var ThemeDarkTitle as ResourceId;
         (:initialized) var DisplayUTCTimeTitle as ResourceId;
+        (:initialized) var UTCp430 as ResourceId;
         (:initialized) var Color0xAA00AA as ResourceId;
         (:initialized) var Color0x55FFFF as ResourceId;
         (:initialized) var Color0xAAAA00 as ResourceId;
@@ -49,17 +50,34 @@ module Rez {
         (:initialized) var DisplayUTCTimeNoTitle as ResourceId;
         (:initialized) var Color0xFF5555 as ResourceId;
         (:initialized) var Color0x005555 as ResourceId;
+        (:initialized) var UTCm9 as ResourceId;
         (:initialized) var Color0xFFAAAA as ResourceId;
+        (:initialized) var UTCp545 as ResourceId;
         (:initialized) var TemperatureFOnlyTitle as ResourceId;
+        (:initialized) var UTCp1245 as ResourceId;
         (:initialized) var Color0xAA5555 as ResourceId;
         (:initialized) var HourMarkersTitle as ResourceId;
         (:initialized) var TemperatureBothTitle as ResourceId;
         (:initialized) var Color0xAAAAAA as ResourceId;
         (:initialized) var Color0x55FF55 as ResourceId;
+        (:initialized) var UTCm6 as ResourceId;
+        (:initialized) var UTCm5 as ResourceId;
+        (:initialized) var UTCm8 as ResourceId;
+        (:initialized) var UTCm7 as ResourceId;
+        (:initialized) var UTCm2 as ResourceId;
         (:initialized) var Color0x5555FF as ResourceId;
+        (:initialized) var UTCm1 as ResourceId;
+        (:initialized) var UTCm4 as ResourceId;
         (:initialized) var Day6JPN as ResourceId;
+        (:initialized) var UTCm3 as ResourceId;
+        (:initialized) var UTCp10 as ResourceId;
         (:initialized) var AlternateMarkersYesTitle as ResourceId;
         (:initialized) var Color0xFF5500 as ResourceId;
+        (:initialized) var UTCp14 as ResourceId;
+        (:initialized) var UTCp13 as ResourceId;
+        (:initialized) var UTCp12 as ResourceId;
+        (:initialized) var UTCp11 as ResourceId;
+        (:initialized) var UTCp330 as ResourceId;
         (:initialized) var RespectFirstDayTitle as ResourceId;
         (:initialized) var Color0x0000AA as ResourceId;
         (:initialized) var Color0xFF0055 as ResourceId;
@@ -68,8 +86,10 @@ module Rez {
         (:initialized) var Color0x55AA55 as ResourceId;
         (:initialized) var Color0x5555AA as ResourceId;
         (:initialized) var AccentColorTitle as ResourceId;
+        (:initialized) var UTCTimeOffsetTitle as ResourceId;
         (:initialized) var Day3JPN as ResourceId;
         (:initialized) var Color0x5500FF as ResourceId;
+        (:initialized) var UTCp845 as ResourceId;
         (:initialized) var Color0xAAFFAA as ResourceId;
         (:initialized) var Color0x000000 as ResourceId;
         (:initialized) var Color0xAA0000 as ResourceId;
@@ -77,24 +97,40 @@ module Rez {
         (:initialized) var Color0xFFFFFF as ResourceId;
         (:initialized) var Color0x555500 as ResourceId;
         (:initialized) var Color0x550055 as ResourceId;
+        (:initialized) var UTCm12 as ResourceId;
+        (:initialized) var UTCm11 as ResourceId;
+        (:initialized) var UTCm10 as ResourceId;
         (:initialized) var Color0xFFAAFF as ResourceId;
         (:initialized) var Color0xAAFF00 as ResourceId;
+        (:initialized) var UTCp630 as ResourceId;
         (:initialized) var AlternateMarkersTitle as ResourceId;
+        (:initialized) var UTCp1 as ResourceId;
         (:initialized) var AlternateMarkersNoTitle as ResourceId;
+        (:initialized) var UTCp0 as ResourceId;
         (:initialized) var Color0xAA5500 as ResourceId;
         (:initialized) var DOWLanguageENG as ResourceId;
+        (:initialized) var UTCp3 as ResourceId;
+        (:initialized) var UTCp2 as ResourceId;
         (:initialized) var Color0xAA0055 as ResourceId;
         (:initialized) var HourMarkersNoTitle as ResourceId;
         (:initialized) var TemperatureSelectionTitle as ResourceId;
         (:initialized) var HourMarkersYesTitle as ResourceId;
+        (:initialized) var UTCp9 as ResourceId;
+        (:initialized) var UTCp8 as ResourceId;
         (:initialized) var Color0xFFFFAA as ResourceId;
         (:initialized) var TemperatureCOnlyTitle as ResourceId;
+        (:initialized) var UTCp5 as ResourceId;
+        (:initialized) var AlwaysOnDisplayTitle as ResourceId;
+        (:initialized) var UTCp4 as ResourceId;
+        (:initialized) var UTCp7 as ResourceId;
+        (:initialized) var UTCp6 as ResourceId;
         (:initialized) var Color0x550000 as ResourceId;
         (:initialized) var Day5JPN as ResourceId;
         (:initialized) var Color0xFF55AA as ResourceId;
         (:initialized) var Color0x0055AA as ResourceId;
         (:initialized) var StepArcTitle as ResourceId;
         (:initialized) var Color0xFFAA55 as ResourceId;
+        (:initialized) var UTCm230 as ResourceId;
         (:initialized) var Color0x0000FF as ResourceId;
         (:initialized) var Color0xFF00FF as ResourceId;
         (:initialized) var DisplayUTCTimeYesTitle as ResourceId;
@@ -111,21 +147,28 @@ module Rez {
         (:initialized) var ThemeTitle as ResourceId;
         (:initialized) var Color0x005500 as ResourceId;
         (:initialized) var Color0xFFAA00 as ResourceId;
+        (:initialized) var UTCp930 as ResourceId;
         (:initialized) var Color0xAAFFFF as ResourceId;
+        (:initialized) var UTCp530 as ResourceId;
+        (:initialized) var DisplayUTCTimeOnlyTitle as ResourceId;
+        (:initialized) var UTCp1030 as ResourceId;
         (:initialized) var Color0x000055 as ResourceId;
         (:initialized) var Color0xFF00AA as ResourceId;
+        (:initialized) var AlwaysOnDisplaySimpleTitle as ResourceId;
         (:initialized) var AppName as ResourceId;
         (:initialized) var Color0xAA55FF as ResourceId;
         (:initialized) var Color0x55AAAA as ResourceId;
         (:initialized) var Color0x555555 as ResourceId;
         (:initialized) var Day7JPN as ResourceId;
         (:initialized) var RespectFirstDayNoTitle as ResourceId;
+        (:initialized) var UTCm930 as ResourceId;
         (:initialized) var Color0xAAFF55 as ResourceId;
         (:initialized) var Color0xFF0000 as ResourceId;
         (:initialized) var Color0x55AA00 as ResourceId;
         (:initialized) var BatteryInDaysYesTitle as ResourceId;
         (:initialized) var BatteryInDaysNoTitle as ResourceId;
         (:initialized) var HourMarkersNumbersOnlyTitle as ResourceId;
+        (:initialized) var AlwaysOnDisplayDetailedTitle as ResourceId;
         (:initialized) var Color0x5500AA as ResourceId;
         (:initialized) var Day4JPN as ResourceId;
     } // Strings

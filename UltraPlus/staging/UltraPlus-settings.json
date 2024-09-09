@@ -244,6 +244,138 @@
     }, {
       "display" : "DisplayUTCTimeNoTitle",
       "value" : 1
+    }, {
+      "display" : "DisplayUTCTimeOnlyTitle",
+      "value" : 2
+    } ],
+    "configMin" : null,
+    "configMax" : null,
+    "configMaxLength" : null
+  }, {
+    "key" : "UTCTimeOffset",
+    "valueType" : "number",
+    "defaultValue" : 0,
+    "configTitle" : "UTCTimeOffsetTitle",
+    "configPrompt" : null,
+    "configType" : "list",
+    "configError" : null,
+    "configHelpUrl" : null,
+    "configReadonly" : false,
+    "configRequired" : false,
+    "configOptions" : [ {
+      "display" : "UTCm12",
+      "value" : -43200
+    }, {
+      "display" : "UTCm11",
+      "value" : -39600
+    }, {
+      "display" : "UTCm10",
+      "value" : -36000
+    }, {
+      "display" : "UTCm930",
+      "value" : -34200
+    }, {
+      "display" : "UTCm9",
+      "value" : -32400
+    }, {
+      "display" : "UTCm8",
+      "value" : -28800
+    }, {
+      "display" : "UTCm7",
+      "value" : -25200
+    }, {
+      "display" : "UTCm6",
+      "value" : -21600
+    }, {
+      "display" : "UTCm5",
+      "value" : -18000
+    }, {
+      "display" : "UTCm4",
+      "value" : -14400
+    }, {
+      "display" : "UTCm3",
+      "value" : -10800
+    }, {
+      "display" : "UTCm230",
+      "value" : -9000
+    }, {
+      "display" : "UTCm2",
+      "value" : -7200
+    }, {
+      "display" : "UTCm1",
+      "value" : -3600
+    }, {
+      "display" : "UTCp0",
+      "value" : 0
+    }, {
+      "display" : "UTCp1",
+      "value" : 3600
+    }, {
+      "display" : "UTCp2",
+      "value" : 7200
+    }, {
+      "display" : "UTCp3",
+      "value" : 10800
+    }, {
+      "display" : "UTCp330",
+      "value" : 12600
+    }, {
+      "display" : "UTCp4",
+      "value" : 14400
+    }, {
+      "display" : "UTCp430",
+      "value" : 16200
+    }, {
+      "display" : "UTCp5",
+      "value" : 18000
+    }, {
+      "display" : "UTCp530",
+      "value" : 19800
+    }, {
+      "display" : "UTCp545",
+      "value" : 20700
+    }, {
+      "display" : "UTCp6",
+      "value" : 21600
+    }, {
+      "display" : "UTCp630",
+      "value" : 23400
+    }, {
+      "display" : "UTCp7",
+      "value" : 25200
+    }, {
+      "display" : "UTCp8",
+      "value" : 28800
+    }, {
+      "display" : "UTCp845",
+      "value" : 31500
+    }, {
+      "display" : "UTCp9",
+      "value" : 32400
+    }, {
+      "display" : "UTCp930",
+      "value" : 34200
+    }, {
+      "display" : "UTCp10",
+      "value" : 36000
+    }, {
+      "display" : "UTCp1030",
+      "value" : 37800
+    }, {
+      "display" : "UTCp11",
+      "value" : 39600
+    }, {
+      "display" : "UTCp12",
+      "value" : 43200
+    }, {
+      "display" : "UTCp1245",
+      "value" : 45900
+    }, {
+      "display" : "UTCp13",
+      "value" : 46800
+    }, {
+      "display" : "UTCp14",
+      "value" : 50400
     } ],
     "configMin" : null,
     "configMax" : null,
@@ -273,27 +405,6 @@
     "configMax" : null,
     "configMaxLength" : null
   }, {
-    "key" : "AlternateMarkers",
-    "valueType" : "number",
-    "defaultValue" : 0,
-    "configTitle" : "AlternateMarkersTitle",
-    "configPrompt" : null,
-    "configType" : "list",
-    "configError" : null,
-    "configHelpUrl" : null,
-    "configReadonly" : false,
-    "configRequired" : false,
-    "configOptions" : [ {
-      "display" : "AlternateMarkersNoTitle",
-      "value" : 0
-    }, {
-      "display" : "AlternateMarkersYesTitle",
-      "value" : 1
-    } ],
-    "configMin" : null,
-    "configMax" : null,
-    "configMaxLength" : null
-  }, {
     "key" : "BatteryInDays",
     "valueType" : "number",
     "defaultValue" : 0,
@@ -309,6 +420,27 @@
       "value" : 0
     }, {
       "display" : "BatteryInDaysYesTitle",
+      "value" : 1
+    } ],
+    "configMin" : null,
+    "configMax" : null,
+    "configMaxLength" : null
+  }, {
+    "key" : "AlwaysOnDisplay",
+    "valueType" : "number",
+    "defaultValue" : 0,
+    "configTitle" : "AlwaysOnDisplayTitle",
+    "configPrompt" : null,
+    "configType" : "list",
+    "configError" : null,
+    "configHelpUrl" : null,
+    "configReadonly" : false,
+    "configRequired" : false,
+    "configOptions" : [ {
+      "display" : "AlwaysOnDisplayDetailedTitle",
+      "value" : 0
+    }, {
+      "display" : "AlwaysOnDisplaySimpleTitle",
       "value" : 1
     } ],
     "configMin" : null,
@@ -335,6 +467,27 @@
     "configMin" : null,
     "configMax" : null,
     "configMaxLength" : null
+  }, {
+    "key" : "AlternateMarkers",
+    "valueType" : "number",
+    "defaultValue" : 0,
+    "configTitle" : "AlternateMarkersTitle",
+    "configPrompt" : null,
+    "configType" : "list",
+    "configError" : null,
+    "configHelpUrl" : null,
+    "configReadonly" : false,
+    "configRequired" : false,
+    "configOptions" : [ {
+      "display" : "AlternateMarkersNoTitle",
+      "value" : 0
+    }, {
+      "display" : "AlternateMarkersYesTitle",
+      "value" : 1
+    } ],
+    "configMin" : null,
+    "configMax" : null,
+    "configMaxLength" : null
   } ],
   "supportsLiveValidation" : false,
   "languages" : {
@@ -345,6 +498,7 @@
       "Color0x0055FF" : "Bright Blue",
       "ThemeDarkTitle" : "Dark",
       "DisplayUTCTimeTitle" : "Display UTC Time",
+      "UTCp430" : "UTC+4:30",
       "Color0xAA00AA" : "Dark Violet",
       "Color0x55FFFF" : "Aquamarine Blue",
       "Color0xAAAA00" : "Burnt Yellow",
@@ -358,20 +512,37 @@
       "BatteryInDaysTitle" : "Battery In Days?",
       "Day7" : "S",
       "Day1JPN" : "日",
-      "DisplayUTCTimeNoTitle" : "No",
+      "DisplayUTCTimeNoTitle" : "Local Only",
       "Color0xFF5555" : "Pink Orange",
       "Color0x005555" : "Dark Teal",
+      "UTCm9" : "UTC-9",
       "Color0xFFAAAA" : "Salmon",
+      "UTCp545" : "UTC+5:45",
       "TemperatureFOnlyTitle" : "°F Only",
+      "UTCp1245" : "UTC+12:45",
       "Color0xAA5555" : "Pale Brown",
       "HourMarkersTitle" : "Display Hours?",
       "TemperatureBothTitle" : "°C and °F",
       "Color0xAAAAAA" : "Gray",
       "Color0x55FF55" : "Pale Green",
+      "UTCm6" : "UTC-6",
+      "UTCm5" : "UTC-5",
+      "UTCm8" : "UTC-8",
+      "UTCm7" : "UTC-7",
+      "UTCm2" : "UTC-2",
       "Color0x5555FF" : "Purple Blue",
+      "UTCm1" : "UTC-1",
+      "UTCm4" : "UTC-4",
       "Day6JPN" : "金",
+      "UTCm3" : "UTC-3",
+      "UTCp10" : "UTC+10",
       "AlternateMarkersYesTitle" : "Yes",
       "Color0xFF5500" : "Orange",
+      "UTCp14" : "UTC+14",
+      "UTCp13" : "UTC+13",
+      "UTCp12" : "UTC+12",
+      "UTCp11" : "UTC+11",
+      "UTCp330" : "UTC+3:30",
       "RespectFirstDayTitle" : "Respect First Day of the Week",
       "Color0x0000AA" : "Dark Blue",
       "Color0xFF0055" : "Light Red",
@@ -380,8 +551,10 @@
       "Color0x55AA55" : "Pale Green",
       "Color0x5555AA" : "Dark Purple Blue",
       "AccentColorTitle" : "Accent Color",
+      "UTCTimeOffsetTitle" : "UTC Offset",
       "Day3JPN" : "火",
       "Color0x5500FF" : "Light Violet",
+      "UTCp845" : "UTC+8:45",
       "Color0xAAFFAA" : "Mint Green",
       "Color0x000000" : "Black",
       "Color0xAA0000" : "Dark Red",
@@ -389,27 +562,43 @@
       "Color0xFFFFFF" : "White",
       "Color0x555500" : "Dark Olive",
       "Color0x550055" : "Dark Purple",
+      "UTCm12" : "UTC-12",
+      "UTCm11" : "UTC-11",
+      "UTCm10" : "UTC-10",
       "Color0xFFAAFF" : "Pink",
       "Color0xAAFF00" : "Lime",
+      "UTCp630" : "UTC+6:30",
       "AlternateMarkersTitle" : "Lighter Hash Marks",
+      "UTCp1" : "UTC+1",
       "AlternateMarkersNoTitle" : "No",
+      "UTCp0" : "UTC+0",
       "Color0xAA5500" : "Brown",
       "DOWLanguageENG" : "English",
+      "UTCp3" : "UTC+3",
+      "UTCp2" : "UTC+2",
       "Color0xAA0055" : "Red Pink",
       "HourMarkersNoTitle" : "No",
       "TemperatureSelectionTitle" : "Temperature (Feels Like)",
       "HourMarkersYesTitle" : "Yes",
+      "UTCp9" : "UTC+9",
+      "UTCp8" : "UTC+8",
       "Color0xFFFFAA" : "Pale Yellow",
       "TemperatureCOnlyTitle" : "°C Only",
+      "UTCp5" : "UTC+5",
+      "AlwaysOnDisplayTitle" : "Always On Display",
+      "UTCp4" : "UTC+4",
+      "UTCp7" : "UTC+7",
+      "UTCp6" : "UTC+6",
       "Color0x550000" : "Crimson",
       "Day5JPN" : "木",
       "Color0xFF55AA" : "Hot Pink",
       "Color0x0055AA" : "Medium Blue",
       "StepArcTitle" : "STEP",
       "Color0xFFAA55" : "Pale Orange",
+      "UTCm230" : "UTC-2:30",
       "Color0x0000FF" : "Blue",
       "Color0xFF00FF" : "Magenta",
-      "DisplayUTCTimeYesTitle" : "Yes",
+      "DisplayUTCTimeYesTitle" : "UTC / Local",
       "DOWLanguageJPN" : "Japanese",
       "Color0xAA55AA" : "Pale Purple",
       "Color0xAA00FF" : "Violet",
@@ -423,21 +612,28 @@
       "ThemeTitle" : "Theme",
       "Color0x005500" : "Green",
       "Color0xFFAA00" : "Light Orange",
+      "UTCp930" : "UTC+9:30",
       "Color0xAAFFFF" : "Pale Blue",
+      "UTCp530" : "UTC+5:30",
+      "DisplayUTCTimeOnlyTitle" : "UTC Only",
+      "UTCp1030" : "UTC+10:30",
       "Color0x000055" : "Very Dark Blue",
       "Color0xFF00AA" : "Pink",
+      "AlwaysOnDisplaySimpleTitle" : "Simple",
       "AppName" : "Ultra Plus",
       "Color0xAA55FF" : "Light Purple",
       "Color0x55AAAA" : "Teal",
       "Color0x555555" : "Dark Gray",
       "Day7JPN" : "土",
       "RespectFirstDayNoTitle" : "No",
+      "UTCm930" : "UTC-9:30",
       "Color0xAAFF55" : "Green Yellow",
       "Color0xFF0000" : "Red",
       "Color0x55AA00" : "Limeade",
       "BatteryInDaysYesTitle" : "Yes",
       "BatteryInDaysNoTitle" : "No",
       "HourMarkersNumbersOnlyTitle" : "Numbers Only",
+      "AlwaysOnDisplayDetailedTitle" : "Detailed",
       "Color0x5500AA" : "Purple",
       "Day4JPN" : "水"
     }

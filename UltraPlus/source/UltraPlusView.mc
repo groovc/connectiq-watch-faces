@@ -76,7 +76,7 @@ class UltraPlusView extends WatchUi.WatchFace {
         dataFontSize = 36;
         hourFontSize = 18;
 		handOffset = 55;
-		handOffset2 = 11;
+		handOffset2 = 11;	
 
         // Change Font Size based on Screen Size
         switch (screenSize) {
