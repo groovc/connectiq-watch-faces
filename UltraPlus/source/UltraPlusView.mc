@@ -23,6 +23,7 @@ class UltraPlusView extends WatchUi.WatchFace {
         uiPrimaryColor,
         uiSecondaryColor,
         uiTertiaryColor,
+		uiQuaternaryColor,
 		uiLowPowerColor = Graphics.COLOR_WHITE,
 		uiLowPowerAltColor = Graphics.COLOR_BLACK,
         uiHashColor,
@@ -201,14 +202,23 @@ class UltraPlusView extends WatchUi.WatchFace {
                 uiPrimaryColor = Graphics.COLOR_BLACK; 
                 uiSecondaryColor = Graphics.COLOR_WHITE;
                 uiTertiaryColor = Graphics.COLOR_WHITE;
+				uiQuaternaryColor = Graphics.COLOR_DK_GRAY;
             break;
             case 1:
 				// Dark Mode
                 faceBG = WatchUi.loadResource(Rez.Drawables.FaceBG);
                 uiPrimaryColor = Graphics.COLOR_WHITE;      
                 uiSecondaryColor = Graphics.COLOR_BLACK;
-                uiTertiaryColor = Graphics.COLOR_WHITE;  
+                uiTertiaryColor = Graphics.COLOR_WHITE;
+				uiQuaternaryColor = Graphics.COLOR_DK_GRAY;
             break;
+			case 2:
+				// Grey Mode
+				faceBG = WatchUi.loadResource(Rez.Drawables.FaceBGG);
+				uiPrimaryColor = Graphics.COLOR_WHITE;      
+                uiSecondaryColor = Graphics.COLOR_BLACK;
+                uiTertiaryColor = Graphics.COLOR_WHITE;  
+				uiQuaternaryColor = Graphics.COLOR_DK_GRAY;
             default:
             break;
         }
@@ -239,6 +249,7 @@ class UltraPlusView extends WatchUi.WatchFace {
 			uiPrimaryColor = Graphics.COLOR_WHITE;      
 			uiSecondaryColor = Graphics.COLOR_BLACK;
 			uiTertiaryColor = Graphics.COLOR_WHITE; 
+			uiQuaternaryColor = Graphics.COLOR_LT_GRAY;
 			
             // do AOD display (<10% 3 minutes max)
 			View.onUpdate(dc);
@@ -262,6 +273,7 @@ class UltraPlusView extends WatchUi.WatchFace {
             break;
             }
 
+			// Draw extra if user wants more expressive
 			if (alwaysOnDisplay == 0) {
 				// Draw heart rate
 				drawHeartRate(dc);
@@ -466,7 +478,7 @@ class UltraPlusView extends WatchUi.WatchFace {
         // Set width of the arc line width
         dc.setPenWidth(arcWidth);
         // draw arc background color
-        dc.setColor(Graphics.COLOR_DK_GRAY, Graphics.COLOR_TRANSPARENT);
+        dc.setColor(uiQuaternaryColor, Graphics.COLOR_TRANSPARENT);
         dc.drawArc(centerX, centerY, (screen_height / 2.35) - (arcWidth / 2.35), Graphics.ARC_CLOCKWISE, 165, 105);
     
         // display the current percentage of body battery remaining
@@ -511,7 +523,7 @@ class UltraPlusView extends WatchUi.WatchFace {
         // Set width of the arc line width
         dc.setPenWidth(arcWidth);
         // draw arc background color
-        dc.setColor(Graphics.COLOR_DK_GRAY, Graphics.COLOR_TRANSPARENT);
+        dc.setColor(uiQuaternaryColor, Graphics.COLOR_TRANSPARENT);
         dc.drawArc(centerX, screen_height / 2, (screen_height / 2.35) - (arcWidth / 2.35), Graphics.ARC_CLOCKWISE, 75, 15);
         // draw arc labels
         dc.setColor(uiPrimaryColor, Graphics.COLOR_TRANSPARENT);
@@ -547,7 +559,7 @@ class UltraPlusView extends WatchUi.WatchFace {
         // Set width of the arc line width
         dc.setPenWidth(arcWidth);
         // draw arc background color
-        dc.setColor(Graphics.COLOR_DK_GRAY, Graphics.COLOR_TRANSPARENT);
+        dc.setColor(uiQuaternaryColor, Graphics.COLOR_TRANSPARENT);
         dc.drawArc(centerX, centerY, screen_height / 2.35 - arcWidth / 2.35, Graphics.ARC_COUNTER_CLOCKWISE, 195, 255);
         // draw arc labels
         dc.setColor(uiPrimaryColor, Graphics.COLOR_TRANSPARENT);

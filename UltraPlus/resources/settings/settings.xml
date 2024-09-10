@@ -70,6 +70,7 @@
         <settingConfig type="list">
             <listEntry value="0">@Strings.ThemeLightTitle</listEntry>
             <listEntry value="1">@Strings.ThemeDarkTitle</listEntry>
+            <listEntry value="2">@Strings.ThemeGreyTitle</listEntry>
         </settingConfig>
     </setting>
 

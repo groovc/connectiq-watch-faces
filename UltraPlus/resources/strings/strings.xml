@@ -4,6 +4,7 @@
     <string id="ThemeTitle">Theme</string>
     <string id="ThemeDarkTitle">Dark</string>
     <string id="ThemeLightTitle">Light</string>
+    <string id="ThemeGreyTitle">Grey</string>
     <string id="DisplayUTCTimeTitle">Display UTC Time</string>
     <string id="DisplayUTCTimeYesTitle">UTC / Local</string>
     <string id="DisplayUTCTimeNoTitle">Local Only</string>
