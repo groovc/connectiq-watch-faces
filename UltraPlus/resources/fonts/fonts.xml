@@ -1,4 +1,0 @@
-<fonts>
-	<font id="customIcons" filename="custom-ui-icons.fnt" filter="abc" />
-	<font id="weatherIcons" filename="ultraplus-weather-icons-68.fnt" filter="abcdefghijklmnopqrstuvwxyzABCDEFG" />
-</fonts>
